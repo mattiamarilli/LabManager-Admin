@@ -6,6 +6,7 @@
       <th>Stato</th>
       <th>Numero Docente</th>
       <th>Numero Classe</th>
+      <th>Action</th>
     </tr>
     <tr *ngFor="let session of sessions">
         <th>{{session.ses_id}}</th>
@@ -14,6 +15,7 @@
         <th>{{session.ses_attiva}}</th>
         <th>{{session.ses_doc_id}}</th>
         <th>{{session.ses_cla_id}}</th>
+        <th><input type="button" value="Chiudi Sessione"></th>
     </tr>
 </table>
 
