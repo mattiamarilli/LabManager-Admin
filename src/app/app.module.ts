@@ -10,6 +10,9 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SessionComponent } from './session/session.component';
 import { HttpClientModule }    from '@angular/common/http';
+import { RegestryMenagementComponent } from './regestry-menagement/regestry-menagement.component';
+import { MaterialMenagementComponent } from './material-menagement/material-menagement.component';
+import { AnalitycsComponent } from './analitycs/analitycs.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { HttpClientModule }    from '@angular/common/http';
     HomeComponent,
     MainNavComponent,
     SessionComponent,
+    RegestryMenagementComponent,
+    MaterialMenagementComponent,
+    AnalitycsComponent,
 
   ],
   imports: [

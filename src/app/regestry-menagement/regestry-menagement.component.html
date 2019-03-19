@@ -1,0 +1,32 @@
+<form>
+  
+    <input type="radio" value="Studente" >
+    <label >Studente</label>
+    
+    
+    <input type="radio" value="Docente" >
+    <label >Docente</label>
+    
+    
+    <input type="radio" value="Classe">
+    <label>Classe</label>
+  <br>
+  <label >Nome</label>
+  <input type="text" id="fname" name="fname">
+  <label>Cognome</label>
+  <input type="text" id="lname" name="lname">
+  <label >Username</label>
+  <input type="text" id="username" name="username">
+  <label >Password</label>
+  <input type="password" id="password" name="password">
+
+  <select id="classi" ng-show="insert == 'Studente'">
+      <option value="Studente">Studente</option>
+  </select>
+
+  <select id="ruoli-docente" ng-show="insert == 'Docente'">
+      <option value="Docente">Docente</option>
+  </select>
+  
+  <input type="button" value="Inserisci">
+</form>
