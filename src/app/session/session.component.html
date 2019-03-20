@@ -1,12 +1,15 @@
-<table align="center">
+
+<br>
+<input type="submit" value="Apri Sessione" (click)="startSession()" [hidden]="session==!null">
+<table align="center" [hidden]="session==null">
     <tr>
       <th>Data Creazione</th>
       <th>Numero Docente</th>
       <th>Numero Classe</th>
+      <th>Stato</th>
       <th>Action</th>
     </tr>
-    <tr *ngFor="let session of sessions">
-
+    <tr *ngFor="let session of sessions" >
         <th>{{session.ses_creazione}}</th>
         <th>{{session.ses_attiva}}</th>
         <th>{{session.ses_doc_id}}</th>
@@ -14,4 +17,17 @@
         <th><input type="button" value="Chiudi Sessione" (click)="stopSession()"></th>
     </tr>
 </table>
+<br>
+<table align="center">
+  <tr>
+    <th>Data Creazione</th>
+    <th>Data Chiusura</th>
+  </tr>
+  <tr *ngFor="let session of oldsessions">
+    <th>{{session.ses_creazione}}</th>
+    <th>{{session.ses_chiusura}}</th>
+
+  </tr>
+</table>
+
 
