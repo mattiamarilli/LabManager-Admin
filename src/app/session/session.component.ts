@@ -15,13 +15,17 @@ export class SessionComponent implements OnInit {
   oldsessions:Session
 
   stopSession()
-  { let date = formatDate(new Date(), 'yyyy-MM-dd h:MM:ss', 'en');
-    this.teacherservice.closeCurrentSession(this.sessions[0].ses_id);
+  { 
+    this.teacherservice.closeCurrentSession(this.sessions[0].ses_id).subscribe();
+     this.teacherservice.getActiveSessions().subscribe((data: Session ) => {
+			this.sessions = data;
+		}
+    );;
   }
 
   startSession(){
 
-    this.teacherservice.newsession();
+    this.teacherservice.newsession().subscribe();
   }
 
   ngOnInit() {

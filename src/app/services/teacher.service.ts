@@ -21,7 +21,7 @@ export class TeacherService {
   }
 
   closeCurrentSession(ses_id:number){
-    return this.http.get(this.url + "closecurrentsession.php?ses_id=" + ses_id);
+    return this.http.post(this.url + "closecurrentsession.php",{});
   }
 
   getOldSessions(){
@@ -33,7 +33,8 @@ export class TeacherService {
   newsession(){
     let headers = new HttpHeaders({
     });
-    this.http.get(this.url + "createsession.php", { headers: headers });
+    
+    return this.http.get(this.url + "createsession.php", { headers: headers });
   }
 
 }

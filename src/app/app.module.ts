@@ -13,6 +13,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { RegestryMenagementComponent } from './regestry-menagement/regestry-menagement.component';
 import { MaterialMenagementComponent } from './material-menagement/material-menagement.component';
 import { AnalitycsComponent } from './analitycs/analitycs.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { AnalitycsComponent } from './analitycs/analitycs.component';
     RegestryMenagementComponent,
     MaterialMenagementComponent,
     AnalitycsComponent,
+    LoginComponent,
+
 
   ],
   imports: [

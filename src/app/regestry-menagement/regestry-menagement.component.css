@@ -27,7 +27,15 @@ input[type=text], [type=password],select {
     background-color: #f2f2f2;
     padding: 20px;
   }
-  form { 
+  #studenti { 
   margin: 0 auto; 
   width:300px;
   }
+  #docenti { 
+    margin: 0 auto; 
+    width:300px;
+    }
+    #classi { 
+      margin: 0 auto; 
+      width:300px;
+      }
