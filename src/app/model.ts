@@ -13,5 +13,5 @@ export interface Session{
         doc_cognome: string;
         doc_username: string;
         doc_password: string;
-        doctoken?: string;
+        token?: string;
     }
