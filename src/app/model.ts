@@ -8,10 +8,10 @@ export interface Session{
     }[];
 
     export class User {
-        id: number;
-        username: string;
-        password: string;
-        firstName: string;
-        lastName: string;
-        token?: string;
+        doc_id: number;
+        doc_nome: string;
+        doc_cognome: string;
+        doc_username: string;
+        doc_password: string;
+        doctoken?: string;
     }
