@@ -2,9 +2,9 @@
 
   <br>
   <label >Username</label>
-  <input type="text" id="username" name="username">
+  <input   type="text" id="username" name="username" [(ngModel)]="username">
   <label >Password</label>
-  <input type="password" id="password" name="password">
+  <input  type="password" id="password" name="password" [(ngModel)]="password">
 
-  <input type="button" value="Entra">
+  <input type="button" value="Entra" (click)="login()">
 </form>

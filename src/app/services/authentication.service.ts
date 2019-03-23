@@ -9,6 +9,7 @@ import { User } from '../model';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    url:string = 'http://marilliaws.ddns.net/qrmarconi-backend/';
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -20,7 +21,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`/users/authenticate`, { username, password })
+        return this.http.post<any>(this.url + `login.php`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

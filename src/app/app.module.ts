@@ -14,6 +14,7 @@ import { RegestryMenagementComponent } from './regestry-menagement/regestry-mena
 import { MaterialMenagementComponent } from './material-menagement/material-menagement.component';
 import { AnalitycsComponent } from './analitycs/analitycs.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LoginComponent } from './login/login.component';
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
    
   ],
   providers: [],
