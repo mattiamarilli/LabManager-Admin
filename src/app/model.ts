@@ -47,6 +47,7 @@ export class Studente {
     username: string
 } []
 
+<<<<<<< HEAD
 export class Utensile {
     id_utensile: number;
     nome: string;
@@ -60,6 +61,34 @@ export class Gruppi{
     nome: string;
     cognome: string;
 }
+=======
+        id_classe: number;
+        nome: string;
+        anno_scolastico: number;
+        scadenza: number; // timestamp
+        enabled: boolean;
+}[]
+
+    export class Studenti
+    {
+        id: number;
+        nome: string; 
+        cognome: string; 
+        id_classe: number; 
+        classe: string;
+        id_gruppo: number;
+        username: string
+    }[]
+
+    export class Utensile {
+        id_utensile: number;
+        nome: string;
+        segnala: boolean;
+        id_categoria: number;
+        categoria: string;
+    }[]
+
+>>>>>>> 0058a3cad06fa24d0e0bd56d7ff629ef4284ffb3
 
 
 
