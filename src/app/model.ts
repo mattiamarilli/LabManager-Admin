@@ -30,14 +30,13 @@ export class User {
     doc_token?: string;
 }
 
-export class Categoria {
+export class Categorie {
     id_categoria: number;
     nome: String;
-    cognome: String;
-}
+}[]
 
 
-export class Studente {
+export class Studenti {
     id: number;
     nome: string;
     cognome: string;
@@ -47,8 +46,7 @@ export class Studente {
     username: string
 } []
 
-<<<<<<< HEAD
-export class Utensile {
+export class Utensili {
     id_utensile: number;
     nome: string;
     segnala: boolean;
@@ -57,38 +55,15 @@ export class Utensile {
 } []
 
 export class Gruppi{
-    id: number;
-    nome: string;
-    cognome: string;
-}
-=======
-        id_classe: number;
-        nome: string;
-        anno_scolastico: number;
-        scadenza: number; // timestamp
-        enabled: boolean;
+    id_gruppo: number;
+    studenti :{
+        id_studente:number;
+        nome:string;
+        cognome:string;
+        id_classe:number;
+        classe:string;
+    }[]
 }[]
-
-    export class Studenti
-    {
-        id: number;
-        nome: string; 
-        cognome: string; 
-        id_classe: number; 
-        classe: string;
-        id_gruppo: number;
-        username: string
-    }[]
-
-    export class Utensile {
-        id_utensile: number;
-        nome: string;
-        segnala: boolean;
-        id_categoria: number;
-        categoria: string;
-    }[]
-
->>>>>>> 0058a3cad06fa24d0e0bd56d7ff629ef4284ffb3
 
 
 

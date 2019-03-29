@@ -7,6 +7,7 @@ import {MaterialMenagementComponent} from './material-menagement/material-menage
 import { RegestryMenagementComponent} from './regestry-menagement/regestry-menagement.component'
 import {LoginComponent} from './login/login.component'
 import { AuthGuard } from './_guards/auth.guard';
+import { ClassComponent } from './class/class.component'
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent ,canActivate: [AuthGuard]},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'materialmenagement',component:MaterialMenagementComponent},
   { path: 'regestrymenagement',component:RegestryMenagementComponent},
   { path: 'login',component:LoginComponent},
+  { path: 'class',component:ClassComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 

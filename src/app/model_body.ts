@@ -31,7 +31,3 @@ export class Utensile
     
 }
 
-export class id_categoria
-{
-    nome: string;
-}
