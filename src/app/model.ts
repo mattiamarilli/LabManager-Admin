@@ -16,6 +16,11 @@ export interface Session{
         doc_token?: string;
 }
 
+export class Categoria{
+    id_categoria: number;
+    nome: String;
+}
+
 
 
 export class Classi {
