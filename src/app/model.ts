@@ -27,7 +27,7 @@ export class Classi {
         enabled: boolean;
 }[]
 
-    export class Studente
+    export class Studenti
     {
         id: number;
         nome: string; 
@@ -44,7 +44,8 @@ export class Classi {
         segnala: boolean;
         id_categoria: number;
         categoria: string;
-    } []
+    }[]
+
 
 
 
