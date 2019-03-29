@@ -17,15 +17,15 @@ export interface Session{
     }
 
     export class Studente
-            {
-                id: number;
-                nome: string; 
-                cognome: string; 
-                id_classe: number; 
-                classe: string;
-                id_gruppo: number;
-                username: string
-            }[]
+    {
+        id: number;
+        nome: string; 
+        cognome: string; 
+        id_classe: number; 
+        classe: string;
+        id_gruppo: number;
+        username: string
+    }[]
 
     export class Utensile {
         id_utensile: number;
@@ -36,3 +36,4 @@ export interface Session{
     } []
 
     
+
