@@ -27,3 +27,24 @@ export class Classi {
         enabled: boolean;
 }[]
 
+    export class Studente
+    {
+        id: number;
+        nome: string; 
+        cognome: string; 
+        id_classe: number; 
+        classe: string;
+        id_gruppo: number;
+        username: string
+    }[]
+
+    export class Utensile {
+        id_utensile: number;
+        nome: string;
+        segnala: boolean;
+        id_categoria: number;
+        categoria: string;
+    } []
+
+
+
