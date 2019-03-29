@@ -14,13 +14,16 @@ export class LoginComponent implements OnInit {
   username:string;
   password:string;
   login(){
-    
-    this.authService.login(this.username,this.password).subscribe((data: User ) => {
-      if(User)
-      this.router.navigate(['/home']);
-		});
+    state: RouterStateSnapshot;
+    this.authService.login(this.username,this.password).subscribe((data: boolean ) => {
+      if(data == true)
+        {
+          console.log('ciao');
+          this.router.navigate(['/home']);
+      }
+		}
+    );;
   }
-
   ngOnInit() {
   }
 

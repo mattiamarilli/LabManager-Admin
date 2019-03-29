@@ -21,7 +21,7 @@ export class TeacherService {
   }
 
   closeCurrentSession(ses_id:number){
-    return this.http.post(this.url + "closecurrentsession.php",{});
+    return this.http.get(this.url + "closecurrentsession.php",{});
   }
 
   getOldSessions(){

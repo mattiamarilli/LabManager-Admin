@@ -21,11 +21,19 @@ export class SessionComponent implements OnInit {
 			this.sessions = data;
 		}
     );;
+    this.teacherservice.getOldSessions().subscribe((data: Session ) => {
+			this.oldsessions = data;
+		}
+    );;
   }
 
   startSession(){
 
     this.teacherservice.newsession().subscribe();
+    this.teacherservice.getActiveSessions().subscribe((data: Session ) => {
+			this.sessions = data;
+		}
+    );;
   }
 
   ngOnInit() {

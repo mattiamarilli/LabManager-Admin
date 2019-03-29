@@ -13,5 +13,17 @@ export interface Session{
         doc_cognome: string;
         doc_username: string;
         doc_password: string;
-        token?: string;
-    }
+        doc_token?: string;
+}
+
+
+
+export class Classi {
+
+        id_classe: number;
+        nome: string;
+        anno_scolastico: number;
+        scadenza: number; // timestamp
+        enabled: boolean;
+}[]
+

@@ -15,6 +15,7 @@ import { MaterialMenagementComponent } from './material-menagement/material-mena
 import { AnalitycsComponent } from './analitycs/analitycs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { ClassComponent } from './class/class.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     MaterialMenagementComponent,
     AnalitycsComponent,
     LoginComponent,
+    ClassComponent,
 
 
   ],
