@@ -8,23 +8,23 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule }    from '@angular/common/http';
-import { RegestryMenagementComponent } from './regestry-menagement/regestry-menagement.component';
-import { MaterialMenagementComponent } from './material-menagement/material-menagement.component';
 import { AnalitycsComponent } from './analitycs/analitycs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ClassComponent } from './class/class.component';
+import {StudentComponent} from './student/student.component'
+import {TeacherComponent} from './teacher/teacher.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MainNavComponent,
-    RegestryMenagementComponent,
-    MaterialMenagementComponent,
     AnalitycsComponent,
     LoginComponent,
     ClassComponent,
+    StudentComponent,
+    TeacherComponent
 
 
   ],

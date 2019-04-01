@@ -2,19 +2,21 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component'
 import {AnalitycsComponent} from './analitycs/analitycs.component'
-import {MaterialMenagementComponent} from './material-menagement/material-menagement.component'
-import { RegestryMenagementComponent} from './regestry-menagement/regestry-menagement.component'
+
 import {LoginComponent} from './login/login.component'
 import { AuthGuard } from './_guards/auth.guard';
 import { ClassComponent } from './class/class.component'
+import {StudentComponent} from './student/student.component'
+import {TeacherComponent} from './teacher/teacher.component'
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent /*,canActivate: [AuthGuard]*/},
   { path: 'analitycs',component:AnalitycsComponent},
-  { path: 'materialmenagement',component:MaterialMenagementComponent},
-  { path: 'regestrymenagement',component:RegestryMenagementComponent},
+
   { path: 'login',component:LoginComponent},
   { path: 'class',component:ClassComponent},
+  { path: 'student', component:StudentComponent },
+  {path : 'teacher', component: TeacherComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
