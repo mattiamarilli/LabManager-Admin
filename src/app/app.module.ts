@@ -13,7 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ClassComponent } from './class/class.component';
 import {StudentComponent} from './student/student.component'
-import {TeacherComponent} from './teacher/teacher.component'
+import {TeacherComponent} from './teacher/teacher.component';
+import { ToolComponent } from './tool/tool.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {TeacherComponent} from './teacher/teacher.component'
     LoginComponent,
     ClassComponent,
     StudentComponent,
-    TeacherComponent
+    TeacherComponent,
+    ToolComponent
 
 
   ],

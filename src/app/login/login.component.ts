@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service'
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { User } from '../model';
 
+import {Auth} from '../model_body'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,11 +11,11 @@ import { User } from '../model';
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router,private authService: AuthenticationService) { }
-  username:string;
-  password:string;
+  auth:Auth;
   login(){
     state: RouterStateSnapshot;
-    this.authService.login(this.username,this.password).subscribe((data: boolean ) => {
+    
+    this.authService.login(this.auth).subscribe((data: boolean ) => {
       if(data == true)
         {
           console.log('ciao');
