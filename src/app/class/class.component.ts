@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ClassService} from '../services/class.service'
 
 @Component({
   selector: 'app-class',
