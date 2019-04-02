@@ -43,5 +43,5 @@ export class ClassService {
     return this.http.post(this.apiURL + `/admin/classe`,{ classe }, { headers: headers })
   }
 
-  
+
 }
