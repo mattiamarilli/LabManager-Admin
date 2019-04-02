@@ -17,10 +17,10 @@ export class ToolService {
   
   apiURL:string;
 
-  getUtensili(): Observable<Utensili>{
+  getUtensili(): Observable<Utensili[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Utensili>(this.apiURL + '/admin/utensile');
+    return this.http.get<Utensili[]>(this.apiURL + '/admin/utensile');
 
   }
 
@@ -30,10 +30,10 @@ export class ToolService {
     return this.http.post(this.apiURL + `/admin/utensile`,{ utensile }, { headers: headers })
   }
 
-  getCategorie(): Observable<Categorie>{
+  getCategorie(): Observable<Categorie[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Categorie>(this.apiURL + '/admin/categoria');
+    return this.http.get<Categorie[]>(this.apiURL + '/admin/categoria');
 
   }
 

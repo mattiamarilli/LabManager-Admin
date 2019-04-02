@@ -18,10 +18,10 @@ export class ClassService {
 
   apiURL:string;
 
-  getClasse(): Observable<Classi>{
+  getClasse(): Observable<Classi[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Classi>(this.apiURL + '/admin/classe');
+    return this.http.get<Classi[]>(this.apiURL + '/admin/classe');
 
   }
 

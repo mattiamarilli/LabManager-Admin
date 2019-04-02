@@ -16,10 +16,10 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
 
-  getStudenti(): Observable<Studenti>{
+  getStudenti(): Observable<Studenti[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Studenti>(this.apiURL + '/admin/studente');
+    return this.http.get<Studenti[]>(this.apiURL + '/admin/studente');
 
   }
 

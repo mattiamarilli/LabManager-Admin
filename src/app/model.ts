@@ -12,13 +12,13 @@ export class Classi {
     anno_scolastico: number;
     scadenza: number; // timestamp
     enabled: boolean;
-} []
+} 
 
 
 export class Categorie {
     id_categoria: number;
     nome: String;
-}[]
+}
 
 
 export class Studenti {
@@ -29,7 +29,7 @@ export class Studenti {
     classe: string;
     id_gruppo: number;
     username: string
-} []
+} 
 
 export class Utensili {
     id_utensile: number;
@@ -37,18 +37,19 @@ export class Utensili {
     segnala: boolean;
     id_categoria: number;
     categoria: string;
-} []
+} 
 
 export class Gruppi{
     id_gruppo: number;
-    studenti :{
+    studenti :[
+        {
         id_studente:number;
         nome:string;
         cognome:string;
         id_classe:number;
         classe:string;
-    }[]
-}[]
+    }]
+}
 
 
 

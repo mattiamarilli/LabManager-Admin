@@ -11,11 +11,11 @@ export class ClassComponent implements OnInit {
 
   constructor(private classService:ClassService) { }
 
-  classi:Classi;
+  classi:Classi[];
 
   ngOnInit() {
 
-    this.classService.getClasse().subscribe((data: Classi ) => {
+    this.classService.getClasse().subscribe((data: Classi []) => {
       this.classi = data;
     })
   }
