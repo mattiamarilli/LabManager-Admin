@@ -6,13 +6,12 @@ export class AuthUser {
 }
 
 export class Classi {
-
     id_classe: number;
     nome: string;
     anno_scolastico: number;
     scadenza: number; // timestamp
     enabled: boolean;
-} 
+}
 
 
 export class Categorie {
@@ -29,7 +28,7 @@ export class Studenti {
     classe: string;
     id_gruppo: number;
     username: string
-} 
+}
 
 export class Utensili {
     id_utensile: number;
@@ -37,7 +36,7 @@ export class Utensili {
     segnala: boolean;
     id_categoria: number;
     categoria: string;
-} 
+}
 
 export class Gruppi{
     id_gruppo: number;
@@ -50,6 +49,3 @@ export class Gruppi{
         classe:string;
     }]
 }
-
-
-

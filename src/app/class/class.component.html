@@ -1,4 +1,25 @@
 <app-main-nav></app-main-nav>
-<p>
-  class works!
-</p>
+<div class="container">
+    <h3 class="title">Lista delle classi che accedono al laboratorio</h3>
+    <button class="btn" type="button">aggiungi classe</button>
+    <table class="table">
+        <tr>
+            <th>Id Classe</th>
+            <th>Nome</th>
+            <th>Anno scolatico</th>
+            <th>Scadenza</th>
+            <th>Autorizzazione</th>
+            <th>Azioni</th>
+        </tr>
+        <tr *ngFor="let c of classi">
+            <td>{{c.id_classe}}</td>
+            <td>{{c.nome}}</td>
+            <td>{{c.anno_scolastico}}</td>
+            <td>{{c.scadenza}}</td>
+            <td *ngIf="c.enabled==true; else elseBlock"><input type="checkbox" name="{{c.id_classe}}" value="{{c.id_classe}}" checked></td>
+            <ng-template #elseBlock><td><input type="checkbox" name="{{c.id_classe}}" value="{{c.id_classe}}"></td></ng-template>
+            <td></td>
+
+        </tr>
+    </table>
+</div>
