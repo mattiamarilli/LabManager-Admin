@@ -1,22 +1,27 @@
 <app-main-nav></app-main-nav>
 <div class="container">
     <h3 class="title">Lista delle classi che accedono al laboratorio</h3>
-    <button class="btn" type="button">aggiungi classe</button>
-    <table class="table">
-        <tr>
-            <th>Id Classe</th>
-            <th>Nome</th>
-            <th>Anno scolatico</th>
-            <th>Autorizzazione</th>
-            <th>Azioni</th>
-        </tr>
-        <tr *ngFor="let c of classi">
-            <td>{{c.id_classe}}</td>
-            <td>{{c.nome}}</td>
-            <td>{{c.anno_scolastico}}</td>
-            <td><input type="checkbox" name="" [(ngModel)]="c.enabled" id=""></td>
-            <td></td>
+    <button class="btn btn-success" type="button" id="addClass">aggiungi classe</button>
+    <table class="table table-striped table-bordered">
 
-        </tr>
+        <thead>
+            <tr>
+                <th>Id Classe</th>
+                <th>Nome</th>
+                <th>Anno scolatico</th>
+                <th>Autorizzazione</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of classi">
+                <td>{{c.id_classe}}</td>
+                <td>{{c.nome}}</td>
+                <td>{{c.anno_scolastico}}</td>
+                <td><input type="checkbox" name="" [(ngModel)]="c.enabled" id=""></td>
+                <td></td>
+
+            </tr>
+        </tbody>
     </table>
 </div>
