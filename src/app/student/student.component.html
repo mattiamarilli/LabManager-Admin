@@ -2,6 +2,7 @@
 <div class="container">
     <h3 class="title">Lista degli utenti</h3>
     <button class="btn btn-success" type="button" id="addStudent">aggiungi studente</button>
+    <input #filter type="text" id="filtro" class="form-control" placeholder="Filtra gli studenti" (input)="filterStudent(filter.value)">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
