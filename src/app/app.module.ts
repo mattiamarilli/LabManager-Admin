@@ -43,7 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

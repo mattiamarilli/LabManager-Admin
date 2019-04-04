@@ -1,30 +1,26 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
-    <mat-nav-list>
-        <a mat-list-item href="/home">Home</a>
-      <a mat-list-item href="/class">Classi</a>
-      <a mat-list-item href="/student">Studenti</a>
-      <a mat-list-item href="/Teacher">Insegnanti</a>
-      <a mat-list-item href="/tool">Torni e Attrezzi</a>
-      <a mat-list-item href="/analitycs">Statistiche</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        >
-        <mat-icon aria-label="Side nav toggle icon">☰   </mat-icon>
-      </button>
-      <span class="span1">I.P.S.I.A. Guglielmo Marconi - Laboratorio </span>
-      
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<nav class="navbar navbar-expand-lg navbar-dark static-top custom-bgcolor">
+  <div class="container">
+    <a class="navbar-brand" href="#">QrMarconi</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
