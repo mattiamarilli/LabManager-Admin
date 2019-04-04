@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClassService } from '../services/class.service'
 import { Classi } from '../model'
 import { Classe } from '../model_body'
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-class',
@@ -10,11 +11,15 @@ import { Classe } from '../model_body'
 })
 export class ClassComponent implements OnInit {
 
-  constructor(private classService:ClassService) { }
+  constructor(private classService:ClassService, private modalService: NgbModal) { }
 
   classi:Classi[];
   id_classe:number;
   classe:Classe;
+
+  //Modal
+  nome:string;
+  anno_scolastico:number;
 
   ngOnInit() {
     /*this.classService.getClasse().subscribe((data: Classi []) => {
@@ -39,6 +44,22 @@ export class ClassComponent implements OnInit {
 
   unvalidateClass(){
     this.classService.disable(this.id_classe);
+  }
+
+  //Modal
+  open(content){
+    this.anno_scolastico = null;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-titile'});
+  }
+
+  onKey(event: any){
+    if(event.target.value.length ==  4){
+      this.anno_scolastico = event.target.value;
+      this.anno_scolastico ++;
+    }
+  }
+
+  addClass(){
   }
 
 }

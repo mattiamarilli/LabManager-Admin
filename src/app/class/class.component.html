@@ -1,9 +1,8 @@
 <app-main-nav></app-main-nav>
 <div class="container">
     <h3 class="title">Lista delle classi che accedono al laboratorio</h3>
-    <button class="btn btn-success" type="button" id="addClass">aggiungi classe</button>
+    <button class="btn btn-success" type="button" id="addClass" (click)="open(content)">aggiungi classe</button>
     <table class="table table-striped table-bordered">
-
         <thead>
             <tr>
                 <th>Id Classe</th>
@@ -25,3 +24,33 @@
         </tbody>
     </table>
 </div>
+{{nome}}
+{{anno_scolastico}}
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Aggiungi classe</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Nome</label>
+        <div class="input-group">
+          <input #nome type="text" class="form-control">
+        </div>
+      </div>
+      <div class="form-group" id="input_anno_scolastico" required>
+        <label for="dateOfBirth">Anno scolatisco</label>
+        <div class="input-group">
+          <input type="number" class="form-control form-control-sm" (keyup)="onKey($event)" required>{{anno_scolastico}}
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="addClass(nome.value)">Aggiungi</button>
+  </div>
+</ng-template>

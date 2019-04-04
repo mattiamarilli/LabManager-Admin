@@ -12,9 +12,10 @@ import { AnalitycsComponent } from './analitycs/analitycs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ClassComponent } from './class/class.component';
-import {StudentComponent} from './student/student.component'
-import {TeacherComponent} from './teacher/teacher.component';
-import { ToolComponent } from './tool/tool.component'
+import { StudentComponent } from './student/student.component'
+import { TeacherComponent } from './teacher/teacher.component';
+import { ToolComponent } from './tool/tool.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -41,8 +42,8 @@ import { ToolComponent } from './tool/tool.component'
     MatListModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
-   
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
