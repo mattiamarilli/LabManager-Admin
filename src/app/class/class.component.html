@@ -39,13 +39,13 @@
       <div class="form-group">
         <label for="dateOfBirth">Nome</label>
         <div class="input-group">
-          <input #nome type="text" class="form-control">
+          <input #nome="ngModel" type="text" class="form-control" [(ngModel)]="nomec" [ngModelOptions]="{standalone: true}">
         </div>
       </div>
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Anno scolatisco</label>
         <div class="input-group">
-          <input type="number" class="form-control form-control-sm" (keyup)="onKey($event)" required>{{anno_scolastico}}
+          <input type="number" class="form-control form-control-sm" [(ngModel)]="anno_scolastico" [ngModelOptions]="{standalone: true}" (keyup)="onKey($event)" required>{{anno_scolastico}}
         </div>
       </div>
     </form>
