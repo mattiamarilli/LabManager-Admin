@@ -18,9 +18,8 @@ export class ClassComponent implements OnInit {
   classe:Classe;
 
   //Modal
-  nome:string;
-  anno_scolastico:number;
-
+  nomec:string = '';
+  anno_scolastico:number = null;
   ngOnInit() {
     /*this.classService.getClasse().subscribe((data: Classi []) => {
       this.classi = data;
@@ -60,6 +59,9 @@ export class ClassComponent implements OnInit {
   }
 
   addClass(){
+    this.classe.nome = this.nomec
+    this.classe.anno_scolastico = this.anno_scolastico;
+    this.classService.setClasse(this.classe);
   }
 
 }
