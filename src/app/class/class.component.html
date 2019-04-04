@@ -7,7 +7,6 @@
             <th>Id Classe</th>
             <th>Nome</th>
             <th>Anno scolatico</th>
-            <th>Scadenza</th>
             <th>Autorizzazione</th>
             <th>Azioni</th>
         </tr>
@@ -15,9 +14,7 @@
             <td>{{c.id_classe}}</td>
             <td>{{c.nome}}</td>
             <td>{{c.anno_scolastico}}</td>
-            <td>{{c.scadenza}}</td>
-            <td *ngIf="c.enabled==true; else elseBlock"><input type="checkbox" name="{{c.id_classe}}" value="{{c.id_classe}}" checked></td>
-            <ng-template #elseBlock><td><input type="checkbox" name="{{c.id_classe}}" value="{{c.id_classe}}"></td></ng-template>
+            <td><input type="checkbox" name="" [(ngModel)]="c.enabled" id=""></td>
             <td></td>
 
         </tr>

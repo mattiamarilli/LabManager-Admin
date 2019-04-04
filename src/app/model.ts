@@ -9,7 +9,6 @@ export class Classi {
     id_classe: number;
     nome: string;
     anno_scolastico: number;
-    scadenza: number; // timestamp
     enabled: boolean;
 }
 
