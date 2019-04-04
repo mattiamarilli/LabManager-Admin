@@ -10,7 +10,7 @@ import {Auth} from '../model_body'
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthUser>;
     public currentUser: Observable<AuthUser>;
-    url:string = '';
+    apiURL:string = '';
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<AuthUser>(JSON.parse(localStorage.getItem('currentUser')));
@@ -24,13 +24,12 @@ export class AuthenticationService {
     login(auth:Auth): Observable<boolean> {
         let headers = new HttpHeaders({
         });
-        return this.http.post<AuthUser>(this.url + `login.php`, { auth }, { headers: headers }).pipe(
+        return this.http.post<AuthUser>(this.apiURL + `admin/auth`, { auth }, { headers: headers }).pipe(
             map((user: AuthUser ) => {
-                // login successful if there's a jwt token in the response
+                
                 console.log(user);
                 if (user) {
-                    
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
 

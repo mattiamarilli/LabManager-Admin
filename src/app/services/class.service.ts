@@ -31,7 +31,7 @@ export class ClassService {
     return this.http.post(this.apiURL + `/admin/classe/enable`, { id_classe }, { headers: headers })
   }
 
-  disable(id_classe:number){
+  disable(){
     let headers = new HttpHeaders({
     });
     return this.http.delete(this.apiURL + `/admin/classe/enable`, { headers: headers })
