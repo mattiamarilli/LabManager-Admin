@@ -37,9 +37,15 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.classService.getClasse().subscribe((data: Classi[] ) => {
+    /*this.classService.getClasse().subscribe((data: Classi[] ) => {
       this.elencoClassi = data;
-    })
+    })*/
+    this.elencoStudenti =  [
+      {id: 1, nome: 'untente1', cognome: 'utente1', id_classe: 1, classe: 'dummyClass1', id_gruppo: 1, username: 'utente.1'},
+      {id: 2, nome: 'untente2', cognome: 'utente2', id_classe: 2, classe: 'dummyClass2', id_gruppo: 1, username: 'utente.2'},
+      {id: 3, nome: 'untente3', cognome: 'utente3', id_classe: 3, classe: 'dummyClass3', id_gruppo: 2, username: 'utente.3'},
+      {id: 4, nome: 'untente4', cognome: 'utente4', id_classe: 4, classe: 'dummyClass4', id_gruppo: 4, username: 'utente.4'}
+    ];
 
   }
 

@@ -1,4 +1,31 @@
 <app-main-nav></app-main-nav>
-<p>
-  student works!
-</p>
+<div class="container">
+    <h3 class="title">Lista degli utenti</h3>
+    <button class="btn btn-success" type="button" id="addStudent">aggiungi studente</button>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Id classe</th>
+                <th>Classe</th>
+                <th>Id gruppo</th>
+                <th>Username</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let studenti of elencoStudenti">
+                <td>{{studenti.id}}</td>
+                <td>{{studenti.nome}}</td>
+                <td>{{studenti.cognome}}</td>
+                <td>{{studenti.id_classe}}</td>
+                <td>{{studenti.classe}}</td>
+                <td>{{studenti.id_gruppo}}</td>
+                <td>{{studenti.username}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
