@@ -45,12 +45,12 @@
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Anno scolatisco</label>
         <div class="input-group">
-          <input type="number" class="form-control form-control-sm" [(ngModel)]="anno_scolastico" [ngModelOptions]="{standalone: true}" (keyup)="onKey($event)" required>{{anno_scolastico}}
+          <input type="number" class="form-control form-control-sm" [(ngModel)]="anno_scolastico" [ngModelOptions]="{standalone: true}" (keyup)="onKey($event)" required>{{next_anno_scolastico}}
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="addClass(nome.value)">Aggiungi</button>
+    <button type="button" class="btn btn-success" (click)="addClass()">Aggiungi</button>
   </div>
 </ng-template>
