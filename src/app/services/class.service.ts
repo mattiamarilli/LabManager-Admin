@@ -21,27 +21,30 @@ export class ClassService {
   getClasse(): Observable<Classi[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Classi[]>(this.apiURL + '/admin/classe');
+    //return this.http.get<Classi[]>(this.apiURL + '/admin/classe');
+    return this.http.get<Classi[]>('/admin/classe');
 
   }
 
   enable(id_classe:number){
     let headers = new HttpHeaders({
     });
-    return this.http.post(this.apiURL + `/admin/classe/enable`, { id_classe }, { headers: headers })
+    //return this.http.post(this.apiURL + `/admin/classe/enable`, { id_classe }, { headers: headers })
+    return this.http.post(`/admin/classe/enable`, { id_classe }, { headers: headers })
   }
 
   disable(){
     let headers = new HttpHeaders({
     });
-    return this.http.delete(this.apiURL + `/admin/classe/enable`, { headers: headers })
+    //return this.http.delete(this.apiURL + `/admin/classe/enable`, { headers: headers })
+    return this.http.delete(`/admin/classe/enable`, { headers: headers })
   }
 
   setClasse(classe:Classe){
     let headers = new HttpHeaders({
     });
-    return this.http.post(this.apiURL + `/admin/classe`,{ classe }, { headers: headers })
+    //return this.http.post(this.apiURL + `/admin/classe`,{ classe }, { headers: headers })
+    return this.http.post(`/admin/classe`,{ classe }, { headers: headers })
   }
-
 
 }
