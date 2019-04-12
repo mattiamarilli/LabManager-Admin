@@ -19,8 +19,8 @@ export class StudentService {
   getStudenti(): Observable<Studenti[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Studenti[]>(this.apiURL + '/admin/studente');
-
+    //return this.http.get<Studenti[]>(this.apiURL + '/admin/studente');
+    return this.http.get<Studenti[]>('/admin/studente');
   }
 
   setStudente(studente:Studente){
