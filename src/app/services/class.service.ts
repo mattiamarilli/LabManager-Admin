@@ -27,24 +27,25 @@ export class ClassService {
   }
 
   enable(id_classe:number){
-    let headers = new HttpHeaders({
-    });
+    let headers = new HttpHeaders({});
     //return this.http.post(this.apiURL + `/admin/classe/enable`, { id_classe }, { headers: headers })
-    return this.http.post(`/admin/classe/enable`, { id_classe }, { headers: headers })
+    return this.http.post(`/admin/classe/enable`, JSON.stringify(id_classe), { headers: headers });
   }
 
-  disable(){
-    let headers = new HttpHeaders({
-    });
+  disable(id_classe:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      'headers': headers,
+      'id_classe': id_classe
+    };
     //return this.http.delete(this.apiURL + `/admin/classe/enable`, { headers: headers })
-    return this.http.delete(`/admin/classe/enable`, { headers: headers })
+    return this.http.request('delete', `/admin/classe/enable`, { body: { headers: headers, id_classe: id_classe } });
   }
 
   setClasse(classe:Classe){
-    let headers = new HttpHeaders({
-    });
+    let headers = new HttpHeaders({});
     //return this.http.post(this.apiURL + `/admin/classe`,{ classe }, { headers: headers })
-    return this.http.post(`/admin/classe`,{ classe }, { headers: headers })
+    return this.http.post(`/admin/classe`, JSON.stringify(classe), { headers: headers });
   }
 
 }
