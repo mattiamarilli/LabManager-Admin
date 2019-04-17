@@ -1,29 +1,103 @@
 <app-main-nav></app-main-nav>
 <div class="container">
-    <h3 class="title">Lista degli utenti</h3>
-    <button class="btn btn-success" type="button" id="addStudent">aggiungi studente</button>
-    <table class="table table-striped table-bordered">
+    <h3 class="title">Lista degli studenti</h3>
+    <div *ngIf="warning" class="alert alert-danger" role="alert">
+      {{warning}}
+    </div>
+    <button class="btn btn-success" type="button" id="addStudent" (click)="open(content)">Aggiungi studente</button>
+    <table class="table table-striped table-bordered table-responsive">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Id Studente</th>
                 <th>Nome</th>
                 <th>Cognome</th>
-                <th>Id classe</th>
-                <th>Classe</th>
-                <th>Id gruppo</th>
                 <th>Username</th>
+                <th>Id Classe</th>
+                <th>Gruppo</th>
+                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let studenti of elencoStudenti">
-                <td>{{studenti.id}}</td>
-                <td>{{studenti.nome}}</td>
-                <td>{{studenti.cognome}}</td>
-                <td>{{studenti.id_classe}}</td>
-                <td>{{studenti.classe}}</td>
-                <td>{{studenti.id_gruppo}}</td>
-                <td>{{studenti.username}}</td>
+            <tr *ngFor="let s of studenti">
+                <td>{{s.id}}</td>
+                <td>{{s.nome}}</td>
+                <td>{{s.cognome}}</td>
+                <td>{{s.username}}</td>
+                <td>{{s.id_classe}}</td>
+                <td>{{s.id_gruppo}}</td>
+                <td>
+                  <button #modifyStudent type="button" class="btn btn-primary" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica classe</button>
+                  <button type="button" class="btn btn-danger" value="{{s.id}}"> Elimina classe</button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Aggiungi studente</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Nome</label>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" required>
+        </div>
+      </div>
+      <div class="form-group" id="input_anno_scolastico" required>
+        <label for="dateOfBirth">Cognome</label>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="cognome" [ngModelOptions]="{standalone: true}" required>
+        </div>
+      </div>
+      <div class="form-group" id="input_anno_scolastico" required>
+        <label for="dateOfBirth">Classe</label>
+        <div class="input-group">
+          <input type="number" class="form-control" [(ngModel)]="id_classe" [ngModelOptions]="{standalone: true}" required>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="addStudent()">Aggiungi</button>
+  </div>
+</ng-template>
+
+<ng-template #modify let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifica studente</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Nome</label>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" required>
+        </div>
+      </div>
+      <div class="form-group" id="input_anno_scolastico" required>
+        <label for="dateOfBirth">Cognome</label>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="cognome" [ngModelOptions]="{standalone: true}" required>
+        </div>
+      </div>
+      <div class="form-group" id="input_anno_scolastico" required>
+        <label for="dateOfBirth">Classe</label>
+        <div class="input-group">
+          <input type="number" class="form-control" [(ngModel)]="id_classe" [ngModelOptions]="{standalone: true}" required>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="modifyStudent()">Modifica</button>
+  </div>
+</ng-template>
