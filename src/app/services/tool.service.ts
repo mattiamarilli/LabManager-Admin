@@ -5,8 +5,8 @@ import { map } from 'rxjs/operators';
 
 import '../model'
 import '../model_body'
-import { Utensili, Categorie } from '../model';
-import { Utensile } from '../model_body';
+import { IUtensile, ICategoria } from '../model';
+import { IUtensileBody } from '../model_body';
 
 @Injectable({
   providedIn: 'root'
@@ -17,23 +17,23 @@ export class ToolService {
   
   apiURL:string;
 
-  getUtensili(): Observable<Utensili[]>{
+  getUtensili(): Observable<IUtensile[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Utensili[]>(this.apiURL + '/admin/utensile');
+    return this.http.get<IUtensile[]>(this.apiURL + '/admin/utensile');
 
   }
 
-  setUtensile(utensile:Utensile){
+  setUtensile(utensile:IUtensileBody){
     let headers = new HttpHeaders({
     });
     return this.http.post(this.apiURL + `/admin/utensile`,{ utensile }, { headers: headers })
   }
 
-  getCategorie(): Observable<Categorie[]>{
+  getCategorie(): Observable<ICategoria[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Categorie[]>(this.apiURL + '/admin/categoria');
+    return this.http.get<ICategoria[]>(this.apiURL + '/admin/categoria');
 
   }
 

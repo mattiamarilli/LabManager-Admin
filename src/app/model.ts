@@ -1,35 +1,33 @@
-export class AuthUser {
+export interface IAuthUser {
     id: number;
     nome: string;
-    cognome:string;
-    admin:boolean;
+    cognome: string;
+    admin: boolean;
 }
 
-export class Classi {
+export interface IClasse {
     id_classe: number;
     nome: string;
     anno_scolastico: number;
     enabled: boolean;
 }
 
-
-export class Categorie {
+export interface ICategoria {
     id_categoria: number;
-    nome: String;
+    nome: string;
 }
 
-
-export class Studenti {
+export interface IStudente {
     id: number;
     nome: string;
     cognome: string;
     id_classe: number;
     classe: string;
     id_gruppo: number;
-    username: string
+    username: string;
 }
 
-export class Utensili {
+export interface IUtensile {
     id_utensile: number;
     nome: string;
     segnala: boolean;
@@ -37,14 +35,15 @@ export class Utensili {
     categoria: string;
 }
 
-export class Gruppi{
+export interface IStudenteGruppo {
+  id_studente: number;
+  nome: string;
+  cognome: string;
+  id_classe: number;
+  classe: string;
+}
+
+export interface IGruppo {
     id_gruppo: number;
-    studenti :[
-        {
-        id_studente:number;
-        nome:string;
-        cognome:string;
-        id_classe:number;
-        classe:string;
-    }]
+    studenti: Array<IStudenteGruppo>;
 }

@@ -1,82 +1,52 @@
-import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
 
-import '../model'
-import '../model_body'
-import { Classi } from '../model';
-import { Classe } from '../model_body';
-
+import { IClasse } from "../model";
+import { IClasseBody } from "../model_body";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ClassService {
 
+  private classi: Subject<Array<IClasse>>;
+
   constructor(private http: HttpClient) {
-    this.classi = new Subject<Classi[]>();
+    this.classi = new Subject<Array<IClasse>>();
   }
 
-  apiURL:string;
-
-  getClasse(): Observable<Classi[]>{
-    let headers = new HttpHeaders({
-    });
-    //return this.http.get<Classi[]>(this.apiURL + '/admin/classe');
-    return this.http.get<Classi[]>('/admin/classe');
-
-  }
-
-  // -------------------
-
-  private classi:Subject<Classi[]>;
-
-  public getClassi(): Observable<Classi[]> {
+  getClassi(): Observable<Array<IClasse>> {
     return this.classi.asObservable();
   }
 
-  public loadClassi(): void {
-    this.http.get<Classi[]>('/admin/classe').subscribe(res => this.classi.next(res));
+  loadClassi(): void {
+    this.http.get<Array<IClasse>>("/admin/classe").subscribe((res) => this.classi.next(res));
   }
 
-  // -------------------
-
-  enable(id_classe:number){
-    let headers = new HttpHeaders({});
-    //return this.http.post(this.apiURL + `/admin/classe/enable`, { id_classe }, { headers: headers })
-    return this.http.post(`/admin/classe/enable`, JSON.stringify(id_classe), { headers: headers });
+  enable(id_classe: number) {
+    return this.http.post(`/admin/classe/enable`, JSON.stringify(id_classe));
   }
 
-  disable(id_classe:number){
-    let headers = new HttpHeaders({});
-    let body = {
-      'headers': headers,
-      'id_classe': id_classe
+  disable(id_classe: number) {
+    return this.http.request("delete", `/admin/classe/enable`, { body: { id_classe } });
+  }
+
+  setClasse(classe: IClasseBody) {
+    return this.http.post(`/admin/classe`, { body: classe});
+  }
+
+  modifyClass(classe: IClasseBody, id_classe: number) {
+    const body = {
+      id_classe,
+      nome: classe.nome,
+      anno_scolastico: classe.anno_scolastico
     };
-    //return this.http.delete(this.apiURL + `/admin/classe/enable`, { headers: headers })
-    return this.http.request('delete', `/admin/classe/enable`, { body: { headers: headers, id_classe: id_classe } });
+
+    return this.http.put("/admin/classe", { body });
   }
 
-  setClasse(classe:Classe){
-    let headers = new HttpHeaders({});
-    //return this.http.post(this.apiURL + `/admin/classe`,{ classe }, { headers: headers })
-    return this.http.post(`/admin/classe`, JSON.stringify(classe), { headers: headers });
-  }
-
-  modifyClass(classe:Classe, id_classe:number){
-    let headers  =new HttpHeaders({});
-    console.log(classe);
-    let body = {
-      'id_classe':id_classe,
-      'nome':classe.nome,
-      'anno_scolastico':classe.anno_scolastico
-    };
-    return this.http.put('/admin/classe', JSON.stringify(body), { headers: headers });
-  }
-
-  deleteClass(id_classe:number){
-    let headers  =new HttpHeaders({});
-    return this.http.request('delete', `/admin/classe`, { body: { headers: headers, id_classe: id_classe } });
+  deleteClass(id_classe: number) {
+    return this.http.request("delete", `/admin/classe`, { body: { id_classe } });
   }
 }

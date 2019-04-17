@@ -1,33 +1,23 @@
-export class Auth 
-    { 
-        username: string; 
-        password: string;
-    }
-
-
-export class Classe 
-{
-
-        nome: string;
-        anno_scolastico: number;
-    
+export interface IAuthBody {
+  username: string;
+  password: string;
 }
 
-export class Studente
-{
-    
-        nome: string;
-        cognome: string;
-        id_classe: number;
-    
+export interface IClasseBody {
+  nome: string;
+  anno_scolastico: number;
 }
 
-export class Utensile
-{
-    
-        nome: string;
-        segnala: boolean;
-        id_categoria: number;
-    
+export interface IStudenteBody {
+  nome: string;
+  cognome: string;
+  id_classe: number;
+
 }
 
+export interface IUtensileBody {
+  nome: string;
+  segnala: boolean;
+  id_categoria: number;
+
+}

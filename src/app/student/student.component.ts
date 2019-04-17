@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service'
 import { ClassService } from '../services/class.service'
-import {Classi} from '../model'
-import {Studenti} from '../model'
-import {Studente} from '../model_body'
+import {IClasse} from '../model'
+import {IStudente} from '../model'
+import {IStudenteBody} from '../model_body'
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -14,9 +14,9 @@ export class StudentComponent implements OnInit {
   constructor(private studentService:StudentService,private classService:ClassService) { }
 
   idCLasse:number;
-  elencoClassi:Classi[];
-  elencoStudenti:Studenti[];
-  studente:Studente;
+  elencoClassi:IClasse[];
+  elencoStudenti:IStudente[];
+  studente:IStudenteBody;
 
   setNewStudent()
   {
@@ -25,7 +25,7 @@ export class StudentComponent implements OnInit {
 
   getStudentByClass()
   {
-    this.studentService.getStudenti().subscribe((data:Studenti[])=>{
+    this.studentService.getStudenti().subscribe((data:IStudente[])=>{
 
       for(let dato of data)
         {
@@ -36,7 +36,7 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studentService.getStudenti().subscribe((data: Studenti[] ) => {
+    this.studentService.getStudenti().subscribe((data: IStudente[] ) => {
       this.elencoStudenti = data;
     });
   }

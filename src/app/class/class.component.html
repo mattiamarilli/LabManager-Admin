@@ -16,23 +16,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let c of classi">
-                <td>{{c.id_classe}}</td>
-                <td>{{c.nome}}</td>
-                <td>{{c.anno_scolastico}}</td>
+            <tr *ngFor="let classe of classi">
+                <td>{{classe.id_classe}}</td>
+                <td>{{classe.nome}}</td>
+                <td>{{classe.anno_scolastico}}/{{classe.anno_scolastico}}</td>
                 <td>
-                  <div *ngIf="c.enabled == 1;then content else other_content">here is ignored</div>
+                  <div *ngIf="classe.enabled == 1;then content else other_content">here is ignored</div>
                   <ng-template #content>
-                    <input #enable type="checkbox"  value="{{c.id_classe}}" (click)="validationClass(enable)" checked>
+                    <input #enable type="checkbox"  value="{{classe.id_classe}}" (click)="validationClass(enable)" checked>
                   </ng-template>
                   <ng-template #other_content>
-                    <input #enable type="checkbox" value="{{c.id_classe}}" (click)="validationClass(enable)">
+                    <input #enable type="checkbox" value="{{classe.id_classe}}" (click)="validationClass(enable)">
                   </ng-template>
                 </td>
                 <td>
-                  <button #filterStudent type="button" class="btn btn-info bottone" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button>
-                  <button #modifyClass type="button" class="btn btn-primary bottone" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button>
-                  <button #delete type="button" class="btn btn-danger bottone" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button>
+                  <button #filterStudent type="button" class="btn btn-info bottone" value="{{classe.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button>
+                  <button #modifyClass type="button" class="btn btn-primary bottone" value="{{classe.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button>
+                  <button #delete type="button" class="btn btn-danger bottone" value="{{classe.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button>
                 </td>
             </tr>
         </tbody>
@@ -49,15 +49,15 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">Nome</label>
+        <label for="modal-classname">Nome</label>
         <div class="input-group">
-          <input type="text" class="form-control" [(ngModel)]="nomec" [ngModelOptions]="{standalone: true}" required>
+          <input id="modal-classname" type="text" class="form-control" [(ngModel)]="nomec" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
       <div class="form-group" id="input_anno_scolastico" required>
-        <label for="dateOfBirth">Anno scolatisco</label>
+        <label for="modal-classyear">Anno scolatisco</label>
         <div class="input-group">
-          <input type="number" class="form-control form-control-sm" [(ngModel)]="anno_scolastico" [ngModelOptions]="{standalone: true}" (keyup)="onKey($event)" required>{{next_anno_scolastico}}
+          <input id="modal-classyear" type="number" class="form-control form-control-sm" [(ngModel)]="anno_scolastico" [ngModelOptions]="{standalone: true}" required><span *ngIf="anno_scolastico > 999"> / {{anno_scolastico+1}}</span>
         </div>
       </div>
     </form>
@@ -69,7 +69,7 @@
 
 <ng-template #student let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Studenti della classe {{id_classe}}</h4>
+    <h4 class="modal-title">Studenti della classe {{id_classe}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -106,13 +106,13 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">Nome</label>
+        <label>Nome</label>
         <div class="input-group">
           <input type="text" class="form-control" [(ngModel)]="classe.nome" value="{{classe.nome}}" required [ngModelOptions]="{standalone: true}">
         </div>
       </div>
       <div class="form-group" required>
-        <label for="dateOfBirth">Anno scolatisco</label>
+        <label>Anno scolatisco</label>
         <div class="input-group">
           <input type="number" class="form-control" [(ngModel)]="classe.anno_scolastico" value="{{classe.anno_scolastico}}" required [ngModelOptions]="{standalone: true}">
         </div>

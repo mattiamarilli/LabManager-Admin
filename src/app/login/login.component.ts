@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service'
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import {Auth} from '../model_body'
+import {IAuthBody} from '../model_body'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +11,7 @@ import {Auth} from '../model_body'
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router,private authService: AuthenticationService) { }
-  auth:Auth;
+  auth:IAuthBody;
   login(){
     state: RouterStateSnapshot;
     
