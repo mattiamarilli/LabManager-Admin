@@ -1,7 +1,7 @@
 <app-main-nav></app-main-nav>
 <div class="container">
     <h3 class="title">Lista degli strumenti del laboratorio</h3>
-    <button class="btn btn-success" type="button" id="addClass" (click)="open(content)">aggiungi categoria</button>
+    <button class="btn btn-success" type="button" id="set" (click)="open(content)">aggiungi categoria</button>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -17,8 +17,26 @@
             </tr>
         </tbody>
     </table>
+  
+  <button class="btn btn-success" type="button" id="set" (click)="open(content)">aggiungi utensile</button>
+    <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th>Id utensile</th>
+              <th>Nome</th>
+              <th>Segnala</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let u of Utensili">
+              <td>{{u.id_categoria}}</td>
+              <td>{{u.nome}}</td>
+              <td><input type="checkbox" name="" [(ngModel)]="u.segnala" id=""></td>
+           
+          </tr>
+      </tbody>
+  </table>
 </div>
-{{nome}}
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Aggiungi categoria</h4>
