@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { ClassService } from "../services/class.service";
 import { StudentService } from "../services/student.service";
-import { IClasse } from "../model";
-import { IStudente } from "../model";
+import { IClasse, IStudente } from "../model";
 import { IClasseBody } from "../model_body";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ToastrService } from "ngx-toastr";
+import { ClassStudentsModalComponent } from "./class-students-modal/class-students-modal.component";
+import { CreateEditClassModalComponent } from "./create-edit-class-modal/create-edit-class-modal.component";
 
 @Component({
   selector: "app-class",
@@ -14,21 +16,12 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 export class ClassComponent implements OnInit {
 
   classi: Array<IClasse>;
-  elencoStudenti: Array<IStudente>;
-  id_classe: number;
-  classe: IClasseBody;
-  result: string;
-  filter: string;
-
-  // Modal
-  nomec: string = "";
-  anno_scolastico: number = null;
-  warning: string = "";
 
   constructor(
     private classService: ClassService,
     private modalService: NgbModal,
-    private studentService: StudentService) { }
+    private studentService: StudentService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.classService.getClassi().subscribe((data: Array<IClasse>) => {
@@ -38,99 +31,98 @@ export class ClassComponent implements OnInit {
     this.classService.loadClassi();
   }
 
-  validationClass(enable: any) {
-    this.warning = "";
-    this.id_classe = enable.value;
-    if (!enable.checked) {
-      this.classService.disable(this.id_classe).subscribe((data: any) => {
+  toggleClass(classe: IClasse) {
+    if (!classe.enabled) {
+      this.classService.enable(classe.id_classe).subscribe((data: any) => {
         if (data.code === 200) {
           this.classService.loadClassi();
+          this.toastr.success("Classe abilitata");
         } else {
-          this.warning = data.message;
+          this.toastr.error("Errore");
+          console.log(data.message);
         }
       });
     } else {
-      this.classService.enable(this.id_classe).subscribe((data: any) => {
+      this.classService.disable(classe.id_classe).subscribe((data: any) => {
+        if (data.code === 200) {
+          this.classService.loadClassi();
+          this.toastr.success("Classe disabilitata");
+        } else {
+          this.toastr.error("Errore");
+          console.log(data.message);
+        }
+      });
+    }
+  }
+
+  showStudents(classe: IClasse) {
+    this.studentService.getStudenti().subscribe((studenti: Array<IStudente>) => {
+
+      studenti = studenti.filter((studente) => studente.id_classe === classe.id_classe);
+
+      if (!studenti.length) {
+        this.toastr.info("Classe vuota");
+
+        return;
+      }
+
+      const modalRef = this.modalService.open(ClassStudentsModalComponent);
+      modalRef.componentInstance.classe = classe;
+      modalRef.componentInstance.studenti = studenti;
+
+    });
+  }
+
+  showCreateClass() {
+    const modalRef = this.modalService.open(CreateEditClassModalComponent);
+    modalRef.componentInstance.create = true;
+    modalRef.result
+      .then((classe) => {
+
+        this.classService.addClasse(classe).subscribe((data: any) => {
           if (data.code === 200) {
             this.classService.loadClassi();
-            this.modalService.dismissAll();
+            this.toastr.success("Classe creata");
           } else {
-            this.warning = data.message;
+            this.toastr.error("Errore");
+            console.log(data.message);
           }
-        }
-      );
-    }
+        });
+
+      });
   }
 
-  // Modal
-  open(content) {
-    this.anno_scolastico = null;
-    this.nomec = "";
-    this.warning = "";
-    this.modalService.open(content, {ariaLabelledBy: "modal-basic-titile"});
-  }
+  showEditClass(classe: IClasse) {
+    const modalRef = this.modalService.open(CreateEditClassModalComponent);
+    modalRef.componentInstance.create = false;
+    modalRef.componentInstance.nome = classe.nome;
+    modalRef.componentInstance.anno_scolastico = classe.anno_scolastico;
 
-  openClassModify(modify, id_classe) {
-    this.id_classe = id_classe;
-    for (const c of this.classi) {
-      if (id_classe === c.id_classe) {
-        this.classe.nome = c.nome;
-        this.classe.anno_scolastico = c.anno_scolastico;
-      }
-    }
-    this.modalService.open(modify, {ariaLabelledBy: "modal-basic-titile"});
-  }
+    modalRef.result
+      .then((res) => {
 
-  openStudent(student, id_classe) {
-    this.id_classe = id_classe;
-    this.getStudentByClass();
-    this.modalService.open(student, {ariaLabelledBy: "modal-basic-titile"});
-  }
+        this.classService.modifyClass(res, classe.id_classe).subscribe((data: any) => {
 
-  addClass() {
-    this.classe.nome = this.nomec;
-    this.classe.anno_scolastico = this.anno_scolastico;
-    this.classService.setClasse(this.classe).subscribe((data: any) => {
-      if (data.code === 200) {
-        this.classService.loadClassi();
-        this.modalService.dismissAll();
-      } else {
-        this.modalService.dismissAll();
-        this.warning = data.message;
-      }
-    });
-  }
-
-  getStudentByClass() {
-    this.elencoStudenti = [];
-    this.studentService.getStudenti().subscribe((studenti: Array<IStudente>) => {
-      for (const studente of studenti) {
-          if (studente.id_classe === this.id_classe) {
-            this.elencoStudenti.push(studente);
+          if (data.code === 200) {
+            this.classService.loadClassi();
+            this.toastr.success("Modifiche salvate");
+          } else {
+            this.toastr.error("Errore");
+            console.log(data.message);
           }
-        }
-    });
+        });
+
+      });
   }
 
-  modifyClass() {
-    this.classService.modifyClass(this.classe, this.id_classe).subscribe((data: any) => {
+  deleteClass(classe: IClasse) {
+    this.classService.deleteClass(classe.id_classe).subscribe((data: any) => {
       if (data.code === 200) {
         this.classService.loadClassi();
-        this.modalService.dismissAll();
+        this.toastr.success("Classe eliminata");
       } else {
-        this.modalService.dismissAll();
-        this.warning = data.message;
-      }
-    });
-  }
-
-  deleteClass(id_classe) {
-    this.classService.deleteClass(id_classe).subscribe((data: any) => {
-      if (data.code === 200) {
-        this.classService.loadClassi();
-      } else {
-        this.modalService.dismissAll();
-        this.warning = data.message;
+        this.toastr.error("Errore");
+        console.log(data.message);
       }
     });
   }

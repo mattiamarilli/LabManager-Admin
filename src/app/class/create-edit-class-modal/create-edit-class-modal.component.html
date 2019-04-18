@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    {{ create ? "Crea una nuova classe" : "Modifica classe" }}
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="modal-classname">Nome</label>
+    <div class="input-group">
+      <input id="modal-classname" type="text" class="form-control" [(ngModel)]="nome">
+    </div>
+  </div>
+  <div class="form-group" id="input_anno_scolastico" required>
+    <label for="modal-classyear">Anno scolatisco</label>
+    <div class="input-group">
+      <input id="modal-classyear" type="number" [min]="minYear" [max]="minYear + 10" class="form-control form-control-sm" [(ngModel)]="anno_scolastico">
+      <div class="input-group-append">
+        <span class="input-group-text"> / {{anno_scolastico+1}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="submit()">{{ create ? "Crea" : "Aggiorna" }}</button>
+</div>

@@ -19,6 +19,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { API_URL } from "./_shared/injectionTokens";
 import { environment } from "../environments/environment";
 import { ApiUrlInterceptor } from "./_helpers/api-url.interceptor";
+import { ToastrModule } from "ngx-toastr";
+import { ClassStudentsModalComponent } from "./class/class-students-modal/class-students-modal.component";
+import { CreateEditClassModalComponent } from "./class/create-edit-class-modal/create-edit-class-modal.component";
 
 @NgModule({
   declarations: [
@@ -30,8 +33,9 @@ import { ApiUrlInterceptor } from "./_helpers/api-url.interceptor";
     ClassComponent,
     StudentComponent,
     TeacherComponent,
-    ToolComponent
-
+    ToolComponent,
+    ClassStudentsModalComponent,
+    CreateEditClassModalComponent
   ],
   imports: [
     BrowserModule,
@@ -45,12 +49,17 @@ import { ApiUrlInterceptor } from "./_helpers/api-url.interceptor";
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: API_URL, useValue: environment.apiUrl },
     { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true, deps: [API_URL] }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ClassStudentsModalComponent,
+    CreateEditClassModalComponent
+  ]
 })
 export class AppModule { }

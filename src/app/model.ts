@@ -6,10 +6,11 @@ export interface IAuthUser {
 }
 
 export interface IClasse {
-    id_classe: number;
+    id_classe?: number;
     nome: string;
     anno_scolastico: number;
-    enabled: boolean;
+    anno_scolastico_display?: string;
+    enabled?: boolean;
 }
 
 export interface ICategoria {
