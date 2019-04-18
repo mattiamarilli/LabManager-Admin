@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import '../model'
@@ -14,7 +14,9 @@ import { Classe } from '../model_body';
 })
 export class ClassService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.classi = new Subject<Classi[]>();
+  }
 
   apiURL:string;
 
@@ -25,6 +27,20 @@ export class ClassService {
     return this.http.get<Classi[]>('/admin/classe');
 
   }
+
+  // -------------------
+
+  private classi:Subject<Classi[]>;
+
+  public getClassi(): Observable<Classi[]> {
+    return this.classi.asObservable();
+  }
+
+  public loadClassi(): void {
+    this.http.get<Classi[]>('/admin/classe').subscribe(res => this.classi.next(res));
+  }
+
+  // -------------------
 
   enable(id_classe:number){
     let headers = new HttpHeaders({});
@@ -48,4 +64,19 @@ export class ClassService {
     return this.http.post(`/admin/classe`, JSON.stringify(classe), { headers: headers });
   }
 
+  modifyClass(classe:Classe, id_classe:number){
+    let headers  =new HttpHeaders({});
+    console.log(classe);
+    let body = {
+      'id_classe':id_classe,
+      'nome':classe.nome,
+      'anno_scolastico':classe.anno_scolastico
+    };
+    return this.http.put('/admin/classe', JSON.stringify(body), { headers: headers });
+  }
+
+  deleteClass(id_classe:number){
+    let headers  =new HttpHeaders({});
+    return this.http.request('delete', `/admin/classe`, { body: { headers: headers, id_classe: id_classe } });
+  }
 }
