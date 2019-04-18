@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { environment } from '../../environments/environment';
 import '../model'
 import '../model_body'
 import { Classi } from '../model';
 import { Classe } from '../model_body';
+
 
 
 @Injectable({
@@ -24,7 +25,7 @@ export class ClassService {
     let headers = new HttpHeaders({
     });
     //return this.http.get<Classi[]>(this.apiURL + '/admin/classe');
-    return this.http.get<Classi[]>('/admin/classe');
+    return this.http.get<Classi[]>(environment.apiUrl + '/admin/classe');
 
   }
 
