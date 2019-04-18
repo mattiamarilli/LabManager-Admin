@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service'
 import { ClassService } from '../services/class.service'
 import {Classi} from '../model';
-import {Studenti} from '../model';
-import {Studente} from '../model_body';
+import {Docenti} from '../model'
+import {Docente} from '../model_body'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import {TeacherService} from '../services/teacher.service'
 @Component({
   selector: 'app-teacher',
   templateUrl: './teacher.component.html',
@@ -12,91 +13,39 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TeacherComponent implements OnInit {
 
-  constructor(private studentService:StudentService,private classService:ClassService, private modalService: NgbModal) { }
+  constructor(private teacherService:TeacherService,  private modalService: NgbModal) { }
 
-  studenti:Studenti[];
-  studente:Studente;
-  warning:string;
-  id_studente:number;
+  docenti:Docenti[];
+  docente:Docente;
+  id_docente:number;
 
   //modal
   nome:string = '';
-  cognome:string = '';
-  id_classe:number;
+  admin:boolean = true;
 
   ngOnInit() {
-      this.studente = new Studente();
-      this.studentService.getStudenti().subscribe((data: Studenti []) => {
-        this.studenti = data;
+      this.docente = new Docente();
+      this.teacherService.getDocenti().subscribe((data: Docenti []) => {
+        this.docenti = data;
       });
-      this.studentService.loadStudenti();
   }
 
-  /*
-  getStudentByClass()
-  {
-    this.studentService.getStudenti().subscribe((data:Studenti[])=>{
 
-      for(let dato of data)
-        {
-          if(dato.id_classe = this.id_classe)
-            this.studenti.push(dato);
-        }
-    })
-  }
-  */
-
-  addStudent(){
-    this.studente.nome = this.nome;
-    this.studente.cognome = this.cognome;
-    this.studente.id_classe = this.id_classe;
-    this.studentService.setStudent(this.studente).subscribe(data => {
-      if(data['code'] == 200){
-        this.studentService.loadStudenti();
-        this.modalService.dismissAll('Reason');
-      }else{
-        this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
-      }
-    });
+  addDocente(){
+    this.docente.nome = this.nome;
+    this.docente.admin = this.admin;
+    this.teacherService.setDocente(this.docente).subscribe();
   }
 
   modifyStudent(){
-    this.studente.nome = this.nome;
-    this.studente.cognome = this.cognome;
-    this.studente.id_classe = this.id_classe;
-    this.studentService.modifyStudent(this.studente, this.id_studente).subscribe(data => {
-      if(data['code'] == 200){
-        this.studentService.loadStudenti();
-        this.modalService.dismissAll('Reason');
-      }else{
-        this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
-      }
-    });
+    this.docente.nome = this.nome;
+    this.docente.admin = this.admin;
+    this.teacherService.modifyDocente(this.docente,this.id_docente).subscribe();
+   
   }
 
-  //Modal
-  open(content){
-    this.nome = '';
-    this.cognome = '';
-    this.id_classe = null;
-    this.id_studente = null;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-titile'});
+  deleteDocente(){
+    this.teacherService.deleteDocente(this.id_docente).subscribe();
   }
 
-  openStudentModify(modify, id_studente){
-    this.nome = '';
-    this.cognome = '';
-    this.id_classe = null;
-    this.id_studente = id_studente;
-    for(let s of this.studenti){
-      if(id_studente == s.id){
-        this.nome = s.nome;
-        this.cognome = s.cognome;
-        this.id_classe = s.id_classe;
-      }
-    }
-    this.modalService.open(modify, {ariaLabelledBy: 'modal-basic-titile'});
-  }
 }
