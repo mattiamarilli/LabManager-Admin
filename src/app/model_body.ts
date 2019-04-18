@@ -31,3 +31,7 @@ export class Utensile
     
 }
 
+export class Docente{
+        nome:string;
+        admin:boolean;
+}

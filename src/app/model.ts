@@ -37,6 +37,12 @@ export class Utensili {
     categoria: string;
 }
 
+export class Docenti{
+    id_docente:number;
+    nome:string;
+    admin:boolean;
+}
+
 export class Gruppi{
     id_gruppo: number;
     studenti :[
