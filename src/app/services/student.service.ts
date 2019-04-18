@@ -42,4 +42,9 @@ export class StudentService {
     }
     return this.http.put(`/admin/studente`, JSON.stringify(body), { headers: headers });
   }
+
+  deleteStudent(id_studente:number){
+    let headers  =new HttpHeaders({});
+    return this.http.request('delete', `/admin/studente`, { body: { headers: headers, id_studente: id_studente } });
+  }
 }

@@ -30,14 +30,9 @@ export class ClassComponent implements OnInit{
 
   ngOnInit() {
     this.classe = new Classe();
-    /*this.classService.getClasse().subscribe((data: Classi []) => {
-      this.classi = data;
-    });*/
-
     this.classService.getClassi().subscribe((data: Classi []) => {
       this.classi = data;
     });
-
     this.classService.loadClassi();
   }
 

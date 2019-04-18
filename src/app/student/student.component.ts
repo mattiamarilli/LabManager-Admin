@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service'
 import { ClassService } from '../services/class.service'
-import {Classi} from '../model';
-import {Studenti} from '../model';
-import {Studente} from '../model_body';
+import { Classi } from '../model';
+import { Studenti } from '../model';
+import { Studente } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-student',
@@ -18,6 +18,9 @@ export class StudentComponent implements OnInit {
   studente:Studente;
   warning:string;
   id_studente:number;
+  id_classe_input:number = null;
+  anno_scolastico_input:number = null;
+  classi:Classi[];
 
   //modal
   nome:string = '';
@@ -26,25 +29,15 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
       this.studente = new Studente();
+      this.classService.getClassi().subscribe((data:Classi[]) => {
+        this.classi = data;
+      });
+      this.classService.loadClassi();
       this.studentService.getStudenti().subscribe((data: Studenti []) => {
         this.studenti = data;
       });
       this.studentService.loadStudenti();
   }
-
-  /*
-  getStudentByClass()
-  {
-    this.studentService.getStudenti().subscribe((data:Studenti[])=>{
-
-      for(let dato of data)
-        {
-          if(dato.id_classe = this.id_classe)
-            this.studenti.push(dato);
-        }
-    })
-  }
-  */
 
   addStudent(){
     this.studente.nome = this.nome;
@@ -76,6 +69,17 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  deleteStudent(id_studente){
+    this.id_studente = id_studente;
+    this.studentService.deleteStudent(this.id_studente).subscribe(data => {
+      if(data['code'] == 200){
+        this.studentService.loadStudenti();
+      }else{
+        this.warning = data['message'];
+      }
+    });
+  }
+
   //Modal
   open(content){
     this.nome = '';
@@ -98,5 +102,13 @@ export class StudentComponent implements OnInit {
       }
     }
     this.modalService.open(modify, {ariaLabelledBy: 'modal-basic-titile'});
+  }
+
+  onChangeIdClasse(id_classe:any){
+    console.log(id_classe);
+  }
+
+  onChangeAnnoScolastico(anno_scolastico:any){
+    console.log(anno_scolastico);
   }
 }
