@@ -19,6 +19,7 @@ export class StudentComponent implements OnInit {
   warning:string;
   id_studente:number;
   classi:Classi[];
+  anno_scolastico_array = [];
 
   //modal
   nome:string = '';
@@ -30,6 +31,11 @@ export class StudentComponent implements OnInit {
       this.studente = new Studente();
       this.classService.getClassi().subscribe((data:Classi[]) => {
         this.classi = data;
+        let appoggio = [];
+        for(let dato of data){
+          appoggio.push(dato.anno_scolastico);
+        }
+        this.anno_scolastico_array = Array.from(new Set(appoggio));
       });
       this.classService.loadClassi();
       this.filter();
