@@ -15,6 +15,7 @@
       <label>Seleziona l'anno scolatico</label>
       <select class="form-control" [(ngModel)]="anno_scolastico_input" (change)="onChangeAnnoScolastico($event.target.value)">
         <option *ngFor="let c of classi" value="{{c.anno_scolastico}}">{{c.anno_scolastico}}</option>
+        <option value="2018">2018</option>
       </select>
     </div>
 

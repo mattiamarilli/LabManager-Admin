@@ -27,6 +27,11 @@ export class StudentService {
     this.http.get<Studenti[]>('/admin/studente').subscribe(res => this.studenti.next(res));
   }
 
+  getAllStudenti(): Observable<Studenti[]>{
+    let headers = new HttpHeaders({});
+    return this.http.get<Studenti[]>('/admin/studente', { headers: headers });
+  }
+
   setStudent(studente:Studente){
     let headers = new HttpHeaders({});
     return this.http.post(`/admin/studente`, JSON.stringify(studente), { headers: headers });

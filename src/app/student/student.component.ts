@@ -18,14 +18,13 @@ export class StudentComponent implements OnInit {
   studente:Studente;
   warning:string;
   id_studente:number;
-  id_classe_input:number = null;
-  anno_scolastico_input:number = null;
   classi:Classi[];
 
   //modal
   nome:string = '';
   cognome:string = '';
-  id_classe:number;
+  id_classe:number = null;
+  anno_scolastico:number = null;
 
   ngOnInit() {
       this.studente = new Studente();
@@ -33,10 +32,7 @@ export class StudentComponent implements OnInit {
         this.classi = data;
       });
       this.classService.loadClassi();
-      this.studentService.getStudenti().subscribe((data: Studenti []) => {
-        this.studenti = data;
-      });
-      this.studentService.loadStudenti();
+      this.filter();
   }
 
   addStudent(){
@@ -105,10 +101,63 @@ export class StudentComponent implements OnInit {
   }
 
   onChangeIdClasse(id_classe:any){
-    console.log(id_classe);
+    this.id_classe = id_classe;
+    this.filter();
   }
 
   onChangeAnnoScolastico(anno_scolastico:any){
-    console.log(anno_scolastico);
+    this.anno_scolastico = anno_scolastico;
+    this.filter();
+  }
+
+  //Filter
+  filter(){
+    if(this.id_classe == null && this.anno_scolastico == null){
+      this.studentService.getStudenti().subscribe((data: Studenti []) => {
+        this.studenti = data;
+      });
+      this.studentService.loadStudenti();
+    }else if(this.anno_scolastico == null){
+      this.studenti = [];
+      this.studentService.getAllStudenti().subscribe((data:Studenti[]) => {
+        for(let dato of data){
+          if(dato.id_classe == this.id_classe){
+            this.studenti.push(dato);
+          }
+        }
+      });
+    }else if(this.id_classe == null){
+      this.studenti = [];
+      this.studentService.getAllStudenti().subscribe((data:Studenti[]) => {
+        this.classService.getAllClassi().subscribe((classi:Classi[]) => {
+          for(let dato of data){
+            for(let classe of classi){
+              if(classe.anno_scolastico == this.anno_scolastico){
+                if(classe.id_classe == dato.id_classe){
+                  this.studenti.push(dato);
+                }
+              }
+            }
+          }
+        });
+      });
+    }else{
+      this.studenti = [];
+      this.studentService.getAllStudenti().subscribe((data:Studenti[]) => {
+        this.classService.getAllClassi().subscribe((classi:Classi[]) => {
+          for(let dato of data){
+            for(let classe of classi){
+              if(classe.id_classe == this.id_classe){
+                if(classe.anno_scolastico == this.anno_scolastico){
+                  if(dato.id_classe == classe.id_classe){
+                    this.studenti.push(dato);
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    }
   }
 }

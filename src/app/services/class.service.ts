@@ -30,6 +30,11 @@ export class ClassService {
     this.http.get<Classi[]>('/admin/classe').subscribe(res => this.classi.next(res));
   }
 
+  getAllClassi(): Observable<Classi[]>{
+    let headers = new HttpHeaders({});
+    return this.http.get<Classi[]>('/admin/classe', { headers: headers });
+  }
+
   enable(id_classe:number){
     let headers = new HttpHeaders({});
     return this.http.post(`/admin/classe/enable`, JSON.stringify(id_classe), { headers: headers });
