@@ -26,7 +26,6 @@
                 <th>Cognome</th>
                 <th>Username</th>
                 <th>Id Classe</th>
-                <th>Gruppo</th>
                 <th>Azioni</th>
             </tr>
         </thead>
@@ -37,8 +36,8 @@
                 <td>{{s.cognome}}</td>
                 <td>{{s.username}}</td>
                 <td>{{s.classe}}</td>
-                <td>{{s.id_gruppo}}</td>
                 <td>
+                  <button #groupmates type="button" class="btn btn-info bottone" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button>
                   <button #modifyStudent type="button" class="btn btn-primary bottone" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica classe</button>
                   <button #delete type="button" class="btn btn-danger bottone" value="{{s.id}}" (click)="deleteStudent(delete.value)"> Elimina classe</button>
                 </td>
@@ -112,5 +111,32 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="modifyStudent()">Modifica</button>
+  </div>
+</ng-template>
+
+<ng-template #group let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Studenti del gruppo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let studente of studenti_per_gruppo">
+              <td>{{studente.nome}}</td>
+              <td>{{studente.cognome}}</td>
+              <td>{{studente.username}}</td>
+            </tr>
+        </tbody>
+    </table>
   </div>
 </ng-template>

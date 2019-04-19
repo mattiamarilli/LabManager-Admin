@@ -20,6 +20,7 @@ export class StudentComponent implements OnInit {
   id_studente:number;
   classi:Classi[];
   anno_scolastico_array = [];
+  studenti_per_gruppo:Studenti[] = [];
 
   //modal
   nome:string = '';
@@ -104,6 +105,18 @@ export class StudentComponent implements OnInit {
       }
     }
     this.modalService.open(modify, {ariaLabelledBy: 'modal-basic-titile'});
+  }
+
+  openGroupMates(group, id_gruppo){
+    this.studenti_per_gruppo = [];
+    this.studentService.getAllStudenti().subscribe((data:Studenti[]) => {
+      for(let dato of data){
+        if(dato.id_gruppo == id_gruppo){
+          this.studenti_per_gruppo.push(dato);
+        }
+      }
+      this.modalService.open(group, {ariaLabelledBy: 'modal-basic-titile'});
+    });
   }
 
   onChangeIdClasse(id_classe:any){
