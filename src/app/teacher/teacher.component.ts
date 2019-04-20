@@ -17,35 +17,79 @@ export class TeacherComponent implements OnInit {
 
   docenti:Docenti[];
   docente:Docente;
+  warning:string;
   id_docente:number;
 
   //modal
   nome:string = '';
-  admin:boolean = true;
+  cognome:string = '';
 
   ngOnInit() {
       this.docente = new Docente();
-      this.teacherService.getDocenti().subscribe((data: Docenti []) => {
+      this.teacherService.getDocenti().subscribe((data:Docenti[]) => {
         this.docenti = data;
       });
+      this.teacherService.loadDocenti();
   }
-
 
   addDocente(){
     this.docente.nome = this.nome;
-    this.docente.admin = this.admin;
-    this.teacherService.setDocente(this.docente).subscribe();
+    this.docente.cognome = this.cognome;
+    this.teacherService.setDocente(this.docente).subscribe(data => {
+      if(data['code'] == 200){
+        this.teacherService.loadDocenti();
+        this.modalService.dismissAll('Reason');
+      }else{
+        this.modalService.dismissAll('Reason');
+        this.warning = data['message'];
+      }
+    });
   }
 
-  modifyStudent(){
+  modifyDocente(){
     this.docente.nome = this.nome;
-    this.docente.admin = this.admin;
-    this.teacherService.modifyDocente(this.docente,this.id_docente).subscribe();
-   
+    this.docente.cognome = this.cognome;
+    this.teacherService.modifyDocente(this.docente, this.id_docente).subscribe(data => {
+      if(data['code'] == 200){
+        this.teacherService.loadDocenti();
+        this.warning = '';
+        this.modalService.dismissAll('Reason');
+      }else{
+        this.modalService.dismissAll('Reason');
+        this.warning = data['message'];
+      }
+    });
   }
 
-  deleteDocente(){
-    this.teacherService.deleteDocente(this.id_docente).subscribe();
+  deleteDocente(id_docente){
+    this.id_docente = id_docente;
+    this.teacherService.deleteDocente(this.id_docente).subscribe(data => {
+      if(data['code'] == 200){
+        this.teacherService.loadDocenti();
+        this.warning = '';
+      }else{
+        this.warning = data['message'];
+      }
+    });
   }
 
+  //Modal
+  open(content){
+    this.nome = '';
+    this.cognome = '';
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-titile'});
+  }
+
+  openDocenteModify(modify, id_docente){
+    this.nome = '';
+    this.cognome = '';
+    this.id_docente = id_docente;
+    for(let d of this.docenti){
+      if(id_docente == d.id_docente){
+        this.nome = d.nome;
+        this.cognome = d.cognome;
+      }
+    }
+    this.modalService.open(modify, {ariaLabelledBy: 'modal-basic-titile'});
+  }
 }

@@ -40,6 +40,7 @@ export class Utensili {
 export class Docenti{
     id_docente:number;
     nome:string;
+    cognome:string;
     admin:boolean;
 }
 
