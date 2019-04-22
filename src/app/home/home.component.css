@@ -1,0 +1,52 @@
+@keyframes example {
+  0%   {
+	  opacity: 0;
+	  top: 10%;
+	  box-shadow: 0px 0px 0px 0px #f3f3f3;
+	  filter: blur(60px);
+	 font-size: 100%;
+	  }
+  25%  {
+	  top: 300px;
+	  filter: blur(0px);
+	  opacity: 1;
+	  }
+	  75%  {
+	  }
+  100% {
+	 box-shadow: 70px 70px 7px 0px #f3f3f3;
+	font-size: 300%;
+	}
+}
+
+.inside{
+	
+	position: fixed;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 300px;
+	
+	border: 1px solid #d3d3d3;
+	padding: 25px;
+	border-radius: 7px;
+	text-align: center;
+	box-shadow: 70px 70px 7px 0px #f3f3f3;
+	filter: blur(0px);
+	font-size: 300%;
+	
+	animation-name: example;
+	animation-timing-function: cubic-bezier(.62,.13,0,1.06) ;
+	animation-duration: 1.5s;
+}
+
+.inside h1{
+	color: #497caf;
+	padding: 3px 25px;
+	border-radius: 5px;
+	border-bottom: 1px solid #dadada;
+	
+	font-size: 250%;
+}
+
+.inside span{
+}

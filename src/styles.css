@@ -4,3 +4,7 @@
 body{
     margin:0;
 }
+
+nav{
+	border-bottom: 5px solid #89bcef;
+}
