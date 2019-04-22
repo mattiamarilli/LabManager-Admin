@@ -1,10 +1,10 @@
-<form>
+<header></header>
+<img id="center" src="assets/images/marconiHD.png" width="200" height="200" >
+<form id="form_login">
 
-  <br>
-  <label >Username</label>
-  <input   type="text" id="username" name="username" [(ngModel)]="auth.username">
-  <label >Password</label>
-  <input  type="password" id="password" name="password" [(ngModel)]="auth.password">
-
-  <input type="button" value="Entra" (click)="login()">
-</form>
+    <br>
+    <input   type="text" id="username" name="username" placeholder="Username">
+    <input  type="password" id="password" name="password" placeholder="Password">
+  
+    <input type="button" value="Entra" >
+  </form>
