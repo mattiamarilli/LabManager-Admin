@@ -6,7 +6,7 @@
     </div>
 	
 	<div class="_table">
-    <h3 class="title"><span>Lista degli studenti</span><i class="fas fa-user"></i></h3>
+    <h3 class="title"><span>Lista degli studenti</span></h3>
 	<hr class="pageline">
 	<div class="selects">
     <button class="" type="button" id="addStudent" (click)="open(content)">Aggiungi studente</button>
@@ -37,16 +37,15 @@
                 <th>Azioni</th>
             </tr>
         </thead>
-        <tbody>
-			<!--
+		<!--
 			<tr>
-                <td>42141wwwwwwwwwwwwwwwwwwwww24</td>
-                <td>242414</td>
-                <td>42424ffffffffffffffffffffffffffffffffffffffffff142421</td>
-                <td>244214244</td>
-                <td>244224</td>
+                <td>2555</td>
+                <td>Alex</td>
+                <td>Nettenbreijers</td>
+                <td>5bia</td>
+                <td>idk</td>
                 <td>
-				  <button class="showActions" data-status="close">►</button>
+				  <button class="showActions" data-status="close">▼</button>
 				  <div class="ActionsDiv" >
 				  <div>
                   <button #groupmates type="button" class="total"  (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button><br>
@@ -64,7 +63,7 @@
                 <td>{{s.username}}</td>
                 <td>{{s.classe}}</td>
                 <td>
-				  <button class="showActions" data-status="close">►</button>
+				  <button class="showActions" data-status="close">▼</button>
 				  <div class="ActionsDiv" >
 				  <div>
                   <button #groupmates type="button" class="total" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button>

@@ -185,30 +185,21 @@ export class StudentComponent implements OnInit {
 
 $(function(){
 
-$(document).on("focusout",".showActions",function(){
-	
-		$(".ActionsDiv").hide();
-		$(".showActions").text("►");
-		$(".showActions").data("status", "close");
-	
-});
-
 $(document).on("click",".showActions",function(){
-	
 
 	if($(this).data("status") == "close"){
 		
 		$(".ActionsDiv").hide();
-		$(".showActions").text("►");
+		$(".showActions").text("▼");
 		$(".showActions").data("status", "close");
 		
 		$(this).next().show();
-		$(this).text("◄");
+		$(this).text("▲");
 		$(this).data("status", "open");
 	}
 	else if($(this).data("status") == "open"){
 		$(this).next().hide();
-		$(this).text("►");
+		$(this).text("▼");
 		$(this).data("status", "close");
 	}
 });
