@@ -5,16 +5,15 @@ import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
+    currentUser :boolean
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const currentUser = this.authenticationService.currentUserValue();
-        console.log(currentUser)
-        if (currentUser) {
-            console.log("ciao");
+         this.currentUser  = this.authenticationService.returnfakelogin();
+        if (this.currentUser) {
             // logged in so return true
             return true;
         }

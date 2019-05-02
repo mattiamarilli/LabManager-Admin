@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://labmanagerapi.ddns.net',
+  apiUrl: 'http://192.168.1.57:8080',
 };
 
 /*

@@ -10,6 +10,7 @@ import {Auth} from '../model_body'
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthUser>;
     public currentUser: Observable<AuthUser>;
+    fakeloginvar:boolean = false;
     apiURL:string = '';
 
     constructor(private http: HttpClient) {
@@ -19,6 +20,21 @@ export class AuthenticationService {
 
     currentUserValue(): AuthUser {
         return this.currentUserSubject.value;
+    }
+
+    fakelogin()
+    {
+        this.fakeloginvar = true;
+    }
+
+    fakelogout()
+    {
+        this.fakeloginvar = false
+    }
+
+    returnfakelogin():boolean
+    {
+        return this.fakeloginvar;
     }
 
     login(auth:Auth): Observable<boolean> {

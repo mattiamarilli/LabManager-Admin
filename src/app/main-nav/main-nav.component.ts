@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import {AuthenticationService} from '../services/authentication.service'
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
@@ -19,7 +20,7 @@ export class MainNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private authService: AuthenticationService) {
+  constructor(private breakpointObserver: BreakpointObserver,private authService: AuthenticationService,private router: Router) {
 
 
 
@@ -27,6 +28,12 @@ export class MainNavComponent {
 
   ngOnInit()
   {
+  }
+
+  fakelogout()
+  {
+    this.authService.fakelogout();
+    this.router.navigate(['/login']);
   }
 
 }
