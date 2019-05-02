@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import '../model'
@@ -13,34 +13,77 @@ import { Utensile } from '../model_body';
 })
 export class ToolService {
 
-  constructor(private http: HttpClient) { }
-  
   apiURL:string;
+  private utensili:Subject<Utensili[]>;
+  private categorie:Subject<Categorie[]>;
 
-  getUtensili(): Observable<Utensili[]>{
-    let headers = new HttpHeaders({
-    });
-    return this.http.get<Utensili[]>(this.apiURL + '/admin/utensile');
-
+  constructor(private http: HttpClient){
+    this.utensili = new Subject<Utensili[]>();
+    this.categorie = new Subject<Categorie[]>();
   }
 
-  setUtensile(utensile:Utensile){
-    let headers = new HttpHeaders({
-    });
-    return this.http.post(this.apiURL + `/admin/utensile`,{ utensile }, { headers: headers })
+  getUtensili(): Observable<Utensili[]> {
+    return this.utensili.asObservable();
   }
 
-  getCategorie(): Observable<Categorie[]>{
-    let headers = new HttpHeaders({
-    });
-    return this.http.get<Categorie[]>(this.apiURL + '/admin/categoria');
-
+  loadUtensili(): void {
+    this.http.get<Utensili[]>('/admin/utensile').subscribe(res => this.utensili.next(res));
   }
 
-  setCategoria(categoria:string){
-    let headers = new HttpHeaders({
-    });
-    return this.http.post(this.apiURL + `/admin/utensile`,{ categoria }, { headers: headers })
+  setUtensile(nome:string, id_categoria:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      "id_categoria":id_categoria,
+      "nome":nome
+    };
+    return this.http.post(`/admin/utensile`, JSON.stringify(body), { headers: headers });
   }
 
+  modifyUtensile(nome:string, id_categoria:number, id_utensile:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      "id_utensile":id_utensile,
+      "id_categoria":id_categoria,
+      "nome":nome
+    };
+    return this.http.put('/admin/utensile', JSON.stringify(body), { headers: headers });
+  }
+
+  deleteUtensile(id_utensile:number){
+    let headers  =new HttpHeaders({});
+    return this.http.request('delete', `/admin/utensile`, { body: { headers: headers, id: id_utensile } });
+  }
+
+  removeAlert(id_utensile:number){
+    let headers  =new HttpHeaders({});
+    return this.http.request('delete', `/admin/utensile/segnalazione`, { body: { headers: headers, id: id_utensile } });
+  }
+
+  //Categoria
+  getCategorie(): Observable<Categorie[]> {
+    return this.categorie.asObservable();
+  }
+
+  loadCategorie(): void {
+    this.http.get<Categorie[]>('/admin/categoria').subscribe(res => this.categorie.next(res));
+  }
+
+  setCategoria(nome:string){
+    let headers = new HttpHeaders({});
+    return this.http.post(`/admin/categoria`, nome, { headers: headers });
+  }
+
+  modifyCategoria(nome:string, id_categoria:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      "id_categoria":id_categoria,
+      "nome":nome
+    };
+    return this.http.put('/admin/categoria', JSON.stringify(body), { headers: headers });
+  }
+
+  deleteCategoria(id:number){
+    let headers  =new HttpHeaders({});
+    return this.http.request('delete', `/admin/categoria`, { body: { headers: headers, id_categoria: id } });
+  }
 }

@@ -1,8 +1,9 @@
 <app-main-nav></app-main-nav>
 <div class="container">
     <h3 class="title"><span>Lista degli strumenti del laboratorio</span></h3>
-	
-	
+    <div *ngIf="warning" class="alert alert-danger" role="alert">
+      {{warning}}
+    </div>
 	<div class="_table">
     <button class="btn btn-success" type="button" id="set" (click)="open(content)">aggiungi categoria</button>
     <table>
@@ -10,37 +11,57 @@
             <tr>
                 <th>Id Categoria</th>
                 <th>Nome</th>
+                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let c of Categorie">
+            <tr *ngFor="let c of categorie">
                 <td>{{c.id_categoria}}</td>
                 <td>{{c.nome}}</td>
-      
+                <td>
+                  <button #modifyCategoria type="button" class="btn btn-primary bottone" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
+                  <button #delete type="button" class="btn btn-danger bottone" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"> Elimina categoria</button>
+                </td>
             </tr>
         </tbody>
     </table>
   <hr>
-  <button class="btn btn-success" type="button" id="set" (click)="open(content)">aggiungi utensile</button>
+  <button class="btn btn-success" type="button" id="set" (click)="open(content1)">Aggiungi utensile</button>
     <table>
       <thead>
           <tr>
               <th>Id utensile</th>
               <th>Nome</th>
+              <th>Categoria</th>
               <th>Segnala</th>
+              <th>Azioni</th>
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let u of Utensili">
-              <td>{{u.id_categoria}}</td>
+          <tr *ngFor="let u of utensili">
+              <td>{{u.id_utensile}}</td>
               <td>{{u.nome}}</td>
-              <td><input type="checkbox" name="" [(ngModel)]="u.segnala" id=""></td>
-           
+              <td>{{u.categoria}}</td>
+              <td>
+
+                <div *ngIf="u.segnala == 1;then content else other_content">here is ignored</div>
+                <ng-template #content>
+                  <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="removeAlert(enable.value)">
+                </ng-template>
+                <ng-template #other_content>
+                  <input #enable type="checkbox" value="{{u.id_utensile}}">
+                </ng-template>
+              </td>
+              <td>
+                <button #modifyUtensile type="button" class="btn btn-primary bottone" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
+                <button #delete type="button" class="btn btn-danger bottone" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"> Elimina utensile</button>
+              </td>
           </tr>
       </tbody>
   </table>
   </div>
 </div>
+
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Aggiungi categoria</h4>
@@ -53,18 +74,103 @@
       <div class="form-group">
         <label for="dateOfBirth">Nome</label>
         <div class="input-group">
-          <input #nome="ngModel" type="text" class="form-control" [(ngModel)]="nomec" [ngModelOptions]="{standalone: true}">
-        </div>
-      </div>
-      <div class="form-group" id="input_anno_scolastico" required>
-        <label for="dateOfBirth">Anno scolatisco</label>
-        <div class="input-group">
-          <input type="number" class="form-control form-control-sm" [(ngModel)]="anno_scolastico" [ngModelOptions]="{standalone: true}" (keyup)="onKey($event)" required>{{anno_scolastico}}
+          <input #nome="ngModel" type="text" class="form-control" [(ngModel)]="nomeInput" [ngModelOptions]="{standalone: true}">
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="addClass(nome.value)">Aggiungi</button>
+    <button type="button" class="btn btn-success" (click)="AddCategoria(nome.value)">Aggiungi</button>
+  </div>
+</ng-template>
+
+<ng-template #modifyCategoriaPopUp let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifica categoria</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Nome</label>
+        <div class="input-group">
+          <input #nome="ngModel" type="text" class="form-control" [(ngModel)]="nomeInput" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="ModifyCategoria(nome.value)">Modifica</button>
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Aggiungi attrezzo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Nome</label>
+        <div class="input-group">
+          <input #nome="ngModel" type="text" class="form-control" [(ngModel)]="nomeInput" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
+    <form>
+      <div class="form-group">
+        <label>Seleziona la categoria</label>
+        <div class="input-group">
+          <select class="form-control" (change)="onChangeCategoria($event.target.value)">
+            <option value=""></option>
+            <option *ngFor="let c of categorie" value="{{c.id_categoria}}">{{c.nome}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="AddAttrezzo(nome.value)">Aggiungi</button>
+  </div>
+</ng-template>
+
+<ng-template #modifyUtensilePopUp let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifica categoria</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Nome</label>
+        <div class="input-group">
+          <input #nome="ngModel" type="text" class="form-control" [(ngModel)]="nomeInput" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
+    <form>
+      <div class="form-group">
+        <label>Categoria</label>
+        <div class="input-group">
+          <select class="form-control" (change)="onChangeCategoria($event.target.value)" [value]='id_categoria'>
+            <option value=""></option>
+            <option *ngFor="let c of categorie" value="{{c.id_categoria}}">{{c.nome}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="ModifyUtensile(nome.value)">Modifica</button>
   </div>
 </ng-template>
