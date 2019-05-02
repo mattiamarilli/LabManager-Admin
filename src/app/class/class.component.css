@@ -26,6 +26,8 @@
 	border-radius: 20px;
 	font-weight: bold;
 	background-color: white;
+	border-style: solid;
+	border-color: #71c7ec;
 }
 
 .title:hover span{
