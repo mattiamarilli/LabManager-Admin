@@ -33,7 +33,7 @@
               <th>Id utensile</th>
               <th>Nome</th>
               <th>Categoria</th>
-              <th>Segnala</th>
+              <!-- <th>Segnala</th> -->
               <th>Azioni</th>
           </tr>
       </thead>
@@ -43,7 +43,7 @@
               <td>{{u.nome}}</td>
               <td>{{u.categoria}}</td>
               <td>
-
+                <!--
                 <div *ngIf="u.segnala == 1;then content else other_content">here is ignored</div>
                 <ng-template #content>
                   <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="removeAlert(enable.value)">
@@ -51,6 +51,7 @@
                 <ng-template #other_content>
                   <input #enable type="checkbox" value="{{u.id_utensile}}">
                 </ng-template>
+                -->
               </td>
               <td>
                 <button #modifyUtensile type="button" class="btn btn-primary bottone" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
