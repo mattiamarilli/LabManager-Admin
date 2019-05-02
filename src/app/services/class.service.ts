@@ -7,6 +7,7 @@ import '../model'
 import '../model_body'
 import { Classi } from '../model';
 import { Classe } from '../model_body';
+import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 
 
 
@@ -19,10 +20,10 @@ export class ClassService {
     this.classi = new Subject<Classi[]>();
   }
 
-  apiURL:string;
   private classi:Subject<Classi[]>;
 
   public getClassi(): Observable<Classi[]> {
+    
     return this.classi.asObservable();
   }
 
