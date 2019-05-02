@@ -183,6 +183,7 @@ export class StudentComponent implements OnInit {
 
 //CSS
 
+/*
 $(function(){
 
 $(document).on("click",".showActions",function(){
@@ -205,3 +206,4 @@ $(document).on("click",".showActions",function(){
 });
 
 });
+*/

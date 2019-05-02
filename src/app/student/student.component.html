@@ -66,9 +66,9 @@
 				  <button class="showActions" data-status="close">▼</button>
 				  <div class="ActionsDiv" >
 				  <div>
-                  <button #groupmates type="button" class="total" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button>
-                  <button #modifyStudent type="button" class="total" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button>
-                  <button #delete type="button" class="total" value="{{s.id}}" (click)="deleteStudent(delete.value)"> Elimina studente</button>
+                  <button #groupmates type="button" class="total" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button><br>
+                  <button #modifyStudent type="button" class="total" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button><br>
+                  <button #delete type="button" class="total" value="{{s.id}}" (click)="deleteStudent(delete.value)"> Elimina studente</button><br>
 				  </div>
 				  </div>
                 </td>
@@ -117,7 +117,7 @@
 <ng-template #modify let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Modifica studente</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -153,7 +153,7 @@
 <ng-template #group let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Studenti del gruppo</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

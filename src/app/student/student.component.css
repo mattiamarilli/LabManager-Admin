@@ -189,6 +189,9 @@ hr.pageline:after {
 
 
 .showActions{
+	/* :( */
+	display: hidden;
+	
 	color: #71c7ec;
 	text-align: center;
 	cursor: pointer; 
@@ -204,8 +207,9 @@ hr.pageline:after {
 }
 
 .ActionsDiv{
-	display: none;
-	position: absolute;
+	/* :( */
+	/*display: none;
+	position: absolute;*/
 }
 
 .ActionsDiv div{
