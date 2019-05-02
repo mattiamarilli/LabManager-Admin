@@ -1,26 +1,31 @@
 <app-main-nav></app-main-nav>
 <div class="container">
-    <h3 class="title"><span>Lista degli studenti</span></h3>
+
     <div *ngIf="warning" class="alert alert-danger" role="alert">
       {{warning}}
     </div>
 	
 	<div class="_table">
-	
-    <button class="btn btn-success" type="button" id="addStudent" (click)="open(content)">Aggiungi studente</button>
+    <h3 class="title"><span>Lista degli studenti</span></h3>
+	<hr class="pageline">
+	<div class="selects">
+    <button class="" type="button" id="addStudent" (click)="open(content)">Aggiungi studente</button>
+	<hr class="margin">
     <div class="form-group">
       <label>Seleziona la classe</label>
       <select class="form-control" [(ngModel)]="id_classe_input" (change)="onChangeIdClasse($event.target.value)">
         <option *ngFor="let c of classi" value="{{c.id_classe}}">{{c.nome}}</option>
       </select>
     </div>
+	<hr class="margin">
     <div class="form-group">
       <label>Seleziona l'anno scolatico</label>
       <select class="form-control" [(ngModel)]="anno_scolastico_input" (change)="onChangeAnnoScolastico($event.target.value)">
         <option *ngFor="let anno of anno_scolastico_array" value="{{anno}}">{{anno}}</option>
       </select>
     </div>
-
+	</div>
+	<hr class="pageline">
     <table>
         <thead>
             <tr>
@@ -32,7 +37,25 @@
                 <th>Azioni</th>
             </tr>
         </thead>
-        <tbody>
+		<!--
+			<tr>
+                <td>2555</td>
+                <td>Alex</td>
+                <td>Nettenbreijers</td>
+                <td>5bia</td>
+                <td>idk</td>
+                <td>
+				  <button class="showActions" data-status="close">▼</button>
+				  <div class="ActionsDiv" >
+				  <div>
+                  <button #groupmates type="button" class="total"  (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button><br>
+                  <button #modifyStudent type="button" class="total"  (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button><br>
+                  <button #delete type="button" class="total"  (click)="deleteStudent(delete.value)"> Elimina studente</button><br>
+				  </div>
+				  </div>
+                </td>
+            </tr>
+			-->
             <tr *ngFor="let s of studenti">
                 <td>{{s.id}}</td>
                 <td>{{s.nome}}</td>
@@ -40,9 +63,14 @@
                 <td>{{s.username}}</td>
                 <td>{{s.classe}}</td>
                 <td>
-                  <button #groupmates type="button" class="btn btn-info bottone" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button>
-                  <button #modifyStudent type="button" class="btn btn-primary bottone" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button>
-                  <button #delete type="button" class="btn btn-danger bottone" value="{{s.id}}" (click)="deleteStudent(delete.value)"> Elimina studente</button>
+				  <button class="showActions" data-status="close">▼</button>
+				  <div class="ActionsDiv" >
+				  <div>
+                  <button #groupmates type="button" class="total" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button>
+                  <button #modifyStudent type="button" class="total" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button>
+                  <button #delete type="button" class="total" value="{{s.id}}" (click)="deleteStudent(delete.value)"> Elimina studente</button>
+				  </div>
+				  </div>
                 </td>
             </tr>
         </tbody>
@@ -53,7 +81,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Aggiungi studente</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -65,12 +93,14 @@
           <input type="text" class="form-control" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
+	<hr class="margin">
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Cognome</label>
         <div class="input-group">
           <input type="text" class="form-control" [(ngModel)]="cognome" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
+	<hr class="margin">
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Classe</label>
         <div class="input-group">
@@ -80,7 +110,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="addStudent()">Aggiungi</button>
+    <button type="button" class="" (click)="addStudent()">Aggiungi</button>
   </div>
 </ng-template>
 
@@ -99,12 +129,14 @@
           <input type="text" class="form-control" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
+	<hr class="margin">
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Cognome</label>
         <div class="input-group">
           <input type="text" class="form-control" [(ngModel)]="cognome" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
+	<hr class="margin">
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Classe</label>
         <div class="input-group">
@@ -114,7 +146,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="modifyStudent()">Modifica</button>
+    <button type="button" class="" (click)="modifyStudent()">Modifica</button>
   </div>
 </ng-template>
 

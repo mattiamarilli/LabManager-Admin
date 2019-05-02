@@ -6,7 +6,8 @@
     </div>
     
 	<div class="_table">
-	<button class="btn btn-success" type="button" id="addStudent" (click)="open(content)">Aggiungi Docente</button>
+	<button class="" type="button" id="addStudent" (click)="open(content)">Aggiungi Docente</button>
+	<hr class="margin">
 	<table>
         <thead>
             <tr>
@@ -18,14 +19,15 @@
             </tr>
         </thead>
         <tbody>
+		
             <tr *ngFor="let d of docenti">
                 <td>{{d.id_docente}}</td>
                 <td>{{d.nome}}</td>
                 <td>{{d.cognome}}</td>
                 <td>{{d.username}}</td>
                 <td>
-                  <button #modifyDocente type="button" class="btn btn-primary bottone" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"> Modifica docente</button>
-                  <button #delete type="button" class="btn btn-danger bottone" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"> Elimina docente</button>
+                  <button #modifyDocente type="button" class="total" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"> Modifica docente</button>
+                  <button #delete type="button" class="total" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"> Elimina docente</button>
                 </td>
             </tr>
         </tbody>
@@ -57,7 +59,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="addDocente()">Aggiungi</button>
+    <button type="button" class="" (click)="addDocente()">Aggiungi</button>
   </div>
 </ng-template>
 
@@ -85,6 +87,6 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="modifyDocente()">Modifica</button>
+    <button type="button" class="" (click)="modifyDocente()">Modifica</button>
   </div>
 </ng-template>

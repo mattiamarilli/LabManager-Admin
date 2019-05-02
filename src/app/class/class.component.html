@@ -7,7 +7,8 @@
 	
 	<div class="_table">
 	
-    <button class="btn btn-success" type="button" id="addClass" (click)="open(content)">Aggiungi classe</button>
+    <button class="" type="button" id="addClass" (click)="open(content)">Aggiungi classe</button>
+  <hr class="margin">
     
 	<table>
         <thead>
@@ -34,9 +35,9 @@
                   </ng-template>
                 </td>
                 <td>
-                  <button #filterStudent type="button" class="btn btn-info bottone" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button>
-                  <button #modifyClass type="button" class="btn btn-primary bottone" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button>
-                  <button #delete type="button" class="btn btn-danger bottone" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button>
+                  <button #filterStudent type="button" class="total" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button>
+                  <button #modifyClass type="button" class="total" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button>
+                  <button #delete type="button" class="total" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button>
                 </td>
             </tr>
         </tbody>
@@ -68,7 +69,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="addClass()">Aggiungi</button>
+    <button type="button" class="" (click)="addClass()">Aggiungi</button>
   </div>
 </ng-template>
 
@@ -125,6 +126,6 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="modifyClass()">Modifica</button>
+    <button type="button" class="" (click)="modifyClass()">Modifica</button>
   </div>
 </ng-template>
