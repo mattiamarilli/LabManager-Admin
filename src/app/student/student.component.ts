@@ -5,6 +5,7 @@ import { Classi } from '../model';
 import { Studenti } from '../model';
 import { Studente } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -183,25 +184,3 @@ export class StudentComponent implements OnInit {
 
 //CSS
 
-$(function(){
-
-$(document).on("click",".showActions",function(){
-
-	if($(this).data("status") == "close"){
-		
-		$(".ActionsDiv").hide();
-		$(".showActions").text("▼");
-		$(".showActions").data("status", "close");
-		
-		$(this).next().show();
-		$(this).text("▲");
-		$(this).data("status", "open");
-	}
-	else if($(this).data("status") == "open"){
-		$(this).next().hide();
-		$(this).text("▼");
-		$(this).data("status", "close");
-	}
-});
-
-});
