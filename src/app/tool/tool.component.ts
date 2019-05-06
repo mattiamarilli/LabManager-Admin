@@ -25,8 +25,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
     }
 
-    generateqr(){
-
+    generateqrcat(id:number){
+        console.log('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"category","id": ' + id + '}');
     }
 
     ngOnInit(){

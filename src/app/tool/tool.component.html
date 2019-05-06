@@ -21,7 +21,7 @@
                 <td>
                   <button #modifyCategoria type="button" class="btn btn-primary bottone" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
                   <button #delete type="button" class="btn btn-danger bottone" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"> Elimina categoria</button>
-                  <button class="btn btn-success" type="button" id="set" (click)="generateqr()">Mostra QR</button>
+                  <button class="btn btn-success" type="button" id="set" (click)="generateqrcat(c.id_categoria)">Mostra QR</button>
                 </td>
             </tr>
         </tbody>
