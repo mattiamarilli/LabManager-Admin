@@ -4,6 +4,7 @@ import { Utensili, Categorie, } from '../model';
 import { Utensile } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+
   @Component({
     selector: 'app-tool',
     templateUrl: './tool.component.html',
@@ -21,6 +22,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     warning:string;
 
     constructor(private toolService:ToolService, private modalService: NgbModal){
+
+    }
+
+    generateqr(){
 
     }
 

@@ -11,16 +11,15 @@ import {Auth} from '../model_body'
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router,private authService: AuthenticationService) { }
-  auth:Auth;
+  auth:Auth = new Auth();
   login(){
     state: RouterStateSnapshot;
-    
+  
     this.authService.login(this.auth).subscribe((data: boolean ) => {
       if(data == true)
-        {
-          console.log('ciao');
           this.router.navigate(['/home']);
-      }
+      else
+        alert("Credenziali non corrette");
 		}
     );;
   }

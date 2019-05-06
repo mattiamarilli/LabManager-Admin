@@ -11,7 +11,7 @@ import {TeacherComponent} from './teacher/teacher.component'
 import {ToolComponent} from './tool/tool.component'
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent /*,canActivate: [AuthGuard]*/},
+  { path: 'home', component: HomeComponent ,canActivate: [AuthGuard]},
   { path: 'analitycs',component:AnalitycsComponent},
   { path: 'login',component:LoginComponent},
   { path: 'class',component:ClassComponent},

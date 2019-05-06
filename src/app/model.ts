@@ -3,6 +3,7 @@ export class AuthUser {
     nome: string;
     cognome:string;
     admin:boolean;
+    token:string;
 }
 
 export class Classi {
