@@ -1,10 +1,24 @@
-<header></header>
-<img id="center" src="assets/images/marconiHD.png" width="200" height="200" >
-<form id="form_login">
+<!-- <header></header> -->
+<div class='window'>
+  <div class='overlay'></div>
+  <div class='content'>
+    <img id="center" src="assets/images/marconiHD.png" class="img-responsive" width="200">
+    <form id="form_login" class="input-fields">
 
+<<<<<<< HEAD
     <br>
     <input   type="text" id="username" name="username" placeholder="Username" [(ngModel)]="auth.username">
     <input  type="password" id="password" name="password" placeholder="Password" [(ngModel)]="auth.password">
   
     <input type="button" value="Entra" (click)="login()">
   </form>
+=======
+      <br>
+      <input type="text" id="username" name="username" placeholder="Username" class="input-line full-width">
+      <input type="password" id="password" name="password" placeholder="Password" class="input-line full-width">
+
+      <input type="button" value="Entra" (click)="fakelogin()" class="button-class full-width">
+    </form>
+  </div>
+</div>
+>>>>>>> 5a4ed047eb8155f2e4273a3caeaac5d6026e6cf1

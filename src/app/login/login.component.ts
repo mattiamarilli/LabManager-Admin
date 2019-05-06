@@ -23,6 +23,12 @@ export class LoginComponent implements OnInit {
 		}
     );;
   }
+
+  fakelogin()
+  {
+    this.authService.fakelogin();
+    this.router.navigate(['/home']);
+  }
   ngOnInit() {
   }
 

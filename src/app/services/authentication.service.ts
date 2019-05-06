@@ -11,7 +11,12 @@ import { environment } from 'src/environments/environment.prod';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthUser>;
     public currentUser: Observable<AuthUser>;
+<<<<<<< HEAD
 
+=======
+    fakeloginvar:boolean = false;
+    apiURL:string = '';
+>>>>>>> 5a4ed047eb8155f2e4273a3caeaac5d6026e6cf1
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<AuthUser>(JSON.parse(sessionStorage.getItem('currentUser')));
@@ -20,6 +25,21 @@ export class AuthenticationService {
 
     currentUserValue(): AuthUser {
         return this.currentUserSubject.value;
+    }
+
+    fakelogin()
+    {
+        this.fakeloginvar = true;
+    }
+
+    fakelogout()
+    {
+        this.fakeloginvar = false
+    }
+
+    returnfakelogin():boolean
+    {
+        return this.fakeloginvar;
     }
 
     login(auth:Auth): Observable<boolean> {

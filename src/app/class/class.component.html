@@ -1,13 +1,17 @@
 <app-main-nav></app-main-nav>
 <div class="container">
-    <h3 class="title"><span>Lista delle classi che accedono al laboratorio</span></h3>
+    
     <div *ngIf="warning" class="alert alert-danger" role="alert">
       {{warning}}
     </div>
 	
 	<div class="_table">
-	
-    <button class="btn btn-success" type="button" id="addClass" (click)="open(content)">Aggiungi classe</button>
+	<h3 class="title"><span>Lista delle classi che accedono al laboratorio</span></h3>
+	<hr class="pageline">
+	<div class="selects">
+    <button class="" type="button" id="addClass" (click)="open(content)">Aggiungi classe</button>
+	</div>
+	<hr class="pageline">
     
 	<table>
         <thead>
@@ -33,9 +37,14 @@
                   </ng-template>
                 </td>
                 <td>
-                  <button #filterStudent type="button" class="btn btn-info bottone" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button>
-                  <button #modifyClass type="button" class="btn btn-primary bottone" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button>
-                  <button #delete type="button" class="btn btn-danger bottone" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button>
+				  <button class="showActions" data-status="close">▼</button>
+				  <div class="ActionsDiv" >
+				  <div>
+                  <button #filterStudent type="button" class="total" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button><br>
+                  <button #modifyClass type="button" class="total" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button><br>
+                  <button #delete type="button" class="total" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button><br>
+				  </div>
+				  </div>
                 </td>
             </tr>
         </tbody>
@@ -46,7 +55,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Aggiungi classe</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -58,6 +67,7 @@
           <input type="text" class="form-control" [(ngModel)]="nomec" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
+	<hr class="margin">
       <div class="form-group" id="input_anno_scolastico" required>
         <label for="dateOfBirth">Anno scolatisco</label>
         <div class="input-group">
@@ -67,14 +77,14 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="addClass()">Aggiungi</button>
+    <button type="button" class="" (click)="addClass()">Aggiungi</button>
   </div>
 </ng-template>
 
 <ng-template #student let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Studenti della classe {{id_classe}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -103,7 +113,7 @@
 <ng-template #modify let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Modifica classe</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -115,6 +125,7 @@
           <input type="text" class="form-control" [(ngModel)]="classe.nome" value="{{classe.nome}}" required [ngModelOptions]="{standalone: true}">
         </div>
       </div>
+	<hr class="margin">
       <div class="form-group" required>
         <label for="dateOfBirth">Anno scolatisco</label>
         <div class="input-group">
@@ -124,6 +135,6 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="modifyClass()">Modifica</button>
+    <button type="button" class="" (click)="modifyClass()">Modifica</button>
   </div>
 </ng-template>
