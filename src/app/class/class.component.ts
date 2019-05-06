@@ -53,7 +53,11 @@ export class ClassComponent implements OnInit{
           if(data['code'] == 200){
             this.classService.loadClassi();
             this.modalService.dismissAll('Reason');
-          }else{
+          }
+          else if(data['code'] == 403){
+            this.warning = data['message'];
+          }
+          else{
             this.warning = data['message'];
           }
         }
