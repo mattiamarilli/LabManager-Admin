@@ -26,8 +26,14 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     }
 
     generateqrcat(id:number){
-        console.log('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"category","id": ' + id + '}');
+        window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"category","id": ' + id + '}', "_blank");
     }
+
+    generateqrtool(id:number){
+      window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"tool","id": ' + id + '}', "_blank");
+  }
+
+
 
     ngOnInit(){
       this.toolService.getUtensili().subscribe((data: Utensili []) => {
