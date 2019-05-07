@@ -1,90 +1,69 @@
 <app-main-nav></app-main-nav>
 <div class="container">
-    
-    <div *ngIf="warning" class="alert alert-danger" role="alert">
-      {{warning}}
-    </div>
-	
-	<hr class="margin" style="height: 50px">
-	<h3 class="title"><span>Lista degli strumenti del laboratorio</span></h3>
-	
-	<div class="_table">
-	<div class="selects">
-    <button class="" type="button" id="set" (click)="open(content)">Aggiungi categoria</button>
-	</div>
-	<hr class="pageline">
-    <table>
-        <thead>
-            <tr>
-                <th>Id Categoria</th>
-                <th>Nome</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let c of categorie">
-                <td>{{c.id_categoria}}</td>
-                <td>{{c.nome}}</td>
-                <td>
-                  <button #modifyCategoria type="button" class="btn btn-primary bottone" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
-                  <button #delete type="button" class="btn btn-danger bottone" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"> Elimina categoria</button>
-                  <button class="btn btn-success" type="button" id="set" (click)="generateqrcat(c.id_categoria)">Genera QR</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-	</div>
-	
-  <hr class="margin">
-  
-	<div class="_table">
-	<div class="selects">
-  <button class="" type="button" id="set" (click)="open(content1)">Aggiungi utensile</button>
+  <h3 class="title"><span>Lista degli strumenti del laboratorio</span></h3>
+  <button class="btn btn-success" type="button" id="addCategory" (click)="open(content)">Aggiungi categoria</button>
+  <div *ngIf="warning" class="alert alert-danger" role="alert">
+    {{warning}}
   </div>
-	<hr class="pageline">
-    <table>
-      <thead>
-          <tr>
-              <th>Id utensile</th>
-              <th>Nome</th>
-              <th>Categoria</th>
-              <!-- <th>Segnala</th> -->
-              <th>Azioni</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let u of utensili">
-              <td>{{u.id_utensile}}</td>
-              <td>{{u.nome}}</td>
-              <td>{{u.categoria}}</td>
-              <td>
-                <!--
-                <div *ngIf="u.segnala == 1;then content else other_content">here is ignored</div>
-                <ng-template #content>
-                  <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="removeAlert(enable.value)">
-                </ng-template>
-                <ng-template #other_content>
-                  <input #enable type="checkbox" value="{{u.id_utensile}}">
-                </ng-template>
-                -->
-              </td>
-              <td>
-                <button #modifyUtensile type="button" class="btn btn-primary bottone" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
-                <button #delete type="button" class="btn btn-danger bottone" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"> Elimina utensile</button>
-                <button class="btn btn-success" type="button" id="set" (click)="generateqrtool(u.id_utensile)">Genera QR</button>
-            </td>
-          </tr>
-      </tbody>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="center_object">Id Categoria</th>
+        <th class="center_object">Nome</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categorie">
+        <td class="center_object">{{c.id_categoria}}</td>
+        <td class="center_object">{{c.nome}}</td>
+        <td>
+          <button #modifyCategoria type="button" class="btn btn-primary" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
+          <button #delete type="button" class="btn btn-danger" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"> Elimina categoria</button>
+          <button type="button" class="btn btn-warning" (click)="generateqrcat(c.id_categoria)">Genera QR</button>
+        </td>
+      </tr>
+    </tbody>
   </table>
-  </div>
+  <button class="btn btn-success" type="button" id="addTool" (click)="open(content1)">Aggiungi utensile</button>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="center_object">Id utensile</th>
+        <th class="center_object">Nome</th>
+        <th class="center_object">Categoria</th>
+        <th class="center_object">Segnala</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of utensili">
+        <td class="center_object">{{u.id_utensile}}</td>
+        <td class="center_object">{{u.nome}}</td>
+        <td class="center_object">{{u.categoria}}</td>
+        <td class="center_object">
+          <div *ngIf="u.segnala == 1;then content else other_content">here is ignored</div>
+          <ng-template #content>
+            <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="removeAlert(enable.value)">
+          </ng-template>
+          <ng-template #other_content>
+
+            <input #enable type="checkbox" value="{{u.id_utensile}}" disabled>
+          </ng-template>
+        </td>
+        <td>
+          <button #modifyUtensile type="button" class="btn btn-primary" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
+          <button #delete type="button" class="btn btn-danger" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"> Elimina utensile</button>
+          <button class="btn btn-warning" type="button" id="set" (click)="generateqrtool(u.id_utensile)">Genera QR</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Aggiungi categoria</h4>
-    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -97,16 +76,14 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="" (click)="AddCategoria(nome.value)">Aggiungi</button>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss()" style="display: inline;">Annulla</button>
+    <button type="button" class="btn btn-success" (click)="AddCategoria(nome.value)">Aggiungi</button>
   </div>
 </ng-template>
 
 <ng-template #modifyCategoriaPopUp let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Modifica categoria</h4>
-    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -119,7 +96,8 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="" (click)="ModifyCategoria(nome.value)">Modifica</button>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss()" style="display: inline;">Annulla</button>
+    <button type="button" class="btn btn-success" (click)="ModifyCategoria(nome.value)">Modifica</button>
   </div>
 </ng-template>
 
@@ -129,9 +107,6 @@
 <ng-template #content1 let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Aggiungi attrezzo</h4>
-    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -143,8 +118,7 @@
       </div>
     </form>
     <form>
-	<hr class="margin">
-      <div class="form-group">
+	  <div class="form-group">
         <label>Seleziona la categoria</label>
         <div class="input-group">
           <select class="form-control" (change)="onChangeCategoria($event.target.value)">
@@ -156,16 +130,14 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="" (click)="AddAttrezzo(nome.value)">Aggiungi</button>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss()" style="display: inline;">Annulla</button>
+    <button type="button" class="btn btn-success" (click)="AddAttrezzo(nome.value)">Aggiungi</button>
   </div>
 </ng-template>
 
 <ng-template #modifyUtensilePopUp let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Modifica categoria</h4>
-    <button type="button" class="_close" aria-label="Close" (click)="modal.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="modal-body">
     <form>
@@ -177,8 +149,7 @@
       </div>
     </form>
     <form>
-	<hr class="margin">
-      <div class="form-group">
+	  <div class="form-group">
         <label>Categoria</label>
         <div class="input-group">
           <select class="form-control" (change)="onChangeCategoria($event.target.value)" [value]='id_categoria'>
@@ -190,6 +161,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="" (click)="ModifyUtensile(nome.value)">Modifica</button>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss()" style="display: inline;">Annulla</button>
+    <button type="button" class="btn btn-success" (click)="ModifyUtensile(nome.value)">Modifica</button>
   </div>
 </ng-template>
