@@ -15,7 +15,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 export class MainNavComponent {
 
 
-  userString:string = "Ciao, ";
+  userString:string = "";
   authUser:AuthUser;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
