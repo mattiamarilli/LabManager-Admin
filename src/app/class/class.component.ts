@@ -115,7 +115,7 @@ export class ClassComponent implements OnInit{
   getStudentByClass()
   {
     this.elencoStudenti = []
-    this.studentService.getStudenti().subscribe((data:Studenti[])=>{
+    this.studentService.getAllStudenti().subscribe((data:Studenti[])=>{
       for(let dato of data)
         {
           if(dato.id_classe = this.id_classe)

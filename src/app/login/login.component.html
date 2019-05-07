@@ -1,13 +1,16 @@
-<!-- <header></header> -->
-<div class='window'>
-  <div class='overlay'></div>
-  <div class='content'>
-    <img id="center" src="assets/images/marconiHD.png" class="img-responsive" width="200">
-    <form id="form_login" class="input-fields">
-
-    <br>
-    <input   type="text" id="username" name="username" placeholder="Username" [(ngModel)]="auth.username">
-    <input  type="password" id="password" name="password" placeholder="Password" [(ngModel)]="auth.password">
-  
-    <input type="button" value="Entra" (click)="login()">
+<div class="text-center">
+  <form class="form-signin">
+    <img  class="mb-4" src="assets/images/marconiHD.png" width="200">
+    <h1 class="h3 mb-3 font-weight-normal">Effettua il login</h1>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="username" class="form-control" placeholder="Username" required autofocus [(ngModel)]="auth.username" [ngModelOptions]="{standalone: true}">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="password" class="form-control" placeholder="Password" required [(ngModel)]="auth.password" [ngModelOptions]="{standalone: true}">
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Entra" (click)="login()">Login</button>
   </form>
+</div>

@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg static-top custom-bgcolor">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
   <div class="container">
-    <a class="navbar-brand" href="/home">
-      <img src="" src="assets/images/marconiHD.png" alt="QRMarconi - LOGO">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="assets/images/marconiHD.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      IPSIA GUGLIELMO MARCONI
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="/home">Home</a>
@@ -26,15 +27,17 @@
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="/analitycs">Statistiche</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout({{userString}})</a>
+        </li>
       </ul>
-      <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{userString}}<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-
-                  <li><a (click)="logout()"><i class="icon-off"></i>Esci</a></li>
-              </ul>
-          </li>
-      </ul>
+      <!--<ul class="nav pull-right">
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{userString}}<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a (click)="logout()"><i class="icon-off"></i>Esci</a></li>
+          </ul>
+        </li>
+      </ul>-->
     </div>
   </div>
 </nav>
