@@ -33,6 +33,20 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
       window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"tool","id": ' + id + '}', "_blank");
   }
 
+  unlock(id_attrezzo:number,event:boolean)
+  {  if(event)
+    this.toolService.lock(id_attrezzo).subscribe();
+    else
+    this.toolService.removeLock(id_attrezzo).subscribe();
+  }
+  lock(id_attrezzo:number,event:boolean)
+  {
+    if(event)
+      this.toolService.lock(id_attrezzo).subscribe();
+      else
+      this.toolService.removeLock(id_attrezzo).subscribe();
+  }
+
 
 
     ngOnInit(){

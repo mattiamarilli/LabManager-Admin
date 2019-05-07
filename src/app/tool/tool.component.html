@@ -8,14 +8,12 @@
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
-        <th class="center_object">Id Categoria</th>
-        <th class="center_object">Nome</th>
+        <th class="center_object">Descrizione</th>
         <th>Azioni</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let c of categorie">
-        <td class="center_object">{{c.id_categoria}}</td>
         <td class="center_object">{{c.nome}}</td>
         <td>
           <button #modifyCategoria type="button" class="btn btn-primary" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
@@ -29,16 +27,15 @@
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
-        <th class="center_object">Id utensile</th>
-        <th class="center_object">Nome</th>
+        <th class="center_object">Descrizione</th>
         <th class="center_object">Categoria</th>
         <th class="center_object">Segnala</th>
+        <th class="center_object">Blocca</th>
         <th>Azioni</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let u of utensili">
-        <td class="center_object">{{u.id_utensile}}</td>
         <td class="center_object">{{u.nome}}</td>
         <td class="center_object">{{u.categoria}}</td>
         <td class="center_object">
@@ -51,11 +48,28 @@
             <input #enable type="checkbox" value="{{u.id_utensile}}" disabled>
           </ng-template>
         </td>
+
+        <td class="center_object">
+            <div *ngIf="u.locked == 1;then content else other_content">here is ignored</div>
+            <ng-template #content>
+              <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="unlock(enable.value,enable.checked)">
+            </ng-template>
+            <ng-template #other_content>
+  
+              <input #enable type="checkbox" value="{{u.id_utensile}}" (click)="lock(enable.value,enable.checked)">
+            </ng-template>
+          </td>
+        <!---
+        <td class="center_object">
+          <input ng-checked="u.locked == 1" #enable type="checkbox" name="vehicle1" value="Bike" value="{{u.id_utensile}}" (click)="lock_unlock(enable.value,enable.checked)"> 
+        </td>
+        -->
         <td>
           <button #modifyUtensile type="button" class="btn btn-primary" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
           <button #delete type="button" class="btn btn-danger" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"> Elimina utensile</button>
           <button class="btn btn-warning" type="button" id="set" (click)="generateqrtool(u.id_utensile)">Genera QR</button>
         </td>
+        
       </tr>
     </tbody>
   </table>

@@ -34,6 +34,7 @@ export class Utensili {
     id_utensile: number;
     nome: string;
     segnala: boolean;
+    locked:boolean;
     id_categoria: number;
     categoria: string;
 }
