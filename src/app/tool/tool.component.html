@@ -16,9 +16,9 @@
       <tr *ngFor="let c of categorie | paginate: { itemsPerPage: 10, currentPage: pc, id: 'c' }">
         <td class="center_object">{{c.nome}}</td>
         <td>
-          <button #modifyCategoria type="button" class="btn btn-primary" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
-          <button #delete type="button" class="btn btn-danger" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"> Elimina categoria</button>
-          <button type="button" class="btn btn-warning" (click)="generateqrcat(c.id_categoria)">Genera QR</button>
+          <button #modifyCategoria type="button" title="Modifica categoria" class="fa fa-edit" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"></button>
+          <button #delete type="button" title="Elimina categoria" class="fa fa-trash" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"></button>
+          <button type="button" title="Genera QR" class="fa fa-qrcode" (click)="generateqrcat(c.id_categoria)"></button>
         </td>
       </tr>
     </tbody>
@@ -60,9 +60,9 @@
             </ng-template>
           </td>
         <td>
-          <button #modifyUtensile type="button" class="btn btn-primary" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
-          <button #delete type="button" class="btn btn-danger" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"> Elimina utensile</button>
-          <button class="btn btn-warning" type="button" id="set" (click)="generateqrtool(u.id_utensile)">Genera QR</button>
+          <button #modifyUtensile type="button" title="Modifica utensile" class="fa fa-edit" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"></button>
+          <button #delete type="button" title="Elimina utensile" class="fa fa-trash" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"></button>
+          <button class="fa fa-qrcode" title="Genera QR" type="button" id="set" (click)="generateqrtool(u.id_utensile)"></button>
         </td>
       </tr>
     </tbody>
