@@ -35,16 +35,44 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
   unlock(id_attrezzo:number,event:boolean)
   {  if(event)
-    this.toolService.lock(id_attrezzo).subscribe();
+    this.toolService.lock(id_attrezzo).subscribe((data) => {
+      if(data['code'] == 200){
+        this.toolService.loadUtensili();
+      }else{
+        this.toolService.loadUtensili();
+        this.warning = data['message'];
+      }
+    });
     else
-    this.toolService.removeLock(id_attrezzo).subscribe();
+    this.toolService.removeLock(id_attrezzo).subscribe((data) => {
+      if(data['code'] == 200){
+        this.toolService.loadUtensili();
+      }else{
+        this.toolService.loadUtensili();
+        this.warning = data['message'];
+      }
+    });
   }
   lock(id_attrezzo:number,event:boolean)
   {
     if(event)
-      this.toolService.lock(id_attrezzo).subscribe();
+      this.toolService.lock(id_attrezzo).subscribe((data) => {
+        if(data['code'] == 200){
+          this.toolService.loadUtensili();
+        }else{
+          this.toolService.loadUtensili();
+          this.warning = data['message'];
+        }
+      });
       else
-      this.toolService.removeLock(id_attrezzo).subscribe();
+      this.toolService.removeLock(id_attrezzo).subscribe((data) => {
+        if(data['code'] == 200){
+          this.toolService.loadUtensili();
+        }else{
+          this.toolService.loadUtensili();
+          this.warning = data['message'];
+        }
+      });
   }
 
 
@@ -169,6 +197,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
           this.toolService.loadUtensili();
         }else{
           this.warning = data['message'];
+          this.toolService.loadUtensili();
         }
       });
     }
