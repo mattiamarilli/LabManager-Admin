@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of categorie">
+      <tr *ngFor="let c of categorie | paginate: { itemsPerPage: 10, currentPage: pc, id: 'c' }">
         <td class="center_object">{{c.nome}}</td>
         <td>
           <button #modifyCategoria type="button" class="btn btn-primary" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"> Modifica categoria</button>
@@ -23,6 +23,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="pc = $event" id="c"></pagination-controls>
+  </div>
   <button class="btn btn-success" type="button" id="addTool" (click)="open(content1)">Aggiungi utensile</button>
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
@@ -35,7 +38,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of utensili" [ngClass]="{'table-warning': u.segnala, 'table-danger': u.locked}">
+      <tr *ngFor="let u of utensili | paginate: { itemsPerPage: 20, currentPage: pu, id: 'u' }" [ngClass]="{'table-warning': u.segnala, 'table-danger': u.locked}">
         <td class="center_object">{{u.nome}}</td>
         <td class="center_object">{{u.categoria}}</td>
         <td class="center_object">
@@ -47,31 +50,26 @@
             <input type="checkbox" value="{{u.id_utensile}}" disabled>
           </ng-template>
         </td>
-
         <td class="center_object" >
             <div *ngIf="u.locked == 1;then content else other_content">here is ignored</div>
             <ng-template #content>
               <input  #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="unlock(enable.value,enable.checked)">
             </ng-template>
             <ng-template #other_content>
-
               <input #enable type="checkbox" value="{{u.id_utensile}}" (click)="lock(enable.value,enable.checked)">
             </ng-template>
           </td>
-        <!---
-        <td class="center_object">
-          <input ng-checked="u.locked == 1" #enable type="checkbox" name="vehicle1" value="Bike" value="{{u.id_utensile}}" (click)="lock_unlock(enable.value,enable.checked)">
-        </td>
-        -->
         <td>
           <button #modifyUtensile type="button" class="btn btn-primary" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"> Modifica utensile</button>
           <button #delete type="button" class="btn btn-danger" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"> Elimina utensile</button>
           <button class="btn btn-warning" type="button" id="set" (click)="generateqrtool(u.id_utensile)">Genera QR</button>
         </td>
-
       </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="pu = $event" id="u"></pagination-controls>
+  </div>
 </div>
 
 <ng-template #content let-modal>
