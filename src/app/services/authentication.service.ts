@@ -26,7 +26,8 @@ export class AuthenticationService {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });
-        console.log(auth)
+        console.log(auth);
+        
         return this.http.post<AuthUser>(environment.apiUrl + `/admin/auth`, JSON.stringify(auth), { headers: headers}).pipe(
            
             map((user: AuthUser ) => {
