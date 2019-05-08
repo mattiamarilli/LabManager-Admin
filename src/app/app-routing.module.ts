@@ -9,9 +9,11 @@ import { ClassComponent } from './class/class.component'
 import {StudentComponent} from './student/student.component'
 import {TeacherComponent} from './teacher/teacher.component'
 import {ToolComponent} from './tool/tool.component'
+import {UserComponent} from './user/user.component'
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent ,canActivate: [AuthGuard]},
+  { path: 'user', component:UserComponent},
   { path: 'analitycs',component:AnalitycsComponent},
   { path: 'login',component:LoginComponent},
   { path: 'class',component:ClassComponent},
