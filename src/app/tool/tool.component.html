@@ -49,10 +49,10 @@
           </ng-template>
         </td>
 
-        <td class="center_object">
+        <td class="center_object" >
             <div *ngIf="u.locked == 1;then content else other_content">here is ignored</div>
             <ng-template #content>
-              <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="unlock(enable.value,enable.checked)">
+              <input  #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="unlock(enable.value,enable.checked)">
             </ng-template>
             <ng-template #other_content>
   
