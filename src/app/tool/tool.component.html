@@ -35,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of utensili" [ngClass]="{'table-warning': u.segnala}">
+      <tr *ngFor="let u of utensili" [ngClass]="{'table-warning': u.segnala, 'table-danger': u.locked}">
         <td class="center_object">{{u.nome}}</td>
         <td class="center_object">{{u.categoria}}</td>
         <td class="center_object">
