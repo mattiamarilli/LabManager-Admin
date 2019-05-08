@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { API_URL } from './_shared/injectionTokens';
 import { environment } from '../environments/environment';
 import { ApiUrlInterceptor } from './_helpers/api-url.interceptor';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ApiUrlInterceptor } from './_helpers/api-url.interceptor';
     ClassComponent,
     StudentComponent,
     TeacherComponent,
-    ToolComponent
+    ToolComponent,
+    UserComponent
 
 
   ],
