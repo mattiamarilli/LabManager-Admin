@@ -14,9 +14,6 @@ export class UserComponent implements OnInit {
   oldpassword:string;
   newpassword:string;
   modifyPassword(){
-    console.log(this.oldpassword);
-    console.log(this.newpassword);
-    console.log(this.user.id);
     this.authService.modifyPassword(this.user.id,this.oldpassword,this.newpassword).subscribe();
   }
 

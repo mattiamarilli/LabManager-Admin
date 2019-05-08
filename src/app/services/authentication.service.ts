@@ -27,7 +27,7 @@ export class AuthenticationService {
             'Content-Type': 'application/json'
         });
         console.log(auth);
-        
+
         return this.http.post<AuthUser>(environment.apiUrl + `/admin/auth`, JSON.stringify(auth), { headers: headers}).pipe(
            
             map((user: AuthUser ) => {
@@ -45,10 +45,12 @@ export class AuthenticationService {
         )
     }
 
-    modifyPassword(id_docente: number,odlpassword:string,newpassword:string){
+    modifyPassword(id_docente: number, odlpassword:string,newpassword:string){
         let headers = new HttpHeaders({});
+        console.log("Old Password : " + odlpassword)
+        console.log("New Password : " + newpassword)
         let body = {
-          'id_docente': id_docente,
+          'id': id_docente,
           'oldpassword': odlpassword,
           'newpassword': newpassword,
         };
