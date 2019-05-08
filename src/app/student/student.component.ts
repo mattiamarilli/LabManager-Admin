@@ -23,6 +23,10 @@ export class StudentComponent implements OnInit {
   anno_scolastico_array = [];
   studenti_per_gruppo:Studenti[] = [];
 
+  get filteredStudent() {
+    return this.studenti.filter(k => true);
+  }
+
   //modal
   nome:string = '';
   cognome:string = '';
