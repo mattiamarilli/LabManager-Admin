@@ -32,7 +32,8 @@ import { UserComponent } from './user/user.component';
     StudentComponent,
     TeacherComponent,
     ToolComponent,
-    UserComponent
+    UserComponent,
+    
 
 
   ],

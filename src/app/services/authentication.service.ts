@@ -44,6 +44,16 @@ export class AuthenticationService {
         )
     }
 
+    modifyPassword(id_docente: number,odlpassword:string,newpassword:string){
+        let headers = new HttpHeaders({});
+        let body = {
+          'id_docente': id_docente,
+          'oldpassword': odlpassword,
+          'newpassword': newpassword,
+        };
+        return this.http.post(environment.apiUrl +  `/admin/docente/password`, JSON.stringify(body) , { headers: headers });
+      }
+
     logout() {
         // remove user from local storage to log user out
         sessionStorage.removeItem('currentUser');
