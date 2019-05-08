@@ -35,16 +35,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of utensili" [ngClass]="{'table-active': u.segnala}">
+      <tr *ngFor="let u of utensili" [ngClass]="{'table-warning': u.segnala}">
         <td class="center_object">{{u.nome}}</td>
         <td class="center_object">{{u.categoria}}</td>
         <td class="center_object">
-          <div *ngIf="u.segnala == 1;then content else other_content">here is ignored</div>
+          <div *ngIf="u.segnala == 1;then content else other_content"></div>
           <ng-template #content>
             <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="removeAlert(enable.value)">
           </ng-template>
           <ng-template #other_content>
-
             <input #enable type="checkbox" value="{{u.id_utensile}}" disabled>
           </ng-template>
         </td>
