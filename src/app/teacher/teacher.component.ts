@@ -31,6 +31,10 @@ export class TeacherComponent implements OnInit {
       });
       this.teacherService.loadDocenti();
   }
+  resetPassword(id_docente:number){
+    this.teacherService.resetPassword(id_docente).subscribe();
+    console.log('ciao')
+  }
 
   addDocente(){
     this.docente.nome = this.nome;

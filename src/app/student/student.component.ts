@@ -47,6 +47,11 @@ export class StudentComponent implements OnInit {
       this.filter();
   }
 
+  resetPassword(id_studente:number){
+    this.studentService.resetPassword(id_studente).subscribe();
+    console.log('ciao')
+  }
+
   addStudent(){
     this.studente.nome = this.nome;
     this.studente.cognome = this.cognome;

@@ -24,6 +24,7 @@
         <td>
 			    <button #modifyDocente type="button" class="btn btn-primary" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"> Modifica docente</button><br>
           <button #delete type="button" class="btn btn-danger" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"> Elimina docente</button><br>
+          <button #reset type="button" class="btn btn-warning" value="{{d.id_docente}}" (click)="resetPassword(reset.value)">  Reset Password</button><br>
 			  </td>
       </tr>
     </tbody>

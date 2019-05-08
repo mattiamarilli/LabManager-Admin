@@ -19,6 +19,14 @@ export class TeacherService {
   getDocenti(): Observable<Docenti[]> {
     return this.docenti.asObservable();
   }
+  resetPassword(id:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      'id': id,
+
+    };
+    return this.http.post(`/admin/password/resetdoc`, JSON.stringify(body), { headers: headers });
+  }
 
   loadDocenti(): void {
     this.http.get<Docenti[]>('/admin/docente').subscribe(res => this.docenti.next(res));

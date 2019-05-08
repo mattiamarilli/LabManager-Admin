@@ -40,7 +40,8 @@
         <td>
           <button #groupmates type="button" class="btn btn-info" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button><br>
           <button #modifyStudent type="button" class="btn btn-primary" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button><br>
-          <button #delete type="button" class="btn btn-danger" value="{{s.id}}" (click)="deleteStudent(delete.value)"> Elimina studente</button><br>
+          <button #reset type="button" class="btn btn-warning" value="{{s.id}}" (click)="resetPassword(reset.value)">  Reset Password</button><br>
+          <button #delete type="button" class="btn btn-danger" value="{{s.id}}" (click)="deleteStudent(delete.value)">Elimina studente</button><br>
 				</td>
       </tr>
     </tbody>

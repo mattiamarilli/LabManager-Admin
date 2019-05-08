@@ -22,6 +22,15 @@ export class StudentService {
   getStudenti(): Observable<Studenti[]> {
     return this.studenti.asObservable();
   }
+  
+  resetPassword(id:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      'id': id,
+
+    };
+    return this.http.post(`/user/password/resetstud`, JSON.stringify(body), { headers: headers });
+  }
 
   loadStudenti(): void {
     this.http.get<Studenti[]>('/admin/studente').subscribe(res => this.studenti.next(res));
