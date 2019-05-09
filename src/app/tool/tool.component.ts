@@ -33,6 +33,33 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
       window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"tool","id": ' + id + '}', "_blank");
   }
 
+  lockf(id_attrezzo:number, enable:boolean){
+    console.log(enable);
+    console.log(id_attrezzo);
+    if(enable){
+      //Mette
+      this.toolService.lock(id_attrezzo).subscribe((data) => {
+        if(data['code'] == 200){
+          this.toolService.loadUtensili();
+        }else{
+          this.toolService.loadUtensili();
+          this.warning = data['message'];
+        }
+      });
+    }else{
+      //Toglie
+      this.toolService.removeLock(id_attrezzo).subscribe((data) => {
+        console.log(data);
+        if(data['code'] == 200){
+          this.toolService.loadUtensili();
+        }else{
+          this.toolService.loadUtensili();
+          this.warning = data['message'];
+        }
+      });
+    }
+  }
+
   unlock(id_attrezzo:number,event:boolean)
   {  if(event)
     this.toolService.lock(id_attrezzo).subscribe((data) => {
@@ -85,6 +112,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
       this.toolService.getCategorie().subscribe((data: Categorie []) => {
         this.categorie = data;
+        console.log(data);
       });
       this.toolService.loadCategorie();
     }

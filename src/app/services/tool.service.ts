@@ -59,14 +59,17 @@ export class ToolService {
     return this.http.request('delete', `/admin/utensile/segnalazione`, { body: { headers: headers, id: id_utensile } });
   }
 
-  removeLock(id_utensile:number){
+  removeLock(id:number){
     let headers  =new HttpHeaders({});
-    return this.http.request('delete', `/admin/utensile/blocco`, { body: { headers: headers, id: id_utensile } });
+    return this.http.request('delete', `/admin/utensile/blocco`, { body: { headers: headers, id: id } });
   }
 
   lock(id:number){
     let headers  =new HttpHeaders({});
-    return this.http.post(`/admin/utensile/blocco`, JSON.stringify(id), { headers: headers });
+    let body = {
+      "id":id
+    };
+    return this.http.post(`/admin/utensile/blocco`, JSON.stringify(body), { headers: headers });
   }
 
   //Categoria

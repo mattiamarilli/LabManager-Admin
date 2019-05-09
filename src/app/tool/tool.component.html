@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of categorie | paginate: { itemsPerPage: 10, currentPage: pc, id: 'c' }">
+      <tr *ngFor="let c of categorie | paginate: { itemsPerPage: 10, currentPage: pc, id: 'cc' }">
         <td class="center_object">{{c.nome}}</td>
         <td>
           <button #modifyCategoria type="button" ngbTooltip="Modifica categoria" class="fa fa-edit" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"></button>
@@ -24,7 +24,7 @@
     </tbody>
   </table>
   <div class="pagination">
-    <pagination-controls (pageChange)="pc = $event" id="c"></pagination-controls>
+    <pagination-controls (pageChange)="pc = $event" id="cc"></pagination-controls>
   </div>
   <button class="btn btn-success" type="button" id="addTool" (click)="open(content1)">Aggiungi utensile</button>
   <table class="table table-bordered table-striped">
@@ -44,21 +44,21 @@
         <td class="center_object">
           <div *ngIf="u.segnala == 1;then content else other_content"></div>
           <ng-template #content>
-            <input #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="removeAlert(enable.value)">
+            <input #enable type="checkbox"  value="{{u.id_utensile}}" (click)="removeAlert(enable.value)" checked>
           </ng-template>
           <ng-template #other_content>
             <input type="checkbox" value="{{u.id_utensile}}" disabled>
           </ng-template>
         </td>
         <td class="center_object" >
-            <div *ngIf="u.locked == 1;then content else other_content">here is ignored</div>
-            <ng-template #content>
-              <input  #enable type="checkbox"  value="{{u.id_utensile}}" checked (click)="unlock(enable.value,enable.checked)">
-            </ng-template>
-            <ng-template #other_content>
-              <input #enable type="checkbox" value="{{u.id_utensile}}" (click)="lock(enable.value,enable.checked)">
-            </ng-template>
-          </td>
+          <div *ngIf="u.locked == 1;then content1 else other_content1">here is ignored</div>
+          <ng-template #content1>
+            <input  #enable type="checkbox"  value="{{u.id_utensile}}" (click)="lockf(enable.value,enable.checked)" checked>
+          </ng-template>
+          <ng-template #other_content1>
+            <input #enable type="checkbox" value="{{u.id_utensile}}" (click)="lockf(enable.value,enable.checked)">
+          </ng-template>
+        </td>
         <td>
           <button #modifyUtensile type="button" title="Modifica utensile" class="fa fa-edit" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"></button>
           <button #delete type="button" title="Elimina utensile" class="fa fa-trash" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"></button>
