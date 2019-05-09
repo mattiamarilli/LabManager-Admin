@@ -14,7 +14,7 @@ export class AnalitycsComponent implements OnInit {
   constructor(private analitycsService:AnalitycsService){}
 
   ngOnInit() {
-    this.analitycsService.deletedTool().subscribe((data) => {
+    this.analitycsService.deletedTool().subscribe((data:DeletedTool[]) => {
       this.deletedTool = data;
     });
   }
