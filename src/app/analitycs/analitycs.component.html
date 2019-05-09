@@ -9,9 +9,29 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let d of deletedTool | paginate: { itemsPerPage: 20, currentPage: p }">
+      <tr *ngFor="let d of deletedTool | paginate: { itemsPerPage: 15, currentPage: p }">
         <td class="center_object">{{d.nome}}</td>
         <td class="center_object">{{d.categoria}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<div class="container">
+  <h3 class="title1"><strong>Lista degli attrezzi con il relativo utilizzo</strong></h3>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="center_object">Nome</th>
+        <th class="center_object">Utilizzi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usedTool | paginate: { itemsPerPage: 15, currentPage: p }">
+        <td class="center_object">{{u.nome}}</td>
+        <td class="center_object">{{u.utilizzi}}</td>
       </tr>
     </tbody>
   </table>

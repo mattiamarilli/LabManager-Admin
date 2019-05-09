@@ -62,3 +62,7 @@ export class DeletedTool{
   nome:string;
   categoria:string;
 }
+export class UsedTool{
+  nome:string;
+  utilizzi:number;
+}

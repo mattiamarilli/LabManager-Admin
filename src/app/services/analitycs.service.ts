@@ -14,6 +14,11 @@ export class AnalitycsService {
 
   deletedTool(){
     let headers = new HttpHeaders({});
-    return this.http.get('/admin/statistiche/', { headers: headers });
+    return this.http.get('/admin/statistiche/utensili/eliminati', { headers: headers });
+  }
+
+  usedTool(){
+    let headers = new HttpHeaders({});
+    return this.http.get('/admin/statistiche/utensili/usati', { headers: headers });
   }
 }
