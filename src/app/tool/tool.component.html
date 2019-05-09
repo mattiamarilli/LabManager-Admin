@@ -16,9 +16,9 @@
       <tr *ngFor="let c of categorie | paginate: { itemsPerPage: 10, currentPage: pc, id: 'c' }">
         <td class="center_object">{{c.nome}}</td>
         <td>
-          <button #modifyCategoria type="button" title="Modifica categoria" class="fa fa-edit" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"></button>
-          <button #delete type="button" title="Elimina categoria" class="fa fa-trash" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"></button>
-          <button type="button" title="Genera QR" class="fa fa-qrcode" (click)="generateqrcat(c.id_categoria)"></button>
+          <button #modifyCategoria type="button" ngbTooltip="Modifica categoria" class="fa fa-edit" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"></button>
+          <button #delete type="button" ngbTooltip="Elimina categoria" class="fa fa-trash" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"></button>
+          <button type="button" ngbTooltip="Genera QR" class="fa fa-qrcode" (click)="generateqrcat(c.id_categoria)"></button>
         </td>
       </tr>
     </tbody>

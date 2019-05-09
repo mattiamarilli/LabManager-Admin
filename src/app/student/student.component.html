@@ -38,10 +38,10 @@
         <td class="center_object">{{s.username}}</td>
         <td class="center_object">{{s.classe}}</td>
         <td>
-          <button #groupmates type="button" title="Visualizza membri del gruppo" class="fa fa-eye" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"></button>
-          <button #modifyStudent type="button" title="Modifica studente" class="fa fa-edit" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"></button>
-          <button #reset type="button" title="Reset Password" class="fa fa-key" value="{{s.id}}" (click)="resetPassword(reset.value)"></button>
-          <button #delete type="button" title="Elimina studente" class="fa fa-trash" value="{{s.id}}" (click)="deleteStudent(delete.value)"></button>
+          <button #groupmates type="button" ngbTooltip="Visualizza membri del gruppo" class="fa fa-eye" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"></button>
+          <button #modifyStudent type="button" ngbTooltip="Modifica studente" class="fa fa-edit" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"></button>
+          <button #reset type="button" ngbTooltip="Reset Password" class="fa fa-key" value="{{s.id}}" (click)="resetPassword(reset.value)"></button>
+          <button #delete type="button" ngbTooltip="Elimina studente" class="fa fa-trash" value="{{s.id}}" (click)="deleteStudent(delete.value)"></button>
 				</td>
       </tr>
     </tbody>
