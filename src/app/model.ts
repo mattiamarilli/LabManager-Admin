@@ -57,3 +57,8 @@ export class Gruppi{
         classe:string;
     }]
 }
+
+export class DeletedTool{
+  nome:string;
+  categoria:string;
+}

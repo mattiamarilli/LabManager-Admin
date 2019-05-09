@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnalitycsService } from '../services/analitycs.service';
+import { DeletedTool } from '../model';
 
 @Component({
   selector: 'app-analitycs',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalitycsComponent implements OnInit {
 
-  constructor() { }
+  deletedTool:DeletedTool[];
+
+  constructor(private analitycsService:AnalitycsService){}
 
   ngOnInit() {
+    this.analitycsService.deletedTool().subscribe((data) => {
+      this.deletedTool = data;
+    });
   }
 
 }

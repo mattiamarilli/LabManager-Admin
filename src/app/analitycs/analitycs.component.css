@@ -1,0 +1,10 @@
+.center_object{
+   text-align: center;
+}
+.title{
+  margin:15px;
+  text-align: center;
+}
+.pagination{
+  float:right;
+}

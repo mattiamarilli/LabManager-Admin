@@ -1,1 +1,21 @@
 <app-main-nav></app-main-nav>
+<div class="container">
+  <h3 class="title"><strong>Lista degli attrezzi rotti o smarriti</strong></h3>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="center_object">Nome</th>
+        <th class="center_object">Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of deletedTool | paginate: { itemsPerPage: 20, currentPage: p }">
+        <td class="center_object">{{d.nome}}</td>
+        <td class="center_object">{{d.categoria}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
