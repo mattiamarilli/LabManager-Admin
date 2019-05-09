@@ -31,21 +31,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let s of studenti">
+      <tr *ngFor="let s of studenti | paginate: { itemsPerPage: 20, currentPage: p }">
         <td class="center_object">{{s.id}}</td>
         <td class="center_object">{{s.nome}}</td>
         <td class="center_object">{{s.cognome}}</td>
         <td class="center_object">{{s.username}}</td>
         <td class="center_object">{{s.classe}}</td>
         <td>
-          <button #groupmates type="button" class="btn btn-info" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"> Visualizza membri del gruppo</button><br>
-          <button #modifyStudent type="button" class="btn btn-primary" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"> Modifica studente</button><br>
-          <button #reset type="button" class="btn btn-warning" value="{{s.id}}" (click)="resetPassword(reset.value)">  Reset Password</button><br>
-          <button #delete type="button" class="btn btn-danger" value="{{s.id}}" (click)="deleteStudent(delete.value)">Elimina studente</button><br>
+          <button #groupmates type="button" title="Visualizza membri del gruppo" class="fa fa-eye" value="{{s.id_gruppo}}" (click)="openGroupMates(group, groupmates.value)"></button>
+          <button #modifyStudent type="button" title="Modifica studente" class="fa fa-edit" value="{{s.id}}" (click)="openStudentModify(modify, modifyStudent.value)"></button>
+          <button #reset type="button" title="Reset Password" class="fa fa-key" value="{{s.id}}" (click)="resetPassword(reset.value)"></button>
+          <button #delete type="button" title="Elimina studente" class="fa fa-trash" value="{{s.id}}" (click)="deleteStudent(delete.value)"></button>
 				</td>
       </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
 
 <ng-template #content let-modal>

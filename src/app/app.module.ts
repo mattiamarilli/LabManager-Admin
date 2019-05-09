@@ -19,6 +19,7 @@ import { API_URL } from './_shared/injectionTokens';
 import { environment } from '../environments/environment';
 import { ApiUrlInterceptor } from './_helpers/api-url.interceptor';
 import { UserComponent } from './user/user.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,7 @@ import { UserComponent } from './user/user.component';
     StudentComponent,
     TeacherComponent,
     ToolComponent,
-    UserComponent,
-    
-
-
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +45,7 @@ import { UserComponent } from './user/user.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule, 
     NgbModule.forRoot()
   ],
   providers: [

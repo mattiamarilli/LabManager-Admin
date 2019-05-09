@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of classi">
+      <tr *ngFor="let c of classi | paginate: { itemsPerPage: 20, currentPage: p }">
         <td class="center_object">{{c.nome}}</td>
         <td class="center_object">{{c.anno_scolastico}}</td>
         <td class="center_object">
@@ -29,14 +29,17 @@
         </td>
         <td>
           <div>
-            <button #filterStudent type="button" class="btn btn-info" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"> Visualizza studenti</button><br>
-            <button #modifyClass type="button" class="btn btn-primary" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"> Modifica classe</button><br>
-            <button #delete type="button" class="btn btn-danger" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"> Elimina classe</button><br>
+            <button #filterStudent type="button" title="Visualizza studenti" class="fa fa-eye" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"></button>
+            <button #modifyClass type="button" title="Modifica classe" class="fa fa-edit" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"></button>
+            <button #delete type="button" title="Elimina classe" class="fa fa-trash" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"></button>
   			  </div>
         </td>
       </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
 
 <ng-template #content let-modal>

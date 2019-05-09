@@ -16,19 +16,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let d of docenti">
+      <tr *ngFor="let d of docenti | paginate: { itemsPerPage: 10, currentPage: p }">
         <td class="center_object">{{d.id_docente}}</td>
         <td class="center_object">{{d.nome}}</td>
         <td class="center_object">{{d.cognome}}</td>
         <td class="center_object">{{d.username}}</td>
         <td>
-			    <button #modifyDocente type="button" class="btn btn-primary" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"> Modifica docente</button><br>
-          <button #delete type="button" class="btn btn-danger" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"> Elimina docente</button><br>
-          <button #reset type="button" class="btn btn-warning" value="{{d.id_docente}}" (click)="resetPassword(reset.value)">  Reset Password</button><br>
+			    <button #modifyDocente type="button" title="Modifica docente" class="fa fa-edit" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"></button>
+          <button #delete type="button" title="Elimina docente" class="fa fa-trash" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"></button>
+          <button #reset type="button" title="Reset Password" class="fa fa-key" value="{{d.id_docente}}" (click)="resetPassword(reset.value)"></button>
 			  </td>
       </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
 
 <ng-template #content let-modal>
