@@ -21,6 +21,9 @@ import { ApiUrlInterceptor } from './_helpers/api-url.interceptor';
 import { UserComponent } from './user/user.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+ 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule, 
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [
     { provide: API_URL, useValue: environment.apiUrl },

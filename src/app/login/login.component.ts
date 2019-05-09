@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service'
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import {Auth} from '../model_body'
 @Component({
@@ -10,7 +11,7 @@ import {Auth} from '../model_body'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router,private authService: AuthenticationService) { }
+  constructor(private router: Router,private authService: AuthenticationService,private toastr: ToastrService) { }
   auth:Auth = new Auth();
   login(){
     state: RouterStateSnapshot;
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
       if(data == true)
           this.router.navigate(['/class']);
       else
-        alert("Credenziali non corrette");
+      this.toastr.error('Credenziali non corrette', 'Errore');
 		}
     );;
   }
