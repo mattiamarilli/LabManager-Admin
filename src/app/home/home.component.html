@@ -1,7 +1,21 @@
 <app-main-nav></app-main-nav>
-<div class="inside">
-	<img src="assets/images/marconiHD.png">
-	<h1>Marconi</h1>
-	<hr class="pageline">
-	<span>Welcome!</span>
-</div>
+
+<h1 align="center" style="border:1px solid red" >{{ time | date: 'hh:mm:ss a' }}</h1>
+
+<div >
+<h2>Classi Attive</h2>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="center_object">Nome</th>
+        <th class="center_object">Anno scolatico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="center_object">{{classe.nome}}</td>
+		<td class="center_object">{{classe.anno_scolastico}}</td>
+	</tr>
+	</tbody>
+</table>
+</div>	

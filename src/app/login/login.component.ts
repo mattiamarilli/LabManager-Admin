@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   
     this.authService.login(this.auth).subscribe((data: boolean ) => {
       if(data == true)
-          this.router.navigate(['/home']);
+          this.router.navigate(['/class']);
       else
         alert("Credenziali non corrette");
 		}
