@@ -49,7 +49,6 @@ export class StudentComponent implements OnInit {
 
   resetPassword(id_studente:number){
     this.studentService.resetPassword(id_studente).subscribe();
-    console.log('ciao')
   }
 
   addStudent(){

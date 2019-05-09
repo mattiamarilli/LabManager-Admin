@@ -25,85 +25,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
     }
 
-    generateqrcat(id:number){
-        window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"category","id": ' + id + '}', "_blank");
-    }
-
-    generateqrtool(id:number){
-      window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"tool","id": ' + id + '}', "_blank");
-  }
-
-  lockf(id_attrezzo:number, enable:boolean){
-    console.log(enable);
-    console.log(id_attrezzo);
-    if(enable){
-      //Mette
-      this.toolService.lock(id_attrezzo).subscribe((data) => {
-        if(data['code'] == 200){
-          this.toolService.loadUtensili();
-        }else{
-          this.toolService.loadUtensili();
-          this.warning = data['message'];
-        }
-      });
-    }else{
-      //Toglie
-      this.toolService.removeLock(id_attrezzo).subscribe((data) => {
-        console.log(data);
-        if(data['code'] == 200){
-          this.toolService.loadUtensili();
-        }else{
-          this.toolService.loadUtensili();
-          this.warning = data['message'];
-        }
-      });
-    }
-  }
-
-  unlock(id_attrezzo:number,event:boolean)
-  {  if(event)
-    this.toolService.lock(id_attrezzo).subscribe((data) => {
-      if(data['code'] == 200){
-        this.toolService.loadUtensili();
-      }else{
-        this.toolService.loadUtensili();
-        this.warning = data['message'];
-      }
-    });
-    else
-    this.toolService.removeLock(id_attrezzo).subscribe((data) => {
-      if(data['code'] == 200){
-        this.toolService.loadUtensili();
-      }else{
-        this.toolService.loadUtensili();
-        this.warning = data['message'];
-      }
-    });
-  }
-  lock(id_attrezzo:number,event:boolean)
-  {
-    if(event)
-      this.toolService.lock(id_attrezzo).subscribe((data) => {
-        if(data['code'] == 200){
-          this.toolService.loadUtensili();
-        }else{
-          this.toolService.loadUtensili();
-          this.warning = data['message'];
-        }
-      });
-      else
-      this.toolService.removeLock(id_attrezzo).subscribe((data) => {
-        if(data['code'] == 200){
-          this.toolService.loadUtensili();
-        }else{
-          this.toolService.loadUtensili();
-          this.warning = data['message'];
-        }
-      });
-  }
-
-
-
     ngOnInit(){
       this.toolService.getUtensili().subscribe((data: Utensili []) => {
         this.utensili = data;
@@ -112,7 +33,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
       this.toolService.getCategorie().subscribe((data: Categorie []) => {
         this.categorie = data;
-        console.log(data);
       });
       this.toolService.loadCategorie();
     }
@@ -229,43 +149,36 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
         }
       });
     }
-/*
-    constructor(private toolService:ToolService) { }
-
-      ngOnInit() {
-        /*this.toolService.getCategorie().subscribe((data: Categorie[] ) => {
-          this.Categorie = data;
-        })
-        this.Categorie = [
-         {id_categoria: 1, nome: 'dummyClass1'},
-         {id_categoria: 2, nome: 'dummyClass2'},
-         {id_categoria: 3, nome: 'dummyClass3'},
-         {id_categoria: 4, nome: 'dummyClass4'},
-       ];
-       this.Utensili = [
-        {id_utensile: 1, nome: 'dummyClass1',segnala:true,id_categoria: 1,categoria: ''},
-        {id_utensile: 2, nome: 'dummyClass2',segnala:true,id_categoria: 2,categoria: ''},
-        {id_utensile: 3, nome: 'dummyClass3',segnala:false,id_categoria: 3,categoria: ''},
-        {id_utensile: 4, nome: 'dummyClass4',segnala:true,id_categoria: 4,categoria: ''},
-      ];
-     }
-
-    setNewTool()
-    {
-      this.toolService.setUtensile(this.utensile);
+    lockf(id_attrezzo:number, enable:boolean){
+      if(enable){
+        //Mette
+        this.toolService.lock(id_attrezzo).subscribe((data) => {
+          if(data['code'] == 200){
+            this.toolService.loadUtensili();
+          }else{
+            this.toolService.loadUtensili();
+            this.warning = data['message'];
+          }
+        });
+      }else{
+        //Toglie
+        this.toolService.removeLock(id_attrezzo).subscribe((data) => {
+          if(data['code'] == 200){
+            this.toolService.loadUtensili();
+          }else{
+            this.toolService.loadUtensili();
+            this.warning = data['message'];
+          }
+        });
+      }
     }
-    getToolByCategory()
-  {
-    this.toolService.getUtensili().subscribe((data:Utensili[])=>{
 
-      for(let dato of data)
-        {
-          if(dato.id_categoria = this.idCategoria)
-            this.Categorie.push(dato);
-        }
-    })
-  }
-  setNewCategory(){
-    this.toolService.setCategoria(this.nomec);
-  }*/
+    //Generazione QR
+    generateqrcat(id:number){
+        window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"category","id": ' + id + '}', "_blank");
+    }
+
+    generateqrtool(id:number){
+      window.open('http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={"type":"tool","id": ' + id + '}', "_blank");
+    }
 }

@@ -26,29 +26,25 @@ export class AuthenticationService {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });
-        console.log(auth);
 
         return this.http.post<AuthUser>(environment.apiUrl + `/admin/auth`, JSON.stringify(auth), { headers: headers}).pipe(
-           
+
             map((user: AuthUser ) => {
-                console.log(user);
                 if (user.id) {
                    sessionStorage.setItem('currentUser', JSON.stringify(user));
                    this.currentUserSubject.next(user);
                    return true;
                  }
-                 else 
+                 else
                     return false;
-   
-   
+
+
                })
         )
     }
 
     modifyPassword(id_docente: number, odlpassword:string,newpassword:string){
         let headers = new HttpHeaders({});
-        console.log("Old Password : " + odlpassword)
-        console.log("New Password : " + newpassword)
         let body = {
           'id': id_docente,
           'oldpassword': odlpassword,

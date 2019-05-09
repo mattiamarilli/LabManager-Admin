@@ -40,7 +40,6 @@ export class ClassComponent implements OnInit{
     this.warning = '';
     this.id_classe = enable.value;
     if(!enable.checked){
-      console.log(this.id_classe);
       this.classService.disable(this.id_classe).subscribe(data => {
         if(data['code'] == 200){
           alert("Classe Disattivata");

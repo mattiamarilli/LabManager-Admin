@@ -23,7 +23,7 @@ export class ClassService {
   private classi:Subject<Classi[]>;
 
   public getClassi(): Observable<Classi[]> {
-    
+
     return this.classi.asObservable();
   }
 
@@ -57,7 +57,6 @@ export class ClassService {
 
   modifyClass(classe:Classe, id_classe:number){
     let headers  =new HttpHeaders({});
-    console.log(classe);
     let body = {
       'id_classe':id_classe,
       'nome':classe.nome,

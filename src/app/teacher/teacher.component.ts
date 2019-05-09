@@ -33,7 +33,6 @@ export class TeacherComponent implements OnInit {
   }
   resetPassword(id_docente:number){
     this.teacherService.resetPassword(id_docente).subscribe();
-    console.log('ciao')
   }
 
   addDocente(){
