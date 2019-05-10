@@ -3,19 +3,19 @@
   <h3 class="title"><strong>Lista degli studenti</strong></h3>
   <div class="filtro">
     <div class="form-group">
-      <label>Seleziona la classe</label>
+      <label>Filtra per classe</label>
       <select class="form-control" [(ngModel)]="id_classe_input" (change)="onChangeIdClasse($event.target.value)">
         <option *ngFor="let c of classi" value="{{c.id_classe}}">{{c.nome}}</option>
       </select>
     </div>
   	<div class="form-group">
-      <label>Seleziona l'anno scolatico</label>
+      <label>Filtra per anno scolatico</label>
       <select class="form-control" [(ngModel)]="anno_scolastico_input" (change)="onChangeAnnoScolastico($event.target.value)">
         <option *ngFor="let anno of anno_scolastico_array" value="{{anno}}">{{anno}}</option>
       </select>
     </div>
+    <button class="btn btn-success" type="button" id="addStudent" (click)="open(content)">Aggiungi studente</button>
   </div>
-  <button class="btn btn-success" type="button" id="addStudent" (click)="open(content)">Aggiungi studente</button>
   <div *ngIf="warning" class="alert alert-danger" role="alert">
     {{warning}}
   </div>
