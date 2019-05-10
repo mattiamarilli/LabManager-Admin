@@ -6,14 +6,23 @@
 }
 #addStudent{
   margin:15px;
-  margin-left:0px;
+  margin-bottom:0px;
+  float: right;
 }
 .title{
   margin:15px;
   text-align: center;
 }
 .filtro{
-
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.filtro label{
+  margin-right: 25px;
+}
+.form-group{
+  margin-right: 15px;
 }
 .pagination{
   float:right;
