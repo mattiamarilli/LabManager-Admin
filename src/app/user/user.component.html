@@ -7,6 +7,8 @@
     <input type="text" id="oldpassword" class="form-control" placeholder="Vecchia Password" [ngModelOptions]="{standalone: true}" [(ngModel)]="oldpassword" required autofocus >
     <label for="inputPassword" class="sr-only">Nuova Password</label>
     <input type="password" id="newpassword" class="form-control" placeholder="Nuova Password" [ngModelOptions]="{standalone: true}" [(ngModel)]="newpassword" required >
+    <label for="inputPassword" class="sr-only">Controllo Password</label>
+    <input type="password" id="check" class="form-control" placeholder="Verifica Password" [ngModelOptions]="{standalone: true}" [(ngModel)]="checkpassword" required >
     <div class="checkbox mb-3">
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" value="Modifica" (click)="modifyPassword()">Modifica password</button>

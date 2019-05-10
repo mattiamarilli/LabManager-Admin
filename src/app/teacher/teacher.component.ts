@@ -6,6 +6,7 @@ import {Docenti} from '../model'
 import {Docente} from '../model_body'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {TeacherService} from '../services/teacher.service'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-teacher',
   templateUrl: './teacher.component.html',
@@ -13,7 +14,7 @@ import {TeacherService} from '../services/teacher.service'
 })
 export class TeacherComponent implements OnInit {
 
-  constructor(private teacherService:TeacherService,  private modalService: NgbModal) { }
+  constructor(private teacherService:TeacherService,  private modalService: NgbModal,private toastr: ToastrService) { }
 
   docenti:Docenti[];
   docente:Docente;
@@ -32,7 +33,13 @@ export class TeacherComponent implements OnInit {
       this.teacherService.loadDocenti();
   }
   resetPassword(id_docente:number){
-    this.teacherService.resetPassword(id_docente).subscribe();
+    this.teacherService.resetPassword(id_docente).subscribe((data:any)=>{ 
+      if(data.code == 200)
+      this.toastr.success('Password Resettata', 'Successo');
+      
+      else
+      this.toastr.error('Password non resettata', 'Errore');
+    });
   }
 
   addDocente(){

@@ -5,6 +5,7 @@ import { Classi } from '../model';
 import { Studenti } from '../model';
 import { Studente } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student',
@@ -13,7 +14,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class StudentComponent implements OnInit {
 
-  constructor(private studentService:StudentService,private classService:ClassService, private modalService: NgbModal) { }
+  constructor(private studentService:StudentService,private classService:ClassService, private modalService: NgbModal,private toastr: ToastrService) { }
 
   studenti:Studenti[];
   studente:Studente;
@@ -48,7 +49,13 @@ export class StudentComponent implements OnInit {
   }
 
   resetPassword(id_studente:number){
-    this.studentService.resetPassword(id_studente).subscribe();
+    this.studentService.resetPassword(id_studente).subscribe((data:any)=>{ 
+      if(data.code == 200)
+      this.toastr.success('Password Resettata', 'Successo');
+      
+      else
+      this.toastr.error('Password non resettata', 'Errore');
+    });
   }
 
   addStudent(){
