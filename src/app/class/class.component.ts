@@ -49,19 +49,21 @@ export class ClassComponent implements OnInit{
         }
       });
     }else{
-      this.toastr.success('Successo', 'Strumento acquisito');
+      
       this.classService.enable(this.id_classe).subscribe(data => {
        
           if(data['code'] == 200){
-            this.toastr.success('Successo', 'Strumento acquisito');
+            this.toastr.success('Successo', 'Classe Attivata');
             this.classService.loadClassi();
             this.modalService.dismissAll('Reason');
           }
           else if(data['code'] == 403){
             this.toastr.error(data['message'],'Attenzione')
+            this.classService.loadClassi();
           }
           else{
             this.toastr.error(data['message'],'Attenzione')
+            this.classService.loadClassi();
           }
         }
       );

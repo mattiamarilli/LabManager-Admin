@@ -38,7 +38,10 @@ export class ClassService {
 
   enable(id_classe:number){
     let headers = new HttpHeaders({});
-    return this.http.post(`/admin/classe/enable`, JSON.stringify(id_classe), { headers: headers });
+    let body = {
+      'id_classe': id_classe
+    };
+    return this.http.post(`/admin/classe/enable`, JSON.stringify(body), { headers: headers });
   }
 
   disable(id_classe:number){
