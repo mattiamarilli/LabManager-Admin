@@ -24,4 +24,14 @@ export class AnalitycsComponent implements OnInit {
     });
   }
 
+  convertTime(secondi: number){
+    const ore = Math.floor(secondi / 3600);
+    secondi = secondi % 3600;
+    const minuti = Math.floor(secondi / 60);
+    secondi = secondi % 60;
+
+    const pad = (n) => ("0" + n).slice(-2);
+
+    return `${pad(ore)}:${pad(minuti)}:${pad(secondi)}`;
+  }
 }

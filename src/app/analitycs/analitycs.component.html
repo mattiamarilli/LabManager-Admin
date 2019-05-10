@@ -26,12 +26,14 @@
       <tr>
         <th class="center_object">Nome</th>
         <th class="center_object">Utilizzi</th>
+        <th class="center_object">Tempo di utilzzo</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let u of usedTool | paginate: { itemsPerPage: 15, currentPage: p }">
         <td class="center_object">{{u.nome}}</td>
         <td class="center_object">{{u.utilizzi}}</td>
+        <td class="center_object">{{convertTime(u.secondi)}}</td>
       </tr>
     </tbody>
   </table>
