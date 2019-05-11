@@ -99,4 +99,9 @@ export class ToolService {
     let headers  =new HttpHeaders({});
     return this.http.request('delete', `/admin/categoria`, { body: { headers: headers, id_categoria: id } });
   }
+
+  releaseAll(){
+    let headers = new HttpHeaders({});
+    return this.http.post(`/admin/releaseall`, { headers: headers });
+  }
 }

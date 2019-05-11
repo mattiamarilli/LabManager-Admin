@@ -6,6 +6,7 @@ import { Studenti } from '../model';
 import { Classe } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import {ToolService} from '../services/tool.service'
 
 @Component({
   selector: 'app-class',
@@ -14,7 +15,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ClassComponent implements OnInit{
 
-  constructor(private classService:ClassService, private modalService: NgbModal, private studentService:StudentService,private toastr: ToastrService) { }
+  constructor(private classService:ClassService,
+     private modalService: NgbModal, 
+     private studentService:StudentService,
+     private toastr: ToastrService,
+     private toolService:ToolService) { }
 
   classi:Classi[];
   elencoStudenti:Studenti[];
@@ -44,6 +49,7 @@ export class ClassComponent implements OnInit{
       this.classService.disable(this.id_classe).subscribe(data => {
         if(data['code'] == 200){
           this.toastr.warning('Classe Disattivata con successo', 'Disattivata');
+          this.toolService.releaseAll().subscribe();
         }else{
           this.warning = data['message'];
         }
