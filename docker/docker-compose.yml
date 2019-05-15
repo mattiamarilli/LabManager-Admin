@@ -10,7 +10,7 @@ services:
       - dist:/var/www/app/
     networks:
       - proxy
-    container_name: admin-web
+    container_name: admin-nginx
     expose:
       - 80
     labels:
