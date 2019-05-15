@@ -13,7 +13,7 @@ services:
       - 80
     labels:
       - "traefik.port=80"
-      - 'traefik.backend=traefik'
+      - 'traefik.backend=labmanager-admin'
       - 'traefik.enable=true'
       - "traefik.frontend.rule=Host:admin.marconi.demo.vivedo.me"
 
