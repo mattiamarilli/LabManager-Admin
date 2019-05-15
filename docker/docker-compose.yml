@@ -10,7 +10,7 @@ services:
       - dist:/var/www/app/
     networks:
       - proxy
-    container_name: traefik
+    container_name: admin-web
     expose:
       - 80
     labels:
