@@ -2,7 +2,6 @@ version: '3'
 
 services:
   nginx:
-    container_name: build_nginx
     build: ../
     environment:
       - NGINX_PORT=80
