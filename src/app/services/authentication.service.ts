@@ -27,7 +27,7 @@ export class AuthenticationService {
             'Content-Type': 'application/json'
         });
 
-        return this.http.post<AuthUser>(environment.apiUrl + `/admin/auth`, JSON.stringify(auth), { headers: headers}).pipe(
+        return this.http.post<AuthUser>(`/admin/auth`, JSON.stringify(auth), { headers: headers}).pipe(
 
             map((user: AuthUser ) => {
                 if (user.id) {
