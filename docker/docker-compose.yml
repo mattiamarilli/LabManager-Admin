@@ -7,7 +7,7 @@ services:
     environment:
       - NGINX_PORT=80
     volumes:
-      - dist:/var/www/app/
+      - ../dist:/var/www/app/
     networks:
       - proxy
     container_name: admin-nginx
@@ -24,10 +24,7 @@ services:
     build: ../
     volumes:
       - ../:/app/
-      - dist:/app/dist/
-
-volumes:
-  dist:
+      - ../dist:/app/dist/
 
 networks:
   proxy:
