@@ -1,8 +1,8 @@
 FROM trion/ng-cli
 
-WORKDIR /app
-
 COPY . /app
+
+WORKDIR /app
 
 RUN npm install
 
