@@ -27,6 +27,7 @@ export class ClassComponent implements OnInit{
   classe:Classe;
   result:string;
   filter:string;
+  p: any;
 
   //Modal
   nomec:string = '';

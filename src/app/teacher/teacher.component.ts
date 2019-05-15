@@ -21,6 +21,8 @@ export class TeacherComponent implements OnInit {
   warning:string;
   id_docente:number;
 
+  p:any;
+
   //modal
   nome:string = '';
   cognome:string = '';

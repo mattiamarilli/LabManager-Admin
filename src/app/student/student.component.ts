@@ -24,6 +24,10 @@ export class StudentComponent implements OnInit {
   anno_scolastico_array = [];
   studenti_per_gruppo:Studenti[] = [];
 
+  id_classe_input:any;
+  anno_scolastico_input:any;
+  p:any;
+
   get filteredStudent() {
     return this.studenti.filter(k => true);
   }

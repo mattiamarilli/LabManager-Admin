@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'login',component:LoginComponent},
   { path: 'class',component:ClassComponent},
   { path: 'student', component:StudentComponent },
-  {path : 'teacher', component: TeacherComponent},
-  {path: 'tool', component: ToolComponent},
+  { path : 'teacher', component: TeacherComponent},
+  { path: 'tool', component: ToolComponent},
   { path: '', redirectTo: '/class', pathMatch: 'full'},
 ];
 

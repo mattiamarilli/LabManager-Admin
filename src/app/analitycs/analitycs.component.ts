@@ -12,6 +12,7 @@ export class AnalitycsComponent implements OnInit {
 
   deletedTool:DeletedTool[];
   usedTool:UsedTool[];
+  p: any;
 
   constructor(private analitycsService:AnalitycsService){}
 

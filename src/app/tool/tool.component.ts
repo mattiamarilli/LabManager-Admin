@@ -21,6 +21,9 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     id_categoria:number;
     warning:string;
 
+    pc:any;
+    pu:any;
+
     constructor(private toolService:ToolService, private modalService: NgbModal){
 
     }
