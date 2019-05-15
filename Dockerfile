@@ -11,7 +11,7 @@ RUN npm ci && mkdir /app && mv ./node_modules ./app
 
 WORKDIR /app
 
-COPY . .
+COPY . /app
 
 ## Build the angular app in production mode and store the artifacts in dist folder
 
