@@ -20,7 +20,7 @@ services:
       - "traefik.frontend.rule=Host:admin.marconi.demo.vivedo.me"
     
   build:
-    container_name: build
+    container_name: admin-build
     build: ../
     volumes:
       - ../:/app/
