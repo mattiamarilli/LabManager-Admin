@@ -12,13 +12,13 @@ import {ToolComponent} from './tool/tool.component'
 import {UserComponent} from './user/user.component'
 
 const routes: Routes = [
-  { path: 'user', component:UserComponent},
-  { path: 'analitycs',component:AnalitycsComponent},
+  { path: 'user', component:UserComponent,canActivate: [AuthGuard]},
+  { path: 'analitycs',component:AnalitycsComponent,canActivate: [AuthGuard]},
   { path: 'login',component:LoginComponent},
-  { path: 'class',component:ClassComponent},
-  { path: 'student', component:StudentComponent },
-  { path : 'teacher', component: TeacherComponent},
-  { path: 'tool', component: ToolComponent},
+  { path: 'class',component:ClassComponent,canActivate: [AuthGuard]},
+  { path: 'student', component:StudentComponent,canActivate: [AuthGuard] },
+  { path : 'teacher', component: TeacherComponent,canActivate: [AuthGuard]},
+  { path: 'tool', component: ToolComponent,canActivate: [AuthGuard]},
   { path: '', redirectTo: '/class', pathMatch: 'full'},
 ];
 
