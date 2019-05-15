@@ -1,9 +1,9 @@
 FROM trion/ng-cli
 
-RUN npm install
-
 WORKDIR /app
 
 COPY . /app
+
+RUN npm install
 
 ENTRYPOINT ng build
