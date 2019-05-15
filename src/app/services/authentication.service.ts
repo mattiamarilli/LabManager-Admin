@@ -50,7 +50,7 @@ export class AuthenticationService {
           'oldpassword': odlpassword,
           'newpassword': newpassword,
         };
-        return this.http.post(environment.apiUrl +  `/admin/docente/password`, JSON.stringify(body) , { headers: headers });
+        return this.http.post(`/admin/docente/password`, JSON.stringify(body) , { headers: headers });
       }
 
     logout() {
