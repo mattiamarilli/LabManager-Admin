@@ -4,14 +4,21 @@ services:
   nginx:
     container_name: nginx
     image: nginx:alpine
-    ports:
-      - 8001:80
-      - 4431:443
     environment:
       - NGINX_PORT=80
     volumes:
       - dist:/var/www/app/
-
+    networks:
+      - proxy
+    container_name: traefik
+    expose:
+      - 80
+    labels:
+      - "traefik.port=80"
+      - 'traefik.backend=traefik'
+      - 'traefik.enable=true'
+      - "traefik.frontend.rule=Host:admin.marconi.demo.vivedo.me"
+    
   build:
     container_name: build
     build: ../
@@ -21,3 +28,7 @@ services:
 
 volumes:
   dist:
+
+networks:
+  proxy:
+    external: true
