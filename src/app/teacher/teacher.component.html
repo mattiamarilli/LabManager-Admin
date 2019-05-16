@@ -12,7 +12,7 @@
         <th class="center_object">Nome</th>
         <th class="center_object">Cognome</th>
         <th class="center_object">Username</th>
-        <th>Azioni</th>
+        <th class="center_object">Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
         <td class="center_object">{{d.nome}}</td>
         <td class="center_object">{{d.cognome}}</td>
         <td class="center_object">{{d.username}}</td>
-        <td>
+        <td class="center_object">
 			    <button #modifyDocente type="button" ngbTooltip="Modifica docente" class="btn btn-primary fa fa-edit" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"></button>
           <button #delete type="button" ngbTooltip="Elimina docente" class="btn btn-danger fa fa-trash" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"></button>
           <button #reset type="button" ngbTooltip="Reset Password" class="btn btn-warning fa fa-key" value="{{d.id_docente}}" (click)="resetPassword(reset.value)"></button>
