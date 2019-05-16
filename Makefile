@@ -1,7 +1,7 @@
 COMPOSE_PROJECT_NAME=labmanager-admin
 
 COMPOSE=docker-compose --project-name=$(COMPOSE_PROJECT_NAME) -f docker/docker-compose.yml
-DEVCOMPOSE=$(COMPOSE) -f docker/docker-compose.dev.yml
+DEVCOMPOSE=$(COMPOSE)
 PRODCOMPOSE=$(COMPOSE)
 
 .PHONY: upd

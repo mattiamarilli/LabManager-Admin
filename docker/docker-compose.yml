@@ -2,7 +2,6 @@ version: '3'
 
 services:
   nginx:
-    container_name: build_nginx
     build: ../
     environment:
       - NGINX_PORT=80
@@ -13,7 +12,7 @@ services:
       - 80
     labels:
       - "traefik.port=80"
-      - 'traefik.backend=traefik'
+      - 'traefik.backend=labmanager-admin'
       - 'traefik.enable=true'
       - "traefik.frontend.rule=Host:admin.marconi.demo.vivedo.me"
 

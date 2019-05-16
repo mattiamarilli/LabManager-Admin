@@ -14,12 +14,10 @@ export class GroupService {
 
   constructor(private http: HttpClient) { }
 
-  apiURL:string;
-
   getGruppi(): Observable<Gruppi[]>{
     let headers = new HttpHeaders({
     });
-    return this.http.get<Gruppi[]>(this.apiURL + '/admin/gruppo');
+    return this.http.get<Gruppi[]>('/admin/gruppo');
 
   }
 }
