@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://api.marconi.demo.vivedo.me:8080',
+  apiUrl: 'http://api.marconi.demo.vivedo.me',
 };
 
 /*

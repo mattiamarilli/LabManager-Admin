@@ -22,9 +22,9 @@
         <td class="center_object">{{d.cognome}}</td>
         <td class="center_object">{{d.username}}</td>
         <td>
-			    <button #modifyDocente type="button" ngbTooltip="Modifica docente" class="fa fa-edit" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"></button>
-          <button #delete type="button" ngbTooltip="Elimina docente" class="fa fa-trash" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"></button>
-          <button #reset type="button" ngbTooltip="Reset Password" class="fa fa-key" value="{{d.id_docente}}" (click)="resetPassword(reset.value)"></button>
+			    <button #modifyDocente type="button" ngbTooltip="Modifica docente" class="btn btn-primary fa fa-edit" value="{{d.id_docente}}" (click)="openDocenteModify(modify, modifyDocente.value)"></button>
+          <button #delete type="button" ngbTooltip="Elimina docente" class="btn btn-danger fa fa-trash" value="{{d.id_docente}}" (click)="deleteDocente(delete.value)"></button>
+          <button #reset type="button" ngbTooltip="Reset Password" class="btn btn-warning fa fa-key" value="{{d.id_docente}}" (click)="resetPassword(reset.value)"></button>
 			  </td>
       </tr>
     </tbody>

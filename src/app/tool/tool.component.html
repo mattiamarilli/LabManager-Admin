@@ -16,9 +16,9 @@
       <tr *ngFor="let c of categorie | paginate: { itemsPerPage: 10, currentPage: pc, id: 'cc' }">
         <td class="center_object">{{c.nome}}</td>
         <td>
-          <button #modifyCategoria type="button" ngbTooltip="Modifica categoria" class="fa fa-edit" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"></button>
-          <button #delete type="button" ngbTooltip="Elimina categoria" class="fa fa-trash" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"></button>
-          <button type="button" ngbTooltip="Genera QR" class="fa fa-qrcode" (click)="generateqrcat(c.id_categoria)"></button>
+          <button #modifyCategoria type="button" ngbTooltip="Modifica categoria" class="btn btn-primary fa fa-edit" value="{{c.id_categoria}}" (click)="openCategoriaModify(modifyCategoriaPopUp, modifyCategoria.value)"></button>
+          <button #delete type="button" ngbTooltip="Elimina categoria" class="btn btn-danger fa fa-trash" value="{{c.id_categoria}}" (click)="DeleteCategoria(delete.value)"></button>
+          <button type="button" ngbTooltip="Genera QR" class="btn btn-warning fa fa-qrcode" (click)="generateqrcat(c.id_categoria)"></button>
         </td>
       </tr>
     </tbody>
@@ -56,13 +56,13 @@
             <input  #enable type="checkbox"  value="{{u.id_utensile}}" (click)="lockf(enable.value,enable.checked)" checked>
           </ng-template>
           <ng-template #other_content1>
-            <input #enable type="checkbox" value="{{u.id_utensile}}" (click)="lockf(enable.value,enable.checked)">
+            <input #enable type="checkbox" value="{{u.id_utensile}}" (click)="lockf(enable.value,enable.checked)" id="checkbox">
           </ng-template>
         </td>
         <td>
-          <button #modifyUtensile type="button" ngbTooltip="Modifica utensile" class="fa fa-edit" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"></button>
-          <button #delete type="button" ngbTooltip="Elimina utensile" class="fa fa-trash" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"></button>
-          <button class="fa fa-qrcode" ngbTooltip="Genera QR" type="button" id="set" (click)="generateqrtool(u.id_utensile)"></button>
+          <button #modifyUtensile type="button" ngbTooltip="Modifica utensile" class="btn btn-primary fa fa-edit" value="{{u.id_utensile}}" (click)="openUtensileModify(modifyUtensilePopUp, modifyUtensile.value)"></button>
+          <button #delete type="button" ngbTooltip="Elimina utensile" class="btn btn-danger fa fa-trash" value="{{u.id_utensile}}" (click)="DeleteUtensile(delete.value)"></button>
+          <button class="btn btn-warning fa fa-qrcode" ngbTooltip="Genera QR" type="button" id="set" (click)="generateqrtool(u.id_utensile)"></button>
         </td>
       </tr>
     </tbody>
