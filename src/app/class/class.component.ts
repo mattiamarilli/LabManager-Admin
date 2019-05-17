@@ -48,6 +48,7 @@ export class ClassComponent implements OnInit{
       this.classService.disable(this.id_classe).subscribe(data => {
         if(data['code'] == 200){
           this.toolService.releaseAll().subscribe();
+          this.toastr.warning('Tutti gli strumenti restituiti','Classe Disabilitata')
         }else{
           this.toastr.error(data['message'],'Attenzione')
         }
