@@ -81,9 +81,13 @@ export class ToolService {
     this.http.get<Categorie[]>('/admin/categoria').subscribe(res => this.categorie.next(res));
   }
 
-  setCategoria(nome:string){
+  setCategoria(nome:string,quantita:number){
     let headers = new HttpHeaders({});
-    return this.http.post(`/admin/categoria`, nome, { headers: headers });
+    let body = {
+      "nome":nome,
+      "quantita":quantita,
+    };
+    return this.http.post(`/admin/categoria`,JSON.stringify(body), { headers: headers });
   }
 
   modifyCategoria(nome:string, id_categoria:number){

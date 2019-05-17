@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
     utensile:Utensile;
 
     nomeInput:String;
+    quantitaInput:number;
     idInput:number;
     id_categoria:number;
 
@@ -41,8 +42,8 @@ import { ToastrService } from 'ngx-toastr';
     }
 
     //Method
-    AddCategoria(nome){
-      this.toolService.setCategoria(nome).subscribe((data) => {
+    AddCategoria(nome,quantita){
+      this.toolService.setCategoria(nome,quantita).subscribe((data) => {
         if(data['code'] == 200){
           this.toolService.loadCategorie();
           this.modalService.dismissAll('Reason');

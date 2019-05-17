@@ -82,10 +82,18 @@
         </div>
       </div>
     </form>
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Quantità</label>
+        <div class="input-group">
+          <input #quantita="ngModel" type="number" class="form-control" [(ngModel)]="quantitaInput" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss()" style="display: inline;">Annulla</button>
-    <button type="button" class="btn btn-success" (click)="AddCategoria(nome.value)">Aggiungi</button>
+    <button type="button" class="btn btn-success" (click)="AddCategoria(nome.value,quantita.value)">Aggiungi</button>
   </div>
 </ng-template>
 
