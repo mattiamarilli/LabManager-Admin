@@ -66,3 +66,8 @@ export class UsedTool{
   nome:string;
   utilizzi:number;
 }
+
+export class StudentiUtilizzatori{
+    nome:string;
+    cognome:string;
+}

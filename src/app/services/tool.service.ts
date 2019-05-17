@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import '../model'
 import '../model_body'
-import { Utensili, Categorie } from '../model';
+import { Utensili, Categorie, Studenti, StudentiUtilizzatori } from '../model';
 import { Utensile } from '../model_body';
 
 @Injectable({
@@ -108,4 +108,14 @@ export class ToolService {
     let headers = new HttpHeaders({});
     return this.http.post(`/admin/releaseall`, { headers: headers });
   }
+
+  showStudent(id_utensile:number) : Observable<StudentiUtilizzatori[]>
+  {
+    let headers  =new HttpHeaders({});
+    let body = {
+      "id_utensile":id_utensile,
+    };
+    return this.http.post<StudentiUtilizzatori[]>('/admin/isbeenused', JSON.stringify(body), { headers: headers });
+  }
 }
+

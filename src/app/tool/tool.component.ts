@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolService } from '../services/tool.service';
-import { Utensili, Categorie, } from '../model';
+import { Utensili, Categorie, StudentiUtilizzatori, } from '../model';
 import { Utensile } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { Studenti } from '../model'
 
 
   @Component({
@@ -21,6 +22,7 @@ import { ToastrService } from 'ngx-toastr';
     quantitaInput:number;
     idInput:number;
     id_categoria:number;
+    elencoStudenti:StudentiUtilizzatori[];
 
     pc:any;
     pu:any;
@@ -52,6 +54,20 @@ import { ToastrService } from 'ngx-toastr';
           this.toastr.error(data['message'],'Attenzione')
         }
       });
+    }
+
+    showStudent(student,id_utensile:number){
+      this.toolService.showStudent(id_utensile).subscribe((data: StudentiUtilizzatori[])=>
+      {
+        
+        this.elencoStudenti = data;
+        if(this.elencoStudenti.length == 0) 
+          this.toastr.warning("L'attrezzo è al momento inutilizzato","Attenzione");
+        else
+          this.modalService.open(student, {ariaLabelledBy: 'modal-basic-titile'});
+      });
+     
+
     }
 
     ModifyCategoria(nome){
