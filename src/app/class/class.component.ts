@@ -98,6 +98,7 @@ export class ClassComponent implements OnInit{
   }
 
   openStudent(student, id_classe){
+    console.log(id_classe);
     this.id_classe = id_classe;
     this.getStudentByClass();
     this.modalService.open(student, {ariaLabelledBy: 'modal-basic-titile'});
@@ -130,7 +131,7 @@ export class ClassComponent implements OnInit{
     this.studentService.getAllStudenti().subscribe((data:Studenti[])=>{
       for(let dato of data)
         {
-          if(dato.id_classe = this.id_classe)
+          if(dato.id_classe == this.id_classe)
             this.elencoStudenti.push(dato);
         }
     })
