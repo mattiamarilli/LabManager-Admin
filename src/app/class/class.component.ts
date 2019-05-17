@@ -33,7 +33,6 @@ export class ClassComponent implements OnInit{
   nomec:string = '';
   anno_scolastico:number = null;
   next_anno_scolastico:number = null;
-  warning:string = '';
 
   ngOnInit() {
     this.classe = new Classe();
@@ -44,15 +43,13 @@ export class ClassComponent implements OnInit{
   }
 
   validationClass(enable: any){
-    this.warning = '';
     this.id_classe = enable.value;
     if(!enable.checked){
       this.classService.disable(this.id_classe).subscribe(data => {
         if(data['code'] == 200){
-          this.toastr.warning('Classe Disattivata con successo', 'Disattivata');
           this.toolService.releaseAll().subscribe();
         }else{
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }else{
@@ -82,7 +79,6 @@ export class ClassComponent implements OnInit{
     this.anno_scolastico = null;
     this.next_anno_scolastico = null;
     this.nomec = '';
-    this.warning = '';
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-titile'});
   }
 
@@ -120,7 +116,7 @@ export class ClassComponent implements OnInit{
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }
@@ -144,7 +140,7 @@ export class ClassComponent implements OnInit{
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }
@@ -155,7 +151,7 @@ export class ClassComponent implements OnInit{
         this.classService.loadClassi();
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }

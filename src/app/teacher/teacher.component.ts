@@ -18,7 +18,6 @@ export class TeacherComponent implements OnInit {
 
   docenti:Docenti[];
   docente:Docente;
-  warning:string;
   id_docente:number;
 
   p:any;
@@ -53,7 +52,7 @@ export class TeacherComponent implements OnInit {
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }
@@ -64,11 +63,10 @@ export class TeacherComponent implements OnInit {
     this.teacherService.modifyDocente(this.docente, this.id_docente).subscribe(data => {
       if(data['code'] == 200){
         this.teacherService.loadDocenti();
-        this.warning = '';
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }
@@ -78,9 +76,8 @@ export class TeacherComponent implements OnInit {
     this.teacherService.deleteDocente(this.id_docente).subscribe(data => {
       if(data['code'] == 200){
         this.teacherService.loadDocenti();
-        this.warning = '';
       }else{
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }

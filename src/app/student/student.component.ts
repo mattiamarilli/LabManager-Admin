@@ -18,7 +18,6 @@ export class StudentComponent implements OnInit {
 
   studenti:Studenti[];
   studente:Studente;
-  warning:string;
   id_studente:number;
   classi:Classi[];
   anno_scolastico_array = [];
@@ -72,7 +71,7 @@ export class StudentComponent implements OnInit {
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }
@@ -87,7 +86,7 @@ export class StudentComponent implements OnInit {
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }
@@ -98,7 +97,7 @@ export class StudentComponent implements OnInit {
       if(data['code'] == 200){
         this.studentService.loadStudenti();
       }else{
-        this.warning = data['message'];
+        this.toastr.error(data['message'],'Attenzione')
       }
     });
   }

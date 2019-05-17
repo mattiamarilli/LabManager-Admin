@@ -3,6 +3,7 @@ import { ToolService } from '../services/tool.service';
 import { Utensili, Categorie, } from '../model';
 import { Utensile } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 
   @Component({
@@ -19,12 +20,11 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     nomeInput:String;
     idInput:number;
     id_categoria:number;
-    warning:string;
 
     pc:any;
     pu:any;
 
-    constructor(private toolService:ToolService, private modalService: NgbModal){
+    constructor(private toolService:ToolService, private modalService: NgbModal, private toastr: ToastrService){
 
     }
 
@@ -48,7 +48,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
           this.modalService.dismissAll('Reason');
         }else{
           this.modalService.dismissAll('Reason');
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }
@@ -60,7 +60,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
           this.modalService.dismissAll('Reason');
         }else{
           this.modalService.dismissAll('Reason');
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }
@@ -70,7 +70,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
         if(data['code'] == 200){
           this.toolService.loadCategorie();
         }else{
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }
@@ -82,7 +82,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
           this.modalService.dismissAll('Reason');
         }else{
           this.modalService.dismissAll('Reason');
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }
@@ -94,7 +94,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
           this.modalService.dismissAll('Reason');
         }else{
           this.modalService.dismissAll('Reason');
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }
@@ -104,7 +104,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
         if(data['code'] == 200){
           this.toolService.loadUtensili();
         }else{
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
         }
       });
     }
@@ -112,7 +112,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     //Modal
     open(content){
       this.nomeInput="";
-      this.warning="";
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-titile'});
     }
 
@@ -147,7 +146,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
         if(data['code'] == 200){
           this.toolService.loadUtensili();
         }else{
-          this.warning = data['message'];
+          this.toastr.error(data['message'],'Attenzione')
           this.toolService.loadUtensili();
         }
       });
@@ -160,7 +159,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
             this.toolService.loadUtensili();
           }else{
             this.toolService.loadUtensili();
-            this.warning = data['message'];
+            this.toastr.error(data['message'],'Attenzione')
           }
         });
       }else{
@@ -170,7 +169,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
             this.toolService.loadUtensili();
           }else{
             this.toolService.loadUtensili();
-            this.warning = data['message'];
+            this.toastr.error(data['message'],'Attenzione')
           }
         });
       }
