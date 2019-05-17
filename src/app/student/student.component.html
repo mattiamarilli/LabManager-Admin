@@ -19,7 +19,6 @@
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
-        <th class="center_object">Id Studente</th>
         <th class="center_object">Nome</th>
         <th class="center_object">Cognome</th>
         <th class="center_object">Username</th>
@@ -29,7 +28,6 @@
     </thead>
     <tbody>
       <tr *ngFor="let s of studenti | paginate: { itemsPerPage: 20, currentPage: p }">
-        <td class="center_object">{{s.id}}</td>
         <td class="center_object">{{s.nome}}</td>
         <td class="center_object">{{s.cognome}}</td>
         <td class="center_object">{{s.username}}</td>
