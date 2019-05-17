@@ -69,11 +69,11 @@
           <input type="text" class="form-control" [(ngModel)]="cognome" [ngModelOptions]="{standalone: true}" required>
         </div>
       </div>
-      <div class="form-group" id="input_anno_scolastico" required>
-        <label for="dateOfBirth">Classe</label>
-        <div class="input-group">
-          <input type="number" class="form-control" [(ngModel)]="id_classe" [ngModelOptions]="{standalone: true}" required>
-        </div>
+      <div class="form-group" required>
+        <label>Classe</label>
+        <select class="form-control" [(ngModel)]="id_classe" (change)="onChangeIdClasseForAdd($event.target.value)">
+          <option *ngFor="let c of classi" value="{{c.id_classe}}">{{c.nome}}</option>
+        </select>
       </div>
     </form>
   </div>

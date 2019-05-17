@@ -144,6 +144,10 @@ export class StudentComponent implements OnInit {
     this.filter();
   }
 
+  onChangeIdClasseForAdd(id_classe:any){
+    this.id_classe = id_classe;
+  }
+
   onChangeAnnoScolastico(anno_scolastico:any){
     this.anno_scolastico = anno_scolastico;
     this.filter();
