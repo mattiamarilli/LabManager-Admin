@@ -11,7 +11,7 @@
         <th class="center_object">Nome</th>
         <th class="center_object">Anno scolatico</th>
         <th class="center_object">Autorizzazione</th>
-        <th>Azioni</th>
+        <th class="center_object">Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -27,11 +27,11 @@
             <input #enable type="checkbox" value="{{c.id_classe}}" (click)="validationClass(enable)">
           </ng-template>
         </td>
-        <td>
+        <td class="center_object">
           <div>
-            <button #filterStudent type="button" ngbTooltip="Visualizza studenti" class="fa fa-eye" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"></button>
-            <button #modifyClass type="button" ngbTooltip="Modifica classe" class="fa fa-edit" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"></button>
-            <button #delete type="button" ngbTooltip="Elimina classe" class="fa fa-trash" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"></button>
+            <button #filterStudent type="button" ngbTooltip="Visualizza studenti" class="btn btn-info fa fa-eye" value="{{c.id_classe}}" (click)="openStudent(student, filterStudent.value)"></button>
+            <button #modifyClass type="button" ngbTooltip="Modifica classe" class="btn btn-primary fa fa-edit" value="{{c.id_classe}}" (click)="openClassModify(modify, modifyClass.value)"></button>
+            <button #delete type="button" ngbTooltip="Elimina classe" class="btn btn-danger fa fa-trash" value="{{c.id_classe}}" (click)="deleteClass(delete.value)"></button>
   			  </div>
         </td>
       </tr>
