@@ -30,4 +30,9 @@ export class AnalitycsService {
     }
     return this.http.post('/admin/statistiche/utensili/restore', JSON.stringify(body), { headers: headers });
   }
+
+  storicoClassi(id_utensile:number){
+    let headers = new HttpHeaders({});
+    return this.http.get('/admin/statistiche/utensili/storico', { headers: headers });
+  }
 }

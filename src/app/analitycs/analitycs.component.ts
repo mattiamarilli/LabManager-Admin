@@ -3,6 +3,7 @@ import { AnalitycsService } from '../services/analitycs.service';
 import { DeletedTool } from '../model';
 import { UsedTool } from '../model';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-analitycs',
@@ -14,8 +15,9 @@ export class AnalitycsComponent implements OnInit {
   deletedTool:DeletedTool[];
   usedTool:UsedTool[];
   p: any;
+  storico:any[] = [];
 
-  constructor(private analitycsService:AnalitycsService, private toastr: ToastrService){}
+  constructor(private analitycsService:AnalitycsService, private toastr: ToastrService, private modalService: NgbModal){}
 
   ngOnInit() {
     this.analitycsService.deletedTool().subscribe((data:DeletedTool[]) => {
@@ -51,5 +53,19 @@ export class AnalitycsComponent implements OnInit {
         this.toastr.error(data['message'],'Attenzione')
       }
     });
+  }
+
+  openStoricoClassi(content:any, id_utensile:any){
+    this.storico = [];
+    this.analitycsService.storicoClassi(id_utensile).subscribe((data:any) => {
+      for(let dato of data){
+        for(let d of dato){
+          if(d.id_utensile == id_utensile){
+            this.storico.push(d);
+          }
+        }
+      }
+    });
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-titile'});
   }
 }

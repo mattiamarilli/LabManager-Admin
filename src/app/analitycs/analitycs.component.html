@@ -31,6 +31,7 @@
         <th class="center_object">Nome</th>
         <th class="center_object">Utilizzi</th>
         <th class="center_object">Tempo di utilzzo</th>
+        <th class="center_objext">Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +39,9 @@
         <td class="center_object">{{u.nome}}</td>
         <td class="center_object">{{u.utilizzi}}</td>
         <td class="center_object">{{convertTime(u.secondi)}}</td>
+        <td class="center_object">
+          <button #storico type="button" ngbTooltip="Info utilizzi" class="btn btn-info fa fa-question" value="{{u.id_utensile}}" (click)="openStoricoClassi(Info, storico.value)"></button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -45,3 +49,33 @@
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
+
+
+<ng-template #Info let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Lista degli utilizzi </h4>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Classe</th>
+                <th>Utilizzi</th>
+                <th>Inizio</th>
+                <th>Fine</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of storico">
+              <td>{{s.classe}}</td>
+              <td>{{s.uttilizzi}}</td>
+              <td>{{s.inizio}}</td>
+              <td>{{s.fine}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss()" style="display: inline;">Chiudi</button>
+  </div>
+</ng-template>
