@@ -71,3 +71,7 @@ export class StudentiUtilizzatori{
     nome:string;
     cognome:string;
 }
+
+export class StrumentiUtilizzati{
+    nome:string;
+}

@@ -61,6 +61,7 @@ import { Studenti } from '../model'
       {
         
         this.elencoStudenti = data;
+
         if(this.elencoStudenti.length == 0) 
           this.toastr.warning("L'attrezzo è al momento inutilizzato","Attenzione");
         else

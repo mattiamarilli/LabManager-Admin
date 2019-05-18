@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service'
 import { ClassService } from '../services/class.service'
-import { Classi } from '../model';
+import { Classi, StrumentiUtilizzati } from '../model';
 import { Studenti } from '../model';
 import { Studente } from '../model_body';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -36,6 +36,7 @@ export class StudentComponent implements OnInit {
   cognome:string = '';
   id_classe:number = null;
   anno_scolastico:number = null;
+  useTools:StrumentiUtilizzati[];
 
   ngOnInit() {
       this.studente = new Studente();
@@ -49,6 +50,21 @@ export class StudentComponent implements OnInit {
       });
       this.classService.loadClassi();
       this.filter();
+  }
+
+  getInUseTools(tools,id_studente:number)
+  {
+    console.log(id_studente)
+    this.studentService.showTools(id_studente).subscribe((data:StrumentiUtilizzati[])=>
+    {
+      this.useTools = data;
+      console.log(this.useTools)
+      if(this.useTools.length == 0)
+        this.toastr.warning("Nessuno strumento in uso","Attenzione")
+      else
+      this.modalService.open(tools, {ariaLabelledBy: 'modal-basic-titile'});
+    }
+    );
   }
 
   resetPassword(id_studente:number){

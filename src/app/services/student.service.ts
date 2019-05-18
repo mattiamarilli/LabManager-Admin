@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import '../model'
 import '../model_body'
-import { Studenti } from '../model';
+import { Studenti, StrumentiUtilizzati } from '../model';
 import { Studente } from '../model_body';
 
 @Injectable({
@@ -60,5 +60,14 @@ export class StudentService {
   deleteStudent(id_studente:number){
     let headers  = new HttpHeaders({});
     return this.http.request('delete', `/admin/studente`, { body: { headers: headers, id_studente: id_studente } });
+  }
+
+  showTools(id_studente:number) : Observable<StrumentiUtilizzati[]>
+  {
+    let headers  =new HttpHeaders({});
+    let body = {
+      "id_studente":id_studente,
+    };
+    return this.http.post<StrumentiUtilizzati[]>('/admin/toolusestudent', JSON.stringify(body), { headers: headers });
   }
 }
