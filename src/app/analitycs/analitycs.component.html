@@ -6,12 +6,16 @@
       <tr>
         <th class="center_object">Nome</th>
         <th class="center_object">Categoria</th>
+        <th class="center_object">Azioni</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let d of deletedTool | paginate: { itemsPerPage: 15, currentPage: p }">
         <td class="center_object">{{d.nome}}</td>
         <td class="center_object">{{d.categoria}}</td>
+        <td class="center_object">
+          <button #reset type="button" ngbTooltip="Restore utensile" class="btn btn-info fa fa-window-restore" value="{{d.id_utensile}},{{d.id_categoria}}" (click)="restoreUtensile(reset.value)"></button>
+        </td>
       </tr>
     </tbody>
   </table>

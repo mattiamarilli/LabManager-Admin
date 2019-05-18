@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnalitycsService } from '../services/analitycs.service';
 import { DeletedTool } from '../model';
 import { UsedTool } from '../model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-analitycs',
@@ -14,7 +15,7 @@ export class AnalitycsComponent implements OnInit {
   usedTool:UsedTool[];
   p: any;
 
-  constructor(private analitycsService:AnalitycsService){}
+  constructor(private analitycsService:AnalitycsService, private toastr: ToastrService){}
 
   ngOnInit() {
     this.analitycsService.deletedTool().subscribe((data:DeletedTool[]) => {
@@ -34,5 +35,21 @@ export class AnalitycsComponent implements OnInit {
     const pad = (n) => ("0" + n).slice(-2);
 
     return `${pad(ore)}:${pad(minuti)}:${pad(secondi)}`;
+  }
+
+  restoreUtensile(value:any){
+    let c = value.split(',');
+    let id_categoria = c[1];
+    let id_utensile = c[0];
+    this.analitycsService.restoreTool(id_utensile, id_categoria).subscribe((data) => {
+      if(data['code'] == 200){
+        this.analitycsService.deletedTool().subscribe((data:DeletedTool[]) => {
+          this.deletedTool = data;
+        });
+        this.toastr.success('Restore avvenuto con successo','Ottimo');
+      }else{
+        this.toastr.error(data['message'],'Attenzione')
+      }
+    });
   }
 }

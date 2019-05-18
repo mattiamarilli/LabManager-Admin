@@ -21,4 +21,13 @@ export class AnalitycsService {
     let headers = new HttpHeaders({});
     return this.http.get('/admin/statistiche/utensili/usati', { headers: headers });
   }
+
+  restoreTool(id_utensile:number, id_categoria:number){
+    let headers = new HttpHeaders({});
+    let body = {
+      'id_utensile': id_utensile,
+      'id_categoria': id_categoria
+    }
+    return this.http.post('/admin/statistiche/utensili/restore', JSON.stringify(body), { headers: headers });
+  }
 }
