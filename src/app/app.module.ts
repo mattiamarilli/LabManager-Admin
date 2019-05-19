@@ -51,7 +51,8 @@ import { ToastrModule } from 'ngx-toastr';
     NgxPaginationModule, 
     NgbModule.forRoot(),
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot({
+    }) // ToastrModule added
   ],
   providers: [
     { provide: API_URL, useValue: environment.apiUrl },

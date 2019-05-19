@@ -48,6 +48,7 @@ export class TeacherComponent implements OnInit {
     this.docente.cognome = this.cognome;
     this.teacherService.setDocente(this.docente).subscribe(data => {
       if(data['code'] == 200){
+        this.toastr.success('Docente aggiunto correttamente', 'Successo');
         this.teacherService.loadDocenti();
         this.modalService.dismissAll('Reason');
       }else{
@@ -63,6 +64,7 @@ export class TeacherComponent implements OnInit {
     this.teacherService.modifyDocente(this.docente, this.id_docente).subscribe(data => {
       if(data['code'] == 200){
         this.teacherService.loadDocenti();
+        this.toastr.success('Docente modificato correttamente', 'Successo');
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
@@ -76,6 +78,7 @@ export class TeacherComponent implements OnInit {
     this.teacherService.deleteDocente(this.id_docente).subscribe(data => {
       if(data['code'] == 200){
         this.teacherService.loadDocenti();
+        this.toastr.success('Docente eliminato correttamente', 'Successo');
       }else{
         this.toastr.error(data['message'],'Attenzione')
       }

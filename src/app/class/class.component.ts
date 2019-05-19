@@ -113,6 +113,7 @@ export class ClassComponent implements OnInit{
     this.classe.anno_scolastico = this.anno_scolastico;
     this.classService.setClasse(this.classe).subscribe(data => {
       if(data['code'] == 200){
+        this.toastr.success("Classe aggiunta correttamente","Successo");
         this.classService.loadClassi();
         this.modalService.dismissAll('Reason');
       }else{
@@ -137,6 +138,7 @@ export class ClassComponent implements OnInit{
   modifyClass(){
     this.classService.modifyClass(this.classe, this.id_classe).subscribe(data => {
       if(data['code'] == 200){
+        this.toastr.success("Classe modificata correttamente","Successo");
         this.classService.loadClassi();
         this.modalService.dismissAll('Reason');
       }else{
@@ -149,6 +151,7 @@ export class ClassComponent implements OnInit{
   deleteClass(id_classe){
     this.classService.deleteClass(id_classe).subscribe(data => {
       if(data['code'] == 200){
+        this.toastr.success("Classe eliminata correttamente","Successo");
         this.classService.loadClassi();
       }else{
         this.modalService.dismissAll('Reason');

@@ -84,6 +84,7 @@ export class StudentComponent implements OnInit {
     this.studentService.setStudent(this.studente).subscribe(data => {
       if(data['code'] == 200){
         this.studentService.loadStudenti();
+        this.toastr.success('Studente aggiunto correttamente', 'Successo');
         this.modalService.dismissAll('Reason');
       }else{
         this.modalService.dismissAll('Reason');
@@ -98,6 +99,7 @@ export class StudentComponent implements OnInit {
     this.studente.id_classe = this.id_classe;
     this.studentService.modifyStudent(this.studente, this.id_studente).subscribe(data => {
       if(data['code'] == 200){
+        this.toastr.success('Studente aggiunto correttamente', 'Successo');
         this.studentService.loadStudenti();
         this.modalService.dismissAll('Reason');
       }else{
@@ -111,6 +113,7 @@ export class StudentComponent implements OnInit {
     this.id_studente = id_studente;
     this.studentService.deleteStudent(this.id_studente).subscribe(data => {
       if(data['code'] == 200){
+        this.toastr.success('Studente eliminato correttamente', 'Successo');
         this.studentService.loadStudenti();
       }else{
         this.toastr.error(data['message'],'Attenzione')

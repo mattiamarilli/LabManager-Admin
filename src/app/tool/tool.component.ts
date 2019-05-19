@@ -26,6 +26,7 @@ import { Studenti } from '../model'
 
     pc:any;
     pu:any;
+    counter:number = 0;
 
     constructor(private toolService:ToolService, private modalService: NgbModal, private toastr: ToastrService){
 
@@ -34,6 +35,20 @@ import { Studenti } from '../model'
     ngOnInit(){
       this.toolService.getUtensili().subscribe((data: Utensili []) => {
         this.utensili = data;
+        /*
+        for(let tool of this.utensili)
+        {
+          if(tool.segnala)
+            this.counter++;
+          
+        }
+
+        if(this.counter>0)
+          this.toastr.warning(this.counter + " strumenti sono stati segnalati","Attenzione");
+
+
+        this.counter = 0;
+        */
       });
       this.toolService.loadUtensili();
 
@@ -41,12 +56,17 @@ import { Studenti } from '../model'
         this.categorie = data;
       });
       this.toolService.loadCategorie();
+
+      
+      
+    
     }
 
     //Method
     AddCategoria(nome,quantita){
       this.toolService.setCategoria(nome,quantita).subscribe((data) => {
         if(data['code'] == 200){
+          this.toastr.success('Categoria aggiunta correttamente', 'Successo');
           this.toolService.loadCategorie();
           this.modalService.dismissAll('Reason');
         }else{
@@ -74,6 +94,7 @@ import { Studenti } from '../model'
     ModifyCategoria(nome){
       this.toolService.modifyCategoria(nome, this.idInput).subscribe((data) => {
         if(data['code'] == 200){
+          this.toastr.success('Categoria modificata correttamente', 'Successo');
           this.toolService.loadCategorie();
           this.modalService.dismissAll('Reason');
         }else{
@@ -86,6 +107,7 @@ import { Studenti } from '../model'
     DeleteCategoria(id){
       this.toolService.deleteCategoria(id).subscribe((data) => {
         if(data['code'] == 200){
+          this.toastr.success('Categoria eliminata correttamente', 'Successo');
           this.toolService.loadCategorie();
         }else{
           this.toastr.error(data['message'],'Attenzione')
@@ -97,6 +119,7 @@ import { Studenti } from '../model'
       this.toolService.setUtensile(nome, this.id_categoria).subscribe((data) => {
         if(data['code'] == 200){
           this.toolService.loadCategorie();
+          this.toastr.success('Strumento aggiunto correttamente', 'Successo');
           this.modalService.dismissAll('Reason');
         }else{
           this.modalService.dismissAll('Reason');
@@ -108,6 +131,7 @@ import { Studenti } from '../model'
     ModifyUtensile(nome){
       this.toolService.modifyUtensile(nome, this.id_categoria, this.idInput).subscribe((data) => {
         if(data['code'] == 200){
+          this.toastr.success('Strumento rimosso correttamente', 'Successo');
           this.toolService.loadUtensili();
           this.modalService.dismissAll('Reason');
         }else{
@@ -120,6 +144,7 @@ import { Studenti } from '../model'
     DeleteUtensile(id){
       this.toolService.deleteUtensile(id).subscribe((data) => {
         if(data['code'] == 200){
+          this.toastr.success('Strumento eliminato correttamente', 'Successo');
           this.toolService.loadUtensili();
         }else{
           this.toastr.error(data['message'],'Attenzione')
@@ -162,6 +187,7 @@ import { Studenti } from '../model'
     removeAlert(id_utensile){
       this.toolService.removeAlert(id_utensile).subscribe((data) => {
         if(data['code'] == 200){
+          this.toastr.success('Segnalazione rimossa con successo', 'Successo');
           this.toolService.loadUtensili();
         }else{
           this.toastr.error(data['message'],'Attenzione')
@@ -175,6 +201,7 @@ import { Studenti } from '../model'
         this.toolService.lock(id_attrezzo).subscribe((data) => {
           if(data['code'] == 200){
             this.toolService.loadUtensili();
+            this.toastr.success('Non è più utilizzabile dagli studenti', 'Attrezzo bloccato');
           }else{
             this.toolService.loadUtensili();
             this.toastr.error(data['message'],'Attenzione')
@@ -185,6 +212,7 @@ import { Studenti } from '../model'
         this.toolService.removeLock(id_attrezzo).subscribe((data) => {
           if(data['code'] == 200){
             this.toolService.loadUtensili();
+            this.toastr.success('Nuovamente utilizzabile dagli studenti', 'Attrezzo sbloccato');
           }else{
             this.toolService.loadUtensili();
             this.toastr.error(data['message'],'Attenzione')
