@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of classi | paginate: { itemsPerPage: 20, currentPage: p }">
+      <tr *ngFor="let c of classi | paginate: { itemsPerPage: 6, currentPage: p }">
         <td class="center_object">{{c.nome}}</td>
         <td class="center_object">{{c.anno_scolastico}}</td>
         <td class="center_object">

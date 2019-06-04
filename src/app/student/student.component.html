@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let s of studenti | paginate: { itemsPerPage: 20, currentPage: p }">
+      <tr *ngFor="let s of studenti | paginate: { itemsPerPage: 6, currentPage: p }">
         <td class="center_object">{{s.nome}}</td>
         <td class="center_object">{{s.cognome}}</td>
         <td class="center_object">{{s.username}}</td>
