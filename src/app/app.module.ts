@@ -23,6 +23,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
  
 import { ToastrModule } from 'ngx-toastr';
+import { MainFooterComponent } from './main-footer/main-footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ToastrModule } from 'ngx-toastr';
     StudentComponent,
     TeacherComponent,
     ToolComponent,
-    UserComponent
+    UserComponent,
+    MainFooterComponent
   ],
   imports: [
     BrowserModule,
